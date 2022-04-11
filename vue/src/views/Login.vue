@@ -12,6 +12,7 @@
       >
         Thank you for registering, please sign in.
       </div>
+      
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -80,10 +81,11 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  
- 
+  /* width: 20%; */
   
 }
-#login  
-{border: fuchsia, solid, 30px }
+.sr-only{
+  margin-top: 20px;
+}
+
 </style>
