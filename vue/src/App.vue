@@ -17,21 +17,19 @@
       </div>
     </div>
     <router-view />
-
     <course-locator />
   </div>
 </template>
 
 <script>
-
-import CourseLocator from './components/CourseLocator.vue'
+import CourseLocator from "./components/CourseLocator.vue";
 
 export default {
-  components: { CourseLocator },
-  setup() {
-    
+  name: "Map",
+  components: {
+    CourseLocator,
   },
-}
+};
 </script>
 
 
