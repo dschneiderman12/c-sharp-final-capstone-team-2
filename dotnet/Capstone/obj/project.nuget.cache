@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ECI4Q84FnvPweM0juQskulc336QTLdDmhS7FY9bsd5yVuVzTk4VR3BrN+osj1mGaB7iScIxiSY8izYY0h95okw==",
+  "dgSpecHash": "JgBM+kFpLiLLMClJlmF7WEur6rAvHMVmzcSDo/o4pcThZP3MmI4zRWHds8xQwu3t7EUDkUGjml3K38NNlRIg7A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\git\\ryan-hering-student-code\\c-sharp-final-capstone-team-2\\dotnet\\Capstone\\Capstone.csproj",
+  "projectFilePath": "C:\\Users\\Student\\git\\c-sharp-final-capstone-team-2\\dotnet\\Capstone\\Capstone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.9\\microsoft.aspnetcore.authentication.jwtbearer.3.1.9.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
