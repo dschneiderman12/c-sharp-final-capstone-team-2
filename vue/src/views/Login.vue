@@ -12,7 +12,7 @@
       >
         Thank you for registering, please sign in.
       </div>
-      
+
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -78,14 +78,21 @@ export default {
 </script>
 <style>
 #login > form {
+  /* this controls the properties of the form inside the sign in box */
+
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  /* width: 20%; */
-  
+
+  row-gap: 10px;
+  /* this line adds space between items on sign in form */
+
+  width: 85%;
 }
-.sr-only{
+/* .sr-only{
   margin-top: 20px;
 }
 
+#login > form > button{
+  margin-top: 20px;
+} */
 </style>
