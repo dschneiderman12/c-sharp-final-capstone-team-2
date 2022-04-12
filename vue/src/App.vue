@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-     
+     <div id="left-header">
       <img src="@/images/golfLogo.png" alt="templogo" />
+        "stuff about golf and stuff"
+      </div>
+        
+      
 
        <div class="nav-link">
         <router-link class="homeLink" v-bind:to="{ name: 'home' }"
@@ -41,9 +45,9 @@
 
 }
 
-#nav  > img
+#nav >div > img
 {
-  max-width: 7%;
+  width: 10vh;
   /* margin-right: 80%; */
 }
 #nav {
@@ -70,13 +74,16 @@
    linear-gradient(to bottom, #a1cc79, #9d5fb6);
   background-size: cover;
 }
-
+#left-header{
+  color:white;
+}
 
 
 #nav > div > a{
 
   /* this selects all of the navigation links */
-  
+  filter: drop-shadow(3px 3px 3px black);
+
   background-color: green;
   text-decoration: none;
 font-weight: bold;
