@@ -76,10 +76,13 @@ INSERT INTO courses (course_name) VALUES ('TEST COURSE 1');
 INSERT INTO leagues(league_name,organizer_id,course_id) VALUES ('TEST LEAGUE 1', 2, 1);
 INSERT INTO matches (match_name, start_time) VALUES ('TEST MATCH 1- TEST LEAGUE 1', '2022-04-20 12:00:00');
 INSERT INTO league_match (match_id, league_id) VALUES (1, 1);
-INSERT INTO user_league (user_id, league_id) VALUES (1,1), (3,1), (2,1);
-INSERT INTO user_match (user_id, match_id, score, tee_time) VALUES
-(1, 1, 0, '2022-04-20 12:05:00'),
-(2, 1, 0, '2022-04-20 12:20:00'),
-(3, 1, 0, '2022-04-20 12:35:00');
+
+-- UNCOMMENT AND RUN LINES 82-86 AFTER CREATING 3rd USER PER INSTRUCTIONS ON MERGE REQUEST
+
+--INSERT INTO user_league (user_id, league_id) VALUES (1,1), (3,1), (2,1);
+--INSERT INTO user_match (user_id, match_id, score, tee_time) VALUES
+--(1, 1, 0, '2022-04-20 12:05:00'),
+--(2, 1, 0, '2022-04-20 12:20:00'),
+--(3, 1, 0, '2022-04-20 12:35:00');
 GO
 
