@@ -19,7 +19,12 @@
         >
       </div>
     </div>
-    <router-view />
+    <div id="pagebody">
+      <router-view />
+      <div id="map">
+        <course-locator />
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -32,17 +37,18 @@
 #login {
   
   background-color: rgba(209, 255, 209, 0.7);
- 
-  border-color: rgb(43, 126, 43);
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 7px;
+  /* border-color: rgb(43, 126, 43); */
+  /* border-style: solid;
+  border-width: 3px; */
+  border-radius: 4px;
   padding: 5px;
-  margin: 5px;
-  width: 30%;
-
+  /* margin: 30px; */
+  width: 40%;
   filter: drop-shadow(5px 5px 5px black);
-
+  display:flex;
+  margin-top: 20px;
+  margin-bottom:20px;
+  justify-content: space-around;
 }
 
 #nav >div > img
@@ -51,10 +57,8 @@
   /* margin-right: 80%; */
 }
 #nav {
-
-/* this selects the top bar (logo, navigation buttons) */
-
-  background-color: rgba(0, 100, 0, 0.5);
+  /* this selects the top bar (logo, navigation buttons) */
+  background-color: rgba(250, 213, 134, 0.75);
   /* border-radius: 7px;*/
   padding: 5px; 
   
@@ -71,7 +75,7 @@
   min-height: 100vh;
   background-blend-mode: overlay;
   background: url("images/golfCourse1.jpg"),
-   linear-gradient(to bottom, #a1cc79, #9d5fb6);
+    linear-gradient(to bottom, #688884, #a79a7d);
   background-size: cover;
 }
 #left-header{
@@ -97,6 +101,14 @@ font-weight: bold;
   margin-right: 5px;
   padding:10px;
   border-radius: 8px;
+}
+#pagebody{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
 
+}
+#map {
+  /*map component contained within this div*/
 }
 </style>

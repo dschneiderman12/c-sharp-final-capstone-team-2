@@ -86,7 +86,7 @@ export default {
   row-gap: 10px;
   /* this line adds space between items on sign in form */
 
-  width: 85%;
+  width: 80%;
 }
 /* .sr-only{
   margin-top: 20px;
