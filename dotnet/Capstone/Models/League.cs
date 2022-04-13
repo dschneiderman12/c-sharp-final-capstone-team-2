@@ -10,6 +10,6 @@ namespace Capstone.Models
         public int LeagueId { get; set; }
         public string LeagueName { get; set; }
         public int OrganizerId { get; set; }
-        public Course LeagueCourse {get; set; }
+        public Course LeagueCourse { get; set; }
     }
 }

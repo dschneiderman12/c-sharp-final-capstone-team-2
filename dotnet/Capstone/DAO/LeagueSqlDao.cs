@@ -22,8 +22,10 @@ namespace Capstone.DAO
             using(SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(@"", conn);
-                cmd.Parameters.AddWithValue("@", league);
+                SqlCommand cmd = new SqlCommand(@"SELECT league_id, league_name, organizer_id, leagues.course_id, course_name
+                                                FROM leagues JOIN courses ON courses.course_id = leagues.course_id
+                                                WHERE league_id = @league_id", conn);
+                cmd.Parameters.AddWithValue("@league_id", leagueId);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -40,8 +42,12 @@ namespace Capstone.DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(@"", conn);
-                cmd.Parameters.AddWithValue("@", league);
+                SqlCommand cmd = new SqlCommand(@"INSERT INTO leagues(league_name, organizer_id, course_id)
+                                                OUTPUT INSERTED.league_id
+                                                VALUES (@league_name, @organizer_id, @course_id);", conn);
+                cmd.Parameters.AddWithValue("@league_name", league.LeagueName);
+                cmd.Parameters.AddWithValue("@organizer_id", league.OrganizerId);
+                cmd.Parameters.AddWithValue("@course_id", league.LeagueCourse.CourseId);
 
                 newLeagueId = Convert.ToInt32(cmd.ExecuteScalar());
             }
