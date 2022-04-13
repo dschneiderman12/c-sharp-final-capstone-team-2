@@ -16,17 +16,11 @@
         >
       </div>
     </div>
-<<<<<<< HEAD
     <div id="pagebody">
       <router-view />
       <div id="map">
         <course-locator />
       </div>
-=======
-    <router-view />
-    <div id="map">
-      <course-locator />
->>>>>>> 75c7f933a2d9af03f92f94cdc370622cb7fb8966
     </div>
   </div>
 </template>
@@ -52,7 +46,6 @@ export default {
 #login,
 #register {
   background-color: rgba(209, 255, 209, 0.7);
-<<<<<<< HEAD
   /* border-color: rgb(43, 126, 43); */
   /* border-style: solid;
   border-width: 3px; */
@@ -65,16 +58,6 @@ export default {
   margin-top: 20px;
   margin-bottom:20px;
   justify-content: space-around;
-=======
-  border-color: rgb(43, 126, 43);
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 7px;
-  padding: 5px;
-  margin: 5px;
-  width: 30%;
-  filter: drop-shadow(5px 5px 5px black);
->>>>>>> 75c7f933a2d9af03f92f94cdc370622cb7fb8966
 }
 
 #nav > div > img {
@@ -83,11 +66,7 @@ export default {
 }
 #nav {
   /* this selects the top bar (logo, navigation buttons) */
-<<<<<<< HEAD
   background-color: rgba(250, 213, 134, 0.75);
-=======
-  background-color: rgba(0, 100, 0, 0.5);
->>>>>>> 75c7f933a2d9af03f92f94cdc370622cb7fb8966
   /* border-radius: 7px;*/
   padding: 5px;
   display: flex;
@@ -101,11 +80,7 @@ export default {
   min-height: 100vh;
   background-blend-mode: overlay;
   background: url("images/golfCourse1.jpg"),
-<<<<<<< HEAD
     linear-gradient(to bottom, #688884, #a79a7d);
-=======
-    linear-gradient(to bottom, #a1cc79, #9d5fb6);
->>>>>>> 75c7f933a2d9af03f92f94cdc370622cb7fb8966
   background-size: cover;
 }
 #left-header {
@@ -128,16 +103,12 @@ export default {
   padding: 10px;
   border-radius: 8px;
 }
-<<<<<<< HEAD
 #pagebody{
 display: flex;
 flex-direction: row;
 justify-content: space-around;
-=======
->>>>>>> 75c7f933a2d9af03f92f94cdc370622cb7fb8966
 
-#map {
-  /*map component contained within this div*/
+
 }
 #map {
   /*map component contained within this div*/
