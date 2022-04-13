@@ -33,7 +33,7 @@
         required
       />
 
-      <button type="submit">Sign in</button>
+      <button class="btn" type="submit">Sign in</button>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
   </div>
@@ -87,6 +87,9 @@ export default {
   /* this line adds space between items on sign in form */
 
   width: 80%;
+}
+.btn {
+  width: 30%
 }
 /* .sr-only{
   margin-top: 20px;
