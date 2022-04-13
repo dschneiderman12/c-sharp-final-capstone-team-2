@@ -17,7 +17,9 @@
       </div>
     </div>
     <router-view />
-    <course-locator />
+    <div id="map">
+      <course-locator />
+    </div>
   </div>
 </template>
 
@@ -39,7 +41,8 @@ export default {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-#login {
+#login,
+#register {
   background-color: rgba(209, 255, 209, 0.7);
   border-color: rgb(43, 126, 43);
   border-style: solid;
@@ -93,5 +96,9 @@ export default {
   margin-right: 5px;
   padding: 10px;
   border-radius: 8px;
+}
+
+#map {
+  /*map component contained within this div*/
 }
 </style>

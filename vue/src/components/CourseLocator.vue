@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div id="map-block">
     <h3>Search for golf courses</h3>
     <input
       type="text"
       id="course-search"
       class="form-search"
-      placeholder="Enter city or zip"
+      placeholder="Search Map"
       v-model="courseSearch"
     />
     <button v-on:click="locationToSearch()">Search</button>
@@ -42,7 +42,21 @@ export default {
 
 <style>
 .search-map {
-  width: 800px;
-  height: 600px;
+  width: 70vw;
+  height: 40vh;
+}
+#map-block {
+  margin-left: 2%;
+
+}
+h3 {
+  filter: drop-shadow(3px 3px 3px black);
+  text-shadow: darkslateblue 5px 5px 5px;
+  color: white;
+}
+.map {
+  /* controls box around map */
+  /* display: flex;
+  justify-content: center; */
 }
 </style>
