@@ -86,7 +86,12 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   background-blend-mode: overlay;
   background: url("images/golfCourse1.jpg"),
     linear-gradient(to bottom, #688884, #a79a7d);
-  background-size: cover;
+  
+  /* height: 500px; You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+
 }
 #left-header {
   color: #184d47;
@@ -132,7 +137,7 @@ justify-content:space-between;
  
 
 background: rgb(24,77,71);
-background: linear-gradient(180deg, rgba(24,77,71,0) 0%, rgba(24,77,71,0.5578606442577031) 44%, rgba(24,77,71,1) 100%);  height: 20vh;
+/* background: linear-gradient(180deg, rgba(24,77,71,0) 0%, rgba(24,77,71,0.5578606442577031) 44%, rgba(24,77,71,1) 100%);  height: 20vh; */
 height: 8%;
 
 }
