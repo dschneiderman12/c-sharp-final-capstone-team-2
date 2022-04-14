@@ -53,11 +53,12 @@ export default {
 <style>
 .search-map {
   /* width: 100%; */
-  height: 40vh;
-  width:40vw;
+  height: 30vh;
+  width:60vw;
 }
 #map-block {
-  margin-left: 2%;
+  
+  
 
 }
 h3 {
@@ -66,10 +67,31 @@ h3 {
   color: white;
   margin: 0px;
 }
-.map {
+
+#map {
   /* controls box around map */
   /* display: flex;
   justify-content: center; */
- 
+  background-color: rgba(209, 255, 209, 0.5);
+  /* border-color: rgb(43, 126, 43); */
+  /* border-style: solid;
+  border-width: 3px; */
+  border-radius: 6px;
+  padding: 5px;
+  /* margin: 30px; */
+  width: 60%;
+  filter: drop-shadow(5px 5px 5px black);
+  display:flex;
+  margin-top: 20px;
+  margin-bottom:20px;
+  /* margin-left:30%; */
+  /* justify-content: space-around; */
+  /* padding: 4%;  */
+  padding-top: 2%;
+  height:80%;
+}
+button{
+  background-color: #184D47 ;
+  color: white;
 }
 </style>
