@@ -42,7 +42,7 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpPost("invite/{userId}")]
+        [HttpPost("invite/user/{userId}")]
         public ActionResult AddUserToLeague(int userId, League league)
         {
             leagueDao.AddUserLeagueTable(userId, league.LeagueId);
