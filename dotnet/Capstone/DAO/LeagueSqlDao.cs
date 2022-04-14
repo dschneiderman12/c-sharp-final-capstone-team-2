@@ -19,44 +19,75 @@ namespace Capstone.DAO
         public League GetLeague(int leagueId)
         {
             League league = null;
-            using(SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(@"SELECT league_id, league_name, organizer_id, leagues.course_id, course_name
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT league_id, league_name, organizer_id, leagues.course_id, course_name
                                                 FROM leagues JOIN courses ON courses.course_id = leagues.course_id
                                                 WHERE league_id = @league_id", conn);
-                cmd.Parameters.AddWithValue("@league_id", leagueId);
+                    cmd.Parameters.AddWithValue("@league_id", leagueId);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    league = createLeagueFromReader(reader);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        league = createLeagueFromReader(reader);
+                    }
                 }
+                return league;
             }
-            return league;
+            catch (SqlException)
+            {
+                throw;
+            }
         }
 
         public League CreateLeague(League league)
         {
             int newLeagueId;
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO leagues(league_name, organizer_id, course_id)
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO leagues(league_name, organizer_id, course_id)
                                                 OUTPUT INSERTED.league_id
                                                 VALUES (@league_name, @organizer_id, @course_id);", conn);
-                cmd.Parameters.AddWithValue("@league_name", league.LeagueName);
-                cmd.Parameters.AddWithValue("@organizer_id", league.OrganizerId);
-                cmd.Parameters.AddWithValue("@course_id", league.LeagueCourse.CourseId);
-                
-                newLeagueId = Convert.ToInt32(cmd.ExecuteScalar());
-                
-            }
+                    cmd.Parameters.AddWithValue("@league_name", league.LeagueName);
+                    cmd.Parameters.AddWithValue("@organizer_id", league.OrganizerId);
+                    cmd.Parameters.AddWithValue("@course_id", league.LeagueCourse.CourseId);
 
-            return GetLeague(newLeagueId);
-         
-               
-            
+                    newLeagueId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                }
+                return GetLeague(newLeagueId);
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
+        public void AddUserLeagueTable(int userId, int leagueId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO user_league(user_id, league_id)
+                                                VALUES (@user_id, @league_id);", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    cmd.Parameters.AddWithValue("@league_id", leagueId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
         }
 
         private League createLeagueFromReader(SqlDataReader reader)
