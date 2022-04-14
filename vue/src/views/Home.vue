@@ -3,13 +3,15 @@
     <h1>My Leagues</h1>
     <p>You must be authenticated to see this</p>
     <league-form />
+    <league-list/>
   </div>
 </template>
 
 <script>
 import LeagueForm from '../components/LeagueForm.vue';
+import LeagueList from '../components/LeagueList.vue';
 export default {
-  components: { LeagueForm },
+  components: { LeagueForm, LeagueList },
   name: "home"
 };
 </script>
