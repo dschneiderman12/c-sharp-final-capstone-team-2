@@ -25,7 +25,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"", conn);
-                    cmd.Parameters.AddWithValue("", x);
+                    //cmd.Parameters.AddWithValue("", x);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
@@ -50,7 +50,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"", conn);
-                    cmd.Parameters.AddWithValue("", x);
+                    //cmd.Parameters.AddWithValue("", x);
 
                     newMatchId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -68,7 +68,7 @@ namespace Capstone.DAO
 
             match.MatchId = Convert.ToInt32(reader["match_id"]);
             match.MatchName = Convert.ToString(reader["match_name"]);
-            match.StartDateTime = Convert.ToDateTime(reader["start_time"]);
+            //match.StartDateTime = Convert.ToDateTime(reader["start_time"]);
 
             return match;
         }
