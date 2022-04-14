@@ -27,5 +27,18 @@ namespace Capstone.Controllers
             League addedLeague = leagueDao.CreateLeague(league);
             return Created($"/league/{addedLeague.LeagueId}", addedLeague);
         }
+        [HttpGet("{leagueId}")]
+        public ActionResult<League> GetLeagueById(int leagueId)
+        {
+            League league = leagueDao.GetLeague(leagueId);
+            if(league != null)
+            {
+                return league;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

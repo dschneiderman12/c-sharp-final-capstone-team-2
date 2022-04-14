@@ -61,8 +61,6 @@ C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\net
 C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\Capstone.csproj.CoreCompileInputs.cache
 C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\Capstone.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\staticwebassets\Capstone.StaticWebAssets.Manifest.cache
-C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\staticwebassets\Capstone.StaticWebAssets.xml
-C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\scopedcss\bundle\Capstone.styles.css
 C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\Capstone.RazorTargetAssemblyInfo.cache
 C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\Capstone.csproj.CopyComplete
 C:\Users\Student\git\c-sharp-final-capstone-team-2\dotnet\Capstone\obj\Debug\netcoreapp3.1\Capstone.dll
