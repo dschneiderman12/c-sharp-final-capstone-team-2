@@ -41,6 +41,20 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+        [HttpGet("user/{userId}")]
+        [AllowAnonymous]
+        public ActionResult<List<League>> GetLeaguesByUserId(int userId)
+        {
+            List<League> userLeagues = leagueDao.GetLeaguesByUserId(userId);
+            if(userLeagues != null)
+            {
+                return userLeagues;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
 
         [HttpPost("invite/user/{userId}")]
         public ActionResult AddUserToLeague(int userId, League league)

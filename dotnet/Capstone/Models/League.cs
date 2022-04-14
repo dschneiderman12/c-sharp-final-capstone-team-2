@@ -11,5 +11,6 @@ namespace Capstone.Models
         public string LeagueName { get; set; }
         public int OrganizerId { get; set; }
         public Course LeagueCourse { get; set; }
+        public string OrganizerName { get; set; }
     }
 }
