@@ -2,11 +2,14 @@
   <div class="home">
     <h1>My Leagues</h1>
     <p>You must be authenticated to see this</p>
+    <league-form />
   </div>
 </template>
 
 <script>
+import LeagueForm from '../components/LeagueForm.vue';
 export default {
+  components: { LeagueForm },
   name: "home"
 };
 </script>
