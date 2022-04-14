@@ -2,7 +2,7 @@
   <table>
     <thead>
       <tr>
-        
+      
         <th>League Name</th>
         <th>course</th>
         <th>League Organizer</th>
