@@ -1,37 +1,15 @@
 <template>
-  <div>
-    <form v-on:submit.prevent="submitForm()">
-      <div><h2>Create a new League</h2></div>
-      <div>
-        League Name
-        <input
-          id="league-name"
-          type="text"
-          class="form-control"
-          v-model="league.leagueName"
-        />
-        <label for="cars">Choose a course:</label>
-
-        <select name="course-name" id="course-name">
-          <!-- Need to somehow call list of courses from the database-->
-          <option value="1">course 1</option>
-          <option value="2">course 2</option>
-          <option value="3">course 3</option>
-          <option value="4">course 4</option>
-        </select>
-      </div>
-      <button type="submit" class="btn-submit">Submit</button>
-    </form>
-    <form v-on:submit.prevent="addUser()">
-      <div>this is where we can add players</div>
-      <h2>Add player to League</h2>
-      <select name="select-player" id="select-player">
-        <!-- Same as above, need to pull from database of current users -->
-        <option value="1" id="user-id-one">1</option>
-      </select>
-      <button type="submit" class="btn-submit">Add User</button>
-    </form>
-  </div>
+  <form v-on:submit.prevent="submitForm()">
+    <div>
+      <input
+        id="league-name"
+        type="text"
+        class="form-control"
+        v-model="league.leagueName"
+      />
+    </div>
+    <button type="submit" class="btn-submit">Submit</button>
+  </form>
 </template>
 
 <script>
@@ -67,9 +45,8 @@ export default {
         leagueName: this.league.leagueName,
         organizerId: Number(this.$store.state.user.userId),
         leagueCourse: {
-          // Needs to be replaced by the user selecting a course from the list
           courseId: 1,
-          courseName: "",
+          courseName: "TEST COURSE 1",
         },
       };
       LeagueService.newLeague(newLeague)
@@ -81,22 +58,6 @@ export default {
         })
         .catch((error) => {
           this.handleErrorResponse(error, "creating");
-        });
-    },
-    addUser() {
-      //Need to replace with current league page we are in
-      const league = {
-        leagueId: 2,
-      };
-      //Need to replace number with selected user, currently will only work once
-      LeagueService.addUserToLeague(3, league)
-        .then((response) => {
-          if (response.status === 201) {
-            this.$router.push(`/league`); // This isn't working
-          }
-        })
-        .catch((error) => {
-          this.handleErrorResponse(error, "adding user to");
         });
     },
     handleErrorResponse(error, verb) {
@@ -121,18 +82,6 @@ export default {
 </script>
 
 <style>
-#page-body > div:nth-child(1) {
-  background: rgba(150, 187, 124, 0.6);
-  border-radius: 5px;
-}
-#page-body > div:nth-child(1) > form > div:nth-child(1) > h2 {
-  filter: drop-shadow(3px 3px 3px black);
-  text-shadow: darkslateblue 3px 3px 3px;
-  color: white;
-  font-weight: bolder;
-  background: rgb(250, 213, 134);
-  background: rgba(150, 187, 124);
-  /* border-radius: 7px;*/
-  border-bottom: blanchedalmond solid 3px;
-}
+
+
 </style>
