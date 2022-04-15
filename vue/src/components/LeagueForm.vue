@@ -12,12 +12,15 @@
         />
         <label for="cars">Choose a course:</label>
 
-        <select name="course-name" id="course-name">
+        <select id="course-name" v-model.number="league.leagueCourse.courseId">
           <!-- Need to somehow call list of courses from the database-->
-          <option value="1">course 1</option>
-          <option value="2">course 2</option>
-          <option value="3">course 3</option>
-          <option value="4">course 4</option>
+          <option
+            v-for="course in courses"
+            v-bind:key="course.courseId"
+            v-bind:value="course.courseId"
+          >
+            {{course.courseName}}
+          </option>
         </select>
       </div>
       <button type="submit" class="btn-submit">Submit</button>
@@ -46,7 +49,7 @@ export default {
         organizerId: "",
         leagueCourse: {
           courseId: "",
-          courseName: "",
+          //courseName: "",
         },
       },
       returnLeague: {
@@ -59,7 +62,17 @@ export default {
         },
       },
       errorMsg: "",
+      courses: [],
     };
+  },
+  created() {
+    LeagueService.getCourses()
+      .then((response) => {
+        this.courses = response.data;
+      })
+      .catch((error) => {
+        this.handleErrorResponse(error, "generating courses for");
+      });
   },
   methods: {
     submitForm() {
@@ -68,8 +81,8 @@ export default {
         organizerId: Number(this.$store.state.user.userId),
         leagueCourse: {
           // Needs to be replaced by the user selecting a course from the list
-          courseId: 1,
-          courseName: "",
+          courseId: this.league.leagueCourse.courseId
+          //courseName: 
         },
       };
       LeagueService.newLeague(newLeague)

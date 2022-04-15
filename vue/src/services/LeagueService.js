@@ -3,9 +3,9 @@ import store from '../store/index.js';
 store.getters.config;
 const http = axios.create({
   baseURL: "https://localhost:44315",
-  headers: {
-    'Authorization': `${store.state.token}`
-  }
+  // headers: {
+  //   'Authorization': `${store.state.token}`
+  // }
 });
 
 export default {
@@ -20,5 +20,9 @@ export default {
 
   addUserToLeague(userID, league) {
     return http.post(`/League/invite/user/${userID}`, league)
+  },
+
+  getCourses() {
+    return http.get("/courses")
   }
 }
