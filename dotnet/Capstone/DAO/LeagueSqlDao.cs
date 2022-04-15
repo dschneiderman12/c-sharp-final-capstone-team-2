@@ -24,7 +24,8 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT league_id, league_name, organizer_id, leagues.course_id, course_name
+                    SqlCommand cmd = new SqlCommand(@"SELECT league_id, league_name, organizer_id, leagues.course_id, course_name,
+                                                (SELECT username FROM users WHERE users.user_id = leagues.organizer_id)AS organizer_username
                                                 FROM leagues JOIN courses ON courses.course_id = leagues.course_id
                                                 WHERE league_id = @league_id", conn);
                     cmd.Parameters.AddWithValue("@league_id", leagueId);
@@ -42,37 +43,7 @@ namespace Capstone.DAO
                 throw;
             }
         }
-        public List<League> GetLeaguesByUserId(int userId)
-        {
-            List<League> userLeagues = new List<League>();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT leagues.league_id, league_name, organizer_id,(SELECT username FROM users WHERE users.user_id = leagues.organizer_id)AS organizer_username, leagues.course_id, courses.course_name
-                                            FROM leagues
-                                            JOIN courses ON courses.course_id = leagues.course_id
-                                            JOIN user_league on leagues.league_id = user_league.league_id
-                                            WHERE user_id = @user_id;", conn);
-                    cmd.Parameters.AddWithValue("@user_id", userId);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        League newLeague = createLeagueFromReader(reader);
-                        string organizerName = Convert.ToString(reader["organizer_username"]);
-                        newLeague.OrganizerName = organizerName;
-                        userLeagues.Add(newLeague);
-                    }
-                }
-                return userLeagues;
 
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-        }
         public League CreateLeague(League league)
         {
             int newLeagueId;
@@ -89,7 +60,6 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@course_id", league.LeagueCourse.CourseId);
 
                     newLeagueId = Convert.ToInt32(cmd.ExecuteScalar());
-
                 }
                 return GetLeague(newLeagueId);
             }
@@ -119,6 +89,40 @@ namespace Capstone.DAO
                 throw;
             }
         }
+
+
+        public List<League> GetLeaguesByUserId(int userId)
+        {
+            List<League> userLeagues = new List<League>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT leagues.league_id, league_name, organizer_id,
+                                            (SELECT username FROM users WHERE users.user_id = leagues.organizer_id)AS organizer_username,
+                                            leagues.course_id, courses.course_name
+                                            FROM leagues
+                                            JOIN courses ON courses.course_id = leagues.course_id
+                                            JOIN user_league on leagues.league_id = user_league.league_id
+                                            WHERE user_id = @user_id;", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        League newLeague = createLeagueFromReader(reader);
+                        userLeagues.Add(newLeague);
+                    }
+                }
+                return userLeagues;
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
 
         public List<Course> GetCourses()
         {
@@ -159,6 +163,7 @@ namespace Capstone.DAO
             league.OrganizerId = Convert.ToInt32(reader["organizer_id"]);
             course.CourseId = Convert.ToInt32(reader["course_id"]);
             course.CourseName = Convert.ToString(reader["course_name"]);
+            league.OrganizerName = Convert.ToString(reader["organizer_username"]);
 
             league.LeagueCourse = course;
             return league;

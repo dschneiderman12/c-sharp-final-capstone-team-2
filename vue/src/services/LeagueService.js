@@ -25,7 +25,9 @@ export default {
   addUserToLeague(userID, league) {
     return http.post(`/League/invite/user/${userID}`, league)
   },
+
   getCourses(){
   return http.get('/courses')
+
   }
 }
