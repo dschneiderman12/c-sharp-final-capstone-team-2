@@ -46,7 +46,7 @@ export default {
         organizerId: Number(this.$store.state.user.userId),
         leagueCourse: {
           courseId: 1,
-          courseName: "TEST COURSE 1",
+          courseName: "",
         },
       };
       LeagueService.newLeague(newLeague)

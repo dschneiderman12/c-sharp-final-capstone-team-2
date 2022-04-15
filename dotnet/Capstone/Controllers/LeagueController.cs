@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class LeagueController : ControllerBase
     {
         private readonly ILeagueDao leagueDao;
