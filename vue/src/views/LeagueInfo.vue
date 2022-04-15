@@ -58,5 +58,11 @@ export default {
 </script>
 
 <style>
+
+#page-body > div:nth-child(1){
+  width: 90%;
+}
+
+
 </style>
 
