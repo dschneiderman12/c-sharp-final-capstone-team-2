@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>
     <div id="nav">
       <div id="left-header">
         <img src="@/images/golfLogo.png" alt="templogo" />
@@ -21,6 +22,7 @@
       <div id="map">
         <course-locator />
       </div>
+    </div>
     </div>
     <div id="footer">buttons will be here eventually (admin)(links)(easter-egg)</div>
   </div>
@@ -132,6 +134,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   display:flex;
 flex-direction: column;
 justify-content:space-between;
+
 }
 #footer{
  

@@ -1,9 +1,10 @@
 <template>
   <div id="league-board">
       <div id="league-list" v-for="league in leagues" :key="league.id">
-        <a href="x" class="league-name">
+        <router-link :to=" {path: '/league/'+ league.leagueId}">
           {{ league.leagueName }}
-        </a>
+
+        </router-link>
         <p class="course-name">{{ league.leagueCourse.courseName }}</p>
         <p>
           {{ league.organizerName }}
