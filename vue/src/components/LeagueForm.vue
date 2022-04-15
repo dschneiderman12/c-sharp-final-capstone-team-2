@@ -80,7 +80,6 @@ export default {
         leagueName: this.league.leagueName,
         organizerId: Number(this.$store.state.user.userId),
         leagueCourse: {
-          // Needs to be replaced by the user selecting a course from the list
           courseId: this.league.leagueCourse.courseId
           //courseName: 
         },
