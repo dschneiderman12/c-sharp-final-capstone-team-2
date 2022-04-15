@@ -1,27 +1,18 @@
 <template>
-  <table>
-    <thead>
-      <tr>
-      
-        <th>League Name</th>
-        <th>course</th>
-        <th>League Organizer</th>
-        <th>Leader</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="league in leagues" :key="league.id">
-        <td class="league-name">
+  <div id="league-board">
+      <div id="league-list" v-for="league in leagues" :key="league.id">
+        <a href="x" class="league-name">
           {{ league.leagueName }}
-        </td>
-        <td class="course-name">{{ league.leagueCourse.courseName }}</td>
-        <td>
+        </a>
+        <p class="course-name">{{ league.leagueCourse.courseName }}</p>
+        <p>
           {{ league.organizerName }}
-        </td>
-        <td>LEADER</td>
-      </tr>
-    </tbody>
-  </table>
+        </p>
+
+      
+      
+    </div>
+  </div>
 </template>
 
 <script>
@@ -65,4 +56,14 @@ export default {
 </script>
 
 <style>
-</style>           
+#league-list {
+  background: #184d47;
+  color:white;
+  display: flex;
+  flex-direction: column;
+}
+#league-board {
+  width: 90%;
+  background:#184d47
+}
+
