@@ -56,11 +56,11 @@ export default {
   height: 30vh;
   width:60vw;
 }
-#map-block {
+/* #map-block {
   
   
 
-}
+} */
 h3 {
   filter: drop-shadow(3px 3px 3px black);
   text-shadow: darkslateblue 5px 5px 5px;
