@@ -1,17 +1,27 @@
 <template>
   <div class="home">
+    <div id="league-info">
     <h1>My Leagues</h1>
-    <p>You must be authenticated to see this</p>
+    <div class="nav-link">
+        <router-link class="leagueLink" v-bind:to="{ name: 'league' }"
+          >Create League</router-link>
+        <!-- &nbsp;&nbsp; -->
+       
+        
+      </div>
+      </div>
+    
     <league-form />
+
     <league-list/>
   </div>
 </template>
 
 <script>
-import LeagueForm from '../components/LeagueForm.vue';
+
 import LeagueList from '../components/LeagueList.vue';
 export default {
-  components: { LeagueForm, LeagueList },
+  components: { LeagueList },
   name: "home"
 };
 </script>
@@ -25,12 +35,38 @@ export default {
   border-radius: 6px;
   padding: 5px;
   /* margin: 30px; */
-  width: 40%;
+  width: 60%;
   filter: drop-shadow(5px 5px 5px black);
   display:flex;
   margin-top: 20px;
   margin-bottom:20px;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  align-items: center;
+
 }
+#league-info > h1 {
+  filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: darkslateblue 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+#league-info {
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+ width: 80%;
+}
+#league-info > div {
+  display: flex;
+  justify-content: flex-end;
+}
+
 </style>
