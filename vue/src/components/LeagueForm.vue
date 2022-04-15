@@ -134,7 +134,7 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
+
 #page-body > div:nth-child(1) {
   background: rgba(150, 187, 124, 0.6);
   border-radius: 5px;
@@ -149,8 +149,5 @@ export default {
   /* border-radius: 7px;*/
   border-bottom: blanchedalmond solid 3px;
 }
-=======
 
-
->>>>>>> 8cff6660d3c3d3223fb383d91bc6c1fa33eb13a7
 </style>
