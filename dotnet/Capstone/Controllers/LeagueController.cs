@@ -25,7 +25,9 @@ namespace Capstone.Controllers
         public ActionResult<League> NewLeague(League league)
         {
             League addedLeague = leagueDao.CreateLeague(league);
+            leagueDao.AddUserLeagueTable(league.OrganizerId, addedLeague.LeagueId);
             return Created($"/league/{addedLeague.LeagueId}", addedLeague);
+
             // Need to set up so organizer is automatically entered into league
         }
 
@@ -55,13 +57,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-
-        [HttpPost("invite/user/{userId}")]
-        public ActionResult AddUserToLeague(int userId, League league)
-        {
-            leagueDao.AddUserLeagueTable(userId, league.LeagueId);
-            return Ok();
-        }
+                
 
         [HttpGet("/courses")]
         public ActionResult<List<Course>> GetAllCourses()

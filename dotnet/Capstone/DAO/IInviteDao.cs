@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    interface IInviteDao
+    public interface IInviteDao
     {
         public Invite CreateInvite(Invite invite);
         public Invite GetInvite(int inviteId);
-        public void AcceptInvite();
-        public void DenyInvite();
-        public List<Invite> ListPendingInvites();
+        public void AcceptInvite(int inviteId);
+        public void DeclineInvite(int inviteId);
+        public List<Invite> ListPendingInvites(int userId);
     }
 }
