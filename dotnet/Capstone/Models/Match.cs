@@ -9,8 +9,6 @@ namespace Capstone.Models
     {
         public int MatchId { get; set; }
         public string MatchName { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime StartTime { get; set; }
-
+        public DateTime DateAndTime { get; set; }
     }
 }
