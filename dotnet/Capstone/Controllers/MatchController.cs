@@ -15,10 +15,10 @@ namespace Capstone.Controllers
     {
         private readonly IMatchDao matchDao;
 
-        //public MatchController(IMatchDao _matchDao)
-        //{
-        //    matchDao = _matchDao;
-        //}
+        public MatchController(IMatchDao _matchDao)
+        {
+            matchDao = _matchDao;
+        }
 
 
     }

@@ -24,8 +24,10 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"", conn);
-                    //cmd.Parameters.AddWithValue("", x);
+                    SqlCommand cmd = new SqlCommand(@"SELECT match_id, match_name, start_time
+                                                    FROM matches
+                                                    WHERE match_id = @match_id", conn);
+                    cmd.Parameters.AddWithValue("@match_id", matchId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
@@ -49,8 +51,11 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"", conn);
-                    //cmd.Parameters.AddWithValue("", x);
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO matches (match_name, start_time)
+                                                    OUTPUT INSERTED.match_id
+                                                    VALUES (@match_name, @match_datetime)", conn);
+                    cmd.Parameters.AddWithValue("@match_name", match.MatchName);
+                    cmd.Parameters.AddWithValue("@match_name", match.DateAndTime);
 
                     newMatchId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -62,13 +67,15 @@ namespace Capstone.DAO
             }
         }
 
+
+
         private Match createMatchFromReader(SqlDataReader reader)
         {
             Match match = new Match();
 
             match.MatchId = Convert.ToInt32(reader["match_id"]);
             match.MatchName = Convert.ToString(reader["match_name"]);
-            //match.StartDateTime = Convert.ToDateTime(reader["start_time"]);
+            match.DateAndTime = Convert.ToDateTime(reader["start_time"]);
 
             return match;
         }

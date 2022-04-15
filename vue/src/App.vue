@@ -16,7 +16,7 @@
         >
       </div>
     </div>
-    <div id="pagebody">
+    <div id="page-body">
       <router-view />
       <div id="map">
         <course-locator />
@@ -114,7 +114,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   padding: 10px;
   border-radius: 8px;
 }
-#pagebody {
+#page-body {
   display: flex;
   flex-direction: column;
   /* row-gap: 20vh; */
