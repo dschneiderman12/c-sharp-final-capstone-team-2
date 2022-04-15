@@ -23,9 +23,12 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"", conn);
-                    //cmd.Parameters.AddWithValue("", );
-                    
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO invites(invite_status, to_user, to_league)
+                                                OUTPUT INSERTED.invite_id
+                                                VALUES ('pending', @to_user, @to_league)", conn);
+                    cmd.Parameters.AddWithValue("@to_user", invite.ToUserId);
+                    cmd.Parameters.AddWithValue("@to_league", invite.ToLeagueId);
+
                     newInviteId = Convert.ToInt32(cmd.ExecuteScalar());
 
                 }
@@ -44,8 +47,10 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"", conn);
-                    //cmd.Parameters.AddWithValue("", );
+                    SqlCommand cmd = new SqlCommand(@"SELECT invite_id, invite_status, to_user, to_league
+                                            FROM invites
+                                            WHERE invite_id = @inviteId", conn);
+                    cmd.Parameters.AddWithValue("@inviteId", inviteId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
@@ -60,9 +65,75 @@ namespace Capstone.DAO
                 throw;
             }
         }
-        public void AcceptInvite();
-        public void DenyInvite();
-        public List<Invite> ListPendingInvites();
+
+        public void AcceptInvite(int inviteId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"UPDATE invites
+                                                SET invite_status = 'accepted'
+                                                WHERE invite_id = @inviteId", conn);
+                    cmd.Parameters.AddWithValue("@inviteId", inviteId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
+        public void DeclineInvite(int inviteId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"UPDATE invites
+                                                SET invite_status = 'declined'
+                                                WHERE invite_id = @inviteId", conn);
+                    cmd.Parameters.AddWithValue("@inviteId", inviteId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+        public List<Invite> ListPendingInvites(int userId)
+        {
+            List<Invite> userLeagueInvites = new List<Invite>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT invite_id, invite_status, to_user, to_league
+                                                FROM invites
+                                                WHERE to_user = @user_id AND invite_status = 'pending'", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Invite newInvite = createInviteFromReader(reader);                        
+                        userLeagueInvites.Add(newInvite);
+                    }
+                }
+                return userLeagueInvites;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
 
         private Invite createInviteFromReader(SqlDataReader reader)
         {
