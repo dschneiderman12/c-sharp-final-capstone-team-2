@@ -1,40 +1,62 @@
 <template>
-    <div>
-        <league-form />
-        <p>Does work?</p>
-       <p class="course-name">{{ league.leagueName }}</p>
-        </div>
+  <div>
+    <div id="league-title">
+      <h1>{{ league.leagueName }}</h1>
+    </div>
+    <div id="league-info">
+      <h2>Course Name: {{ league.leagueCourse.courseName }}</h2>
+      <h3>Organizer: {{ league.organizerName }}</h3>
+    </div>
+    <div id="scoreboard">
+      <table>
+        <tr>
+          <td>Player Name</td>
+          <td>Player Score</td>
+        </tr>
+        <tr>
+          <td>Mario</td>
+          <td>-50</td>
+        </tr>
+        <tr>
+          <td>Mario</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Mario</td>
+          <td>-50</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
 import LeagueService from "../services/LeagueService.js";
 export default {
-
   name: "League-List",
   data() {
     return {
       league: {
-          leagueName: "",
-          leagueCourse: "",
+        leagueName: "",
+        leagueCourse: {
           courseName: "",
-          organizerName: ""
+        },
+        organizerName: "",
       },
     };
   },
   created() {
-    LeagueService.getCurrentLeague(this.$store.state.leagueId)
+    LeagueService.getCurrentLeague(this.$route.params.id)
       .then((response) => {
         this.league = response.data;
       })
       .catch((error) => {
         this.handleErrorResponse(error, "creating");
       });
-}}
-
-  
+  },
+};
 </script>
 
 <style>
-
 </style>
 
