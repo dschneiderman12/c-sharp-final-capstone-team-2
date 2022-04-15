@@ -18,11 +18,16 @@ export default {
     return http.get(`/League/user/${userID}`)
   },
 
+  getCurrentLeague(leagueID) {
+    return http.get(`/League/${leagueID}`)
+  },
+
   addUserToLeague(userID, league) {
     return http.post(`/League/invite/user/${userID}`, league)
   },
 
-  getCourses() {
-    return http.get("/courses")
+  getCourses(){
+  return http.get('/courses')
+
   }
 }

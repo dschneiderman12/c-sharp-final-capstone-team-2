@@ -72,6 +72,20 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("/courses")]
+        public ActionResult<List<Course>> GetAllCourses()
+        {
+            List<Course> allCourses = leagueDao.GetCourses();
+            if(allCourses != null)
+            {
+                return allCourses;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
 

@@ -80,6 +80,9 @@ export default {
         leagueName: this.league.leagueName,
         organizerId: Number(this.$store.state.user.userId),
         leagueCourse: {
+
+          // Needs to be replaced by the user selecting a course from the list
+
           courseId: this.league.leagueCourse.courseId
           //courseName: 
         },
@@ -133,6 +136,7 @@ export default {
 </script>
 
 <style>
+
 #page-body > div:nth-child(1) {
   background: rgba(150, 187, 124, 0.6);
   border-radius: 5px;
@@ -147,4 +151,5 @@ export default {
   /* border-radius: 7px;*/
   border-bottom: blanchedalmond solid 3px;
 }
+
 </style>

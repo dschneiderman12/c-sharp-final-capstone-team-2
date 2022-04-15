@@ -87,35 +87,20 @@ export default {
   /* this line adds space between items on sign in form */
 
   width: 80%;
+  
 }
 .btn {
   width: 30%
-  
 }
-#login > form > button
-{
-  background-color: #184D47 ;
-  color: white;
+/* .sr-only{
+  margin-top: 20px;
 }
-#login > form > h1
-{
-  background-color: #184D47;
-  color: white;
-  border-radius: 3px;
-  padding: 10px;
-  display:flex;
-  justify-content:center;
-  text-shadow: black 3px 4px 4px;
-  filter: drop-shadow(3px 2px 3px black);
 
-}
-.sr-only{
-  font-weight: bolder;
-  color: #184D47;
-  /* margin-top: 20px; */
-}
-/*
 #login > form > button{
   margin-top: 20px;
 } */
+#login > form > h1 {
+  display: flex;
+  border:
+}
 </style>

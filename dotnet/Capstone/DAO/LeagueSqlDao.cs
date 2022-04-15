@@ -90,6 +90,7 @@ namespace Capstone.DAO
             }
         }
 
+
         public List<League> GetLeaguesByUserId(int userId)
         {
             List<League> userLeagues = new List<League>();
@@ -121,6 +122,7 @@ namespace Capstone.DAO
                 throw;
             }
         }
+
 
         public List<Course> GetCourses()
         {
