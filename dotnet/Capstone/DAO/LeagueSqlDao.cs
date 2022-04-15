@@ -63,7 +63,6 @@ namespace Capstone.DAO
                         string organizerName = Convert.ToString(reader["organizer_username"]);
                         newLeague.OrganizerName = organizerName;
                         userLeagues.Add(newLeague);
-
                     }
                 }
                 return userLeagues;
@@ -121,15 +120,19 @@ namespace Capstone.DAO
             }
         }
 
+
+
         private League createLeagueFromReader(SqlDataReader reader)
         {
             League league = new League();
             Course course = new Course();
+
             league.LeagueId = Convert.ToInt32(reader["league_id"]);
             league.LeagueName = Convert.ToString(reader["league_name"]);
             league.OrganizerId = Convert.ToInt32(reader["organizer_id"]);
             course.CourseId = Convert.ToInt32(reader["course_id"]);
             course.CourseName = Convert.ToString(reader["course_name"]);
+
             league.LeagueCourse = course;
             return league;
         }

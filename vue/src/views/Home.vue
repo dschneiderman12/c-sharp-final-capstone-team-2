@@ -27,7 +27,7 @@ export default {
 </script>
 <style scoped>
 
-#pagebody > div.home{
+#page-body > div.home{
   background-color: rgba(209, 255, 209, 0.5);
   /* border-color: rgb(43, 126, 43); */
   /* border-style: solid;
