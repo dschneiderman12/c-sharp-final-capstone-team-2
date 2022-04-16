@@ -27,11 +27,7 @@
         </tr>
       </table>
     </div>
-    <!-- need invite form to show ONLY IF you are the organizer 
-    Currently shows for everyone
-    v-if league.organizerId = current user??
-    Need to add something like that to the element-->
-    <invite-form v-if="league.organizerId === this.$store.state.user.userId"/> 
+    <invite-form v-if="league.organizerId === this.$store.state.user.userId" />
   </div>
 </template>
 
