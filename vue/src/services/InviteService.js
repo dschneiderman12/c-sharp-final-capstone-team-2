@@ -7,7 +7,7 @@ export default {
     },
 
     getPendingInvites(userID) {
-        return axios.get(`/Invite/${userID}`)
+        return axios.get(`/Invite/user/${userID}`)
     },
 
     addUserToLeague(userID, league) {
@@ -24,7 +24,10 @@ export default {
 
     getAllUsers() {
         return axios.get('/user')
-    }
+    },
 
+    getCurrentInvite(inviteID) {
+        return axios.get(`/Invite/${inviteID}`)
+    }
 
 }

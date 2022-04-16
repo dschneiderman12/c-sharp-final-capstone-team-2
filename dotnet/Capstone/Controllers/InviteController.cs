@@ -51,13 +51,27 @@ namespace Capstone.Controllers
             return Ok();
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("user/{userId}")]
         public ActionResult<List<Invite>> GetPendingInvites(int userId)
         {
             List<Invite> allInvites = inviteDao.ListPendingInvites(userId);
             if (allInvites != null)
             {
                 return allInvites;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("{inviteId}")]
+        public ActionResult<Invite> GetInviteById(int inviteId)
+        {
+            Invite invite = inviteDao.GetInvite(inviteId);
+            if (invite != null)
+            {
+                return invite;
             }
             else
             {
