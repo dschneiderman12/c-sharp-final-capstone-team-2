@@ -31,7 +31,7 @@
     Currently shows for everyone
     v-if league.organizerId = current user??
     Need to add something like that to the element-->
-    <invite-form /> 
+    <invite-form v-if="league.organizerId === this.$store.state.user.userId"/> 
   </div>
 </template>
 
@@ -44,6 +44,7 @@ export default {
     return {
       league: {
         leagueName: "",
+        organizerId: "",
         leagueCourse: {
           courseName: "",
         },
