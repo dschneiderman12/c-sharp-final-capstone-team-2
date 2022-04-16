@@ -25,16 +25,6 @@
       </div>
       <button type="submit" class="btn-submit">Submit</button>
     </form>
-    <form v-on:submit.prevent="addUser()">
-      <div>this is where we can add players</div>
-      <h2>Add player to League</h2>
-      <select name="select-player" id="select-player">
-        <!-- need to pull from database of current users 
-        need the user list method on backend for this-->
-        <option value="1" id="user-id-one">1</option>
-      </select>
-      <button type="submit" class="btn-submit">Add User</button>
-    </form>
   </div>
 </template>
 
@@ -50,7 +40,6 @@ export default {
         organizerId: "",
         leagueCourse: {
           courseId: "",
-          //courseName: "",
         },
       },
       returnLeague: {
@@ -80,9 +69,8 @@ export default {
       const newLeague = {
         leagueName: this.league.leagueName,
         organizerId: Number(this.$store.state.user.userId),
-        leagueCourse: {          
+        leagueCourse: {
           courseId: this.league.leagueCourse.courseId,
-          //courseName:
         },
       };
       LeagueService.newLeague(newLeague)
@@ -94,22 +82,6 @@ export default {
         })
         .catch((error) => {
           this.handleErrorResponse(error, "creating");
-        });
-    },
-    addUser() {
-      //Need to replace with current league page we are in
-      const league = {
-        leagueId: 2,
-      };
-      //Need to replace number with selected user, currently will only work once
-      LeagueService.addUserToLeague(3, league)
-        .then((response) => {
-          if (response.status === 201) {
-            this.$router.push(`/league`); // This isn't working
-          }
-        })
-        .catch((error) => {
-          this.handleErrorResponse(error, "adding user to");
         });
     },
     handleErrorResponse(error, verb) {
