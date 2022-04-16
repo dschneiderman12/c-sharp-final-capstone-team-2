@@ -66,6 +66,39 @@ namespace Capstone.DAO
                 throw;
             }
         }
+        public List<User> GetUsersByLeague(int LeagueId)
+        {
+            List<User> usersInLeague = new List<User>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM users 
+                                                        JOIN user_league ON users.user_id = user_league.user_id
+                                                        WHERE league_id = @league_Id", conn);
+                    cmd.Parameters.AddWithValue("@league_Id", LeagueId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        User user = new User();
+                        user.UserId = Convert.ToInt32(reader["user_id"]);
+                        
+                        user.Username = Convert.ToString(reader["username"]);
+                        usersInLeague.Add(user);
+
+
+                    }
+                }
+                return usersInLeague;
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
 
 
 
@@ -79,5 +112,31 @@ namespace Capstone.DAO
 
             return match;
         }
+        public void setTeeTimeForUser(int matchId, int userId, DateTime teeTime)
+        {
+            UserMatch userMatch = new UserMatch();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO user_match (user_id, match_id, tee_time) 
+                                                VALUES(@user_id, @match_id, @tee_time); ", conn);
+                    cmd.Parameters.AddWithValue("@match_id", matchId);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    cmd.Parameters.AddWithValue("@tee_time", teeTime);
+
+                    cmd.ExecuteNonQuery();
+                }
+                ;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
@@ -13,6 +14,33 @@ namespace Capstone.DAO
         public UserSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+        }
+
+        public List<User> GetUserList()
+        {
+
+           List<User> allUsers = new List<User>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT user id,username, password_hash, salt, user_role FROM users", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        User u = GetUserFromReader(reader);
+                        allUsers.Add(u);
+                    }
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return allUsers;
         }
 
         public User GetUser(string username)
@@ -83,5 +111,8 @@ namespace Capstone.DAO
 
             return u;
         }
+      
+
+
     }
 }
