@@ -47,15 +47,19 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT invite_id, invite_status, to_user, to_league
-                                            FROM invites
-                                            WHERE invite_id = @inviteId", conn);
+                    SqlCommand cmd = new SqlCommand(@" SELECT invite_id, invite_status, to_user, to_league, league_name,
+                                    (SELECT username FROM users WHERE users.user_id = leagues.organizer_id) AS organizer_name
+                                    FROM invites
+                                    JOIN leagues ON leagues.league_id = invites.to_league
+                                    WHERE invite_id = @inviteId", conn);
                     cmd.Parameters.AddWithValue("@inviteId", inviteId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
                         invite = createInviteFromReader(reader);
+                        invite.ToLeagueName = Convert.ToString(reader["league_name"]);
+                        invite.InviteFrom = Convert.ToString(reader["organizer_name"]);
                     }
                 }
                 return invite;
@@ -115,15 +119,17 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT invite_id, invite_status, to_user, to_league
+                    SqlCommand cmd = new SqlCommand(@"SELECT invite_id, invite_status, to_user, to_league, league_name
                                                 FROM invites
+                                                JOIN leagues ON leagues.league_id = invites.to_league
                                                 WHERE to_user = @user_id AND invite_status = 'pending'", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        Invite newInvite = createInviteFromReader(reader);                        
+                        Invite newInvite = createInviteFromReader(reader);
+                        newInvite.ToLeagueName = Convert.ToString(reader["league_name"]);
                         userLeagueInvites.Add(newInvite);
                     }
                 }

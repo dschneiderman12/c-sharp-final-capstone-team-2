@@ -20,10 +20,10 @@ namespace Capstone.Controllers
             this.userDao = dao;
         }
         [HttpGet()]
-        public ActionResult<List<User>> GetUsers()
+        public ActionResult<List<ReturnUser>> GetUsers()
         {
-            List<User> allUsersExceptCurrent = new List<User>();
-            List<User> allUsers = userDao.GetUserList();
+            List<ReturnUser> allUsersExceptCurrent = new List<ReturnUser>();
+            List<ReturnUser> allUsers = userDao.GetUserList();
 
             if(allUsers == null)
             {
@@ -31,7 +31,7 @@ namespace Capstone.Controllers
             }
             else if(allUsers != null)
             {
-                foreach(User user in allUsers)
+                foreach(ReturnUser user in allUsers)
                 {
                     if(user.Username != User.Identity.Name)
                     {

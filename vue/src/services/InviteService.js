@@ -6,8 +6,8 @@ export default {
         return axios.post('/Invite', invite)
     },
 
-    getPendingInvites(inviteID) {
-        return axios.post(`/Invite/${inviteID}`)
+    getPendingInvites(userID) {
+        return axios.get(`/Invite/user/${userID}`)
     },
 
     addUserToLeague(userID, league) {
@@ -20,7 +20,14 @@ export default {
 
     declineInvite(inviteID) {
         return axios.put(`/Invite/${inviteID}/decline`)
-    }
+    },
 
+    getAllUsers() {
+        return axios.get('/user')
+    },
+
+    getCurrentInvite(inviteID) {
+        return axios.get(`/Invite/${inviteID}`)
+    }
 
 }

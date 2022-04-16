@@ -27,13 +27,19 @@
         </tr>
       </table>
     </div>
+    <!-- need invite form to show ONLY IF you are the organizer 
+    Currently shows for everyone
+    v-if league.organizerId = current user??
+    Need to add something like that to the element-->
+    <invite-form /> 
   </div>
 </template>
 
 <script>
 import LeagueService from "../services/LeagueService.js";
+import InviteForm from "../components/InviteForm.vue";
 export default {
-  name: "League-List",
+  components: { InviteForm },
   data() {
     return {
       league: {
@@ -51,18 +57,15 @@ export default {
         this.league = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating");
+        this.handleErrorResponse(error, "creating"); //need to add the method
       });
   },
 };
 </script>
 
 <style>
-
-#page-body > div:nth-child(1){
+#page-body > div:nth-child(1) {
   width: 90%;
 }
-
-
 </style>
 
