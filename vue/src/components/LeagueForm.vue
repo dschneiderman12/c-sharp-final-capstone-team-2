@@ -10,16 +10,16 @@
           class="form-control"
           v-model="league.leagueName"
         />
+        <!-- not sure what for="cars" is -->
         <label for="cars">Choose a course:</label>
 
         <select id="course-name" v-model.number="league.leagueCourse.courseId">
-          <!-- Need to somehow call list of courses from the database-->
           <option
             v-for="course in courses"
             v-bind:key="course.courseId"
             v-bind:value="course.courseId"
           >
-            {{course.courseName}}
+            {{ course.courseName }}
           </option>
         </select>
       </div>
@@ -29,7 +29,8 @@
       <div>this is where we can add players</div>
       <h2>Add player to League</h2>
       <select name="select-player" id="select-player">
-        <!-- Same as above, need to pull from database of current users -->
+        <!-- need to pull from database of current users 
+        need the user list method on backend for this-->
         <option value="1" id="user-id-one">1</option>
       </select>
       <button type="submit" class="btn-submit">Add User</button>
@@ -79,12 +80,9 @@ export default {
       const newLeague = {
         leagueName: this.league.leagueName,
         organizerId: Number(this.$store.state.user.userId),
-        leagueCourse: {
-
-          // Needs to be replaced by the user selecting a course from the list
-
-          courseId: this.league.leagueCourse.courseId
-          //courseName: 
+        leagueCourse: {          
+          courseId: this.league.leagueCourse.courseId,
+          //courseName:
         },
       };
       LeagueService.newLeague(newLeague)
@@ -136,7 +134,6 @@ export default {
 </script>
 
 <style>
-
 #page-body > div:nth-child(1) {
   background: rgba(150, 187, 124, 0.6);
   border-radius: 5px;
@@ -151,5 +148,4 @@ export default {
   /* border-radius: 7px;*/
   border-bottom: blanchedalmond solid 3px;
 }
-
 </style>

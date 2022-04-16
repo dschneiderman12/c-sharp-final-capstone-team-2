@@ -22,6 +22,7 @@ export default {
     return http.get(`/League/${leagueID}`)
   },
 
+  //Don't think we will need this anymore in this service
   addUserToLeague(userID, league) {
     return http.post(`/League/invite/user/${userID}`, league)
   },
