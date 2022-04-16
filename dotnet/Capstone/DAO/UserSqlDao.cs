@@ -16,21 +16,26 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public List<User> GetUserList()
+        public List<ReturnUser> GetUserList()
         {
 
-           List<User> allUsers = new List<User>();
+           List<ReturnUser> allUsers = new List<ReturnUser>();
 
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT user id,username, password_hash, salt, user_role FROM users", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, user_role FROM users", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while(reader.Read())
                     {
-                        User u = GetUserFromReader(reader);
+                        ReturnUser u = new ReturnUser()
+                        {
+                            UserId = Convert.ToInt32(reader["user_id"]),
+                            Username = Convert.ToString(reader["username"]),
+                            Role = Convert.ToString(reader["user_role"])
+                        };
                         allUsers.Add(u);
                     }
 
