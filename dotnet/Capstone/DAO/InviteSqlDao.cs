@@ -115,8 +115,9 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT invite_id, invite_status, to_user, to_league
+                    SqlCommand cmd = new SqlCommand(@"SELECT invite_id, invite_status, to_user, to_league, league_name
                                                 FROM invites
+                                                JOIN leagues ON leagues.league_id = invites.to_league
                                                 WHERE to_user = @user_id AND invite_status = 'pending'", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
 
@@ -143,6 +144,7 @@ namespace Capstone.DAO
             invite.InviteStatus = Convert.ToString(reader["invite_status"]);
             invite.ToUserId = Convert.ToInt32(reader["to_user"]);
             invite.ToLeagueId = Convert.ToInt32(reader["to_league"]);
+            invite.ToLeagueName = Convert.ToString(reader["league_name"]);
 
             return invite;
         }

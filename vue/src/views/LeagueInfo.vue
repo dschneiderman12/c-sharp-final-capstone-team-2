@@ -27,13 +27,16 @@
         </tr>
       </table>
     </div>
+    <invite-form />
   </div>
 </template>
 
 <script>
 import LeagueService from "../services/LeagueService.js";
+import InviteForm from "../components/InviteForm.vue";
 export default {
   name: "League-List",
+  components: { InviteForm },
   data() {
     return {
       league: {
@@ -58,11 +61,8 @@ export default {
 </script>
 
 <style>
-
-#page-body > div:nth-child(1){
+#page-body > div:nth-child(1) {
   width: 90%;
 }
-
-
 </style>
 
