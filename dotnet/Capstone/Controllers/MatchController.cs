@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-   // [Authorize]
+    // [Authorize]
     public class MatchController : ControllerBase
     {
         private readonly IMatchDao matchDao;
@@ -20,8 +20,8 @@ namespace Capstone.Controllers
         {
             matchDao = _matchDao;
         }
-        [HttpGet("league/users/{leagueId}")]
-        public ActionResult<List<User>> GetUsersByLeague(int leagueId) 
+        [HttpGet("user/{leagueId}")]
+        public ActionResult<List<User>> GetUsersByLeague(int leagueId)
         {
             List<User> userlist = matchDao.GetUsersByLeague(leagueId);
 
@@ -37,6 +37,12 @@ namespace Capstone.Controllers
         }
         //we need to add http post for create tee time here
 
+        [HttpPost()]
+        public ActionResult TeeTimeForUser(UserMatch userMatch)
+             {
+            matchDao.setTeeTimeForUser(userMatch);
+            return Ok();
 
+              }
     }
 }

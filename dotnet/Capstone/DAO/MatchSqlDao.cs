@@ -112,9 +112,9 @@ namespace Capstone.DAO
 
             return match;
         }
-        public void setTeeTimeForUser(int matchId, int userId, DateTime teeTime)
+        public void setTeeTimeForUser(UserMatch userMatch)
         {
-            UserMatch userMatch = new UserMatch();
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -122,9 +122,9 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"INSERT INTO user_match (user_id, match_id, tee_time) 
                                                 VALUES(@user_id, @match_id, @tee_time); ", conn);
-                    cmd.Parameters.AddWithValue("@match_id", matchId);
-                    cmd.Parameters.AddWithValue("@user_id", userId);
-                    cmd.Parameters.AddWithValue("@tee_time", teeTime);
+                    cmd.Parameters.AddWithValue("@match_id", userMatch.MatchId);
+                    cmd.Parameters.AddWithValue("@user_id", userMatch.UserId);
+                    cmd.Parameters.AddWithValue("@tee_time", userMatch.TeeTime);
 
                     cmd.ExecuteNonQuery();
                 }

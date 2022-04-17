@@ -2,10 +2,18 @@
   <div>
     <div id="league-title">
       <h1>{{ league.leagueName }}</h1>
-    </div>
+    </div> 
+<tee-assignment-form/>
+
     <div id="league-info">
       <h2>Course Name: {{ league.leagueCourse.courseName }}</h2>
       <h3>Organizer: {{ league.organizerName }}</h3>
+      
+    
+<!-- <h3>
+  {{userlist}}
+</h3>      this is a list of users in this league- we can use it to choose a user to setr-->
+
     </div>
     <div id="scoreboard">
       <table>
@@ -32,10 +40,11 @@
 </template>
 
 <script>
+import TeeAssignmentForm from "../components/TeeAssignmentForm.vue";
 import LeagueService from "../services/LeagueService.js";
 import InviteForm from "../components/InviteForm.vue";
 export default {
-  components: { InviteForm },
+  components: { InviteForm , TeeAssignmentForm},
   data() {
     return {
       league: {
@@ -46,6 +55,7 @@ export default {
         },
         organizerName: "",
       },
+      
     };
   },
   created() {
@@ -56,6 +66,18 @@ export default {
       .catch((error) => {
         this.handleErrorResponse(error, "creating"); //need to add the method
       });
+  
+    
+  
+    LeagueService.getUsersByLeague(this.$route.params.id)
+  .then((response) => {
+        this.userlist = response.data;
+      })
+      .catch((error) => {
+        this.handleErrorResponse(error, "creating"); //need to add the method
+      });
+
+
   },
 };
 </script>
