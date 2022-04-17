@@ -8,6 +8,7 @@
       placeholder="Search Map"
       v-model="courseSearch"
     />
+    
     <button v-on:click="locationToSearch()">Search</button>
     <button v-if="showButton === true" v-on:click="hideButton()">Hide</button>
     <div class="map">

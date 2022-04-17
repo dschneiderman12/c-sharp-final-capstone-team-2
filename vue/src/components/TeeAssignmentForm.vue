@@ -3,10 +3,14 @@
     <!-- <form v-on:submit.prevent="submitForm()"> -->
       <div><h2>Create a new teetime</h2></div>
       
-      <div>
-          select a player to assign a tee time to
+      <div> 
+          
+         
+        
+             {{userlist}}  
+     
+          
           <users-in-league-list>
-              
           </users-in-league-list>
         enter a userId
         <input
@@ -15,7 +19,7 @@
           class="form-control"
           v-model="userMatch.userId"
         />
-      <!-- {{userlist}} -->
+    
         <label>enter a time:</label>
 
         <input
