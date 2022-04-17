@@ -20,7 +20,7 @@ namespace Capstone.Controllers
         {
             matchDao = _matchDao;
         }
-        [HttpGet("league/users/{leagueId}")]
+        [HttpGet("user/{leagueId}")]
         public ActionResult<List<User>> GetUsersByLeague(int leagueId)
         {
             List<User> userlist = matchDao.GetUsersByLeague(leagueId);

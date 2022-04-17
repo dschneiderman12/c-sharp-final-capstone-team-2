@@ -30,5 +30,13 @@ export default {
   getCourses(){
   return http.get('/courses')
 
+  },
+  
+  getUsersByLeague(leagueID) {
+    return axios.get(`/match/user/${leagueID}`)
+  },
+   setTeetimeForUser(userMatch) {
+ return axios.post('/match', userMatch)
+
   }
 }
