@@ -31,12 +31,7 @@ export default {
     return http.get('/courses')
 
   },
-<<<<<<< HEAD
-  getUsersByLeague(leagueId){
-    return axios.get(`/league/users/${leagueId}`)
-}
-=======
-
+ 
   getUsersByLeague(leagueID) {
     return axios.get(`/match/user/${leagueID}`)
   },
@@ -48,5 +43,4 @@ export default {
   addMatchScore(userMatch) {
     return axios.put('/match', userMatch)
   }
->>>>>>> 303a0cced65ef53ae7bbf1dd71bc3455a868ce04
 }
