@@ -27,11 +27,26 @@ export default {
     return http.post(`/League/invite/user/${userID}`, league)
   },
 
-  getCourses(){
-  return http.get('/courses')
+  getCourses() {
+    return http.get('/courses')
 
   },
+<<<<<<< HEAD
   getUsersByLeague(leagueId){
     return axios.get(`/league/users/${leagueId}`)
 }
+=======
+
+  getUsersByLeague(leagueID) {
+    return axios.get(`/match/user/${leagueID}`)
+  },
+  setTeetimeForUser(userMatch) {
+    return axios.post('/match', userMatch)
+
+  },
+
+  addMatchScore(userMatch) {
+    return axios.put('/match', userMatch)
+  }
+>>>>>>> 303a0cced65ef53ae7bbf1dd71bc3455a868ce04
 }
