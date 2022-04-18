@@ -8,6 +8,7 @@ import store from '../store/index'
 import League from '../views/League.vue'
 import LeagueInfo from '../views/LeagueInfo.vue'
 import InviteInfo from '../views/InviteInfo.vue'
+import MatchInfo from '../views/MatchInfo.vue'
 
 Vue.use(Router)
 
@@ -79,6 +80,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path:"/Match",
+      name:"",
+      component: MatchInfo, 
+      meta:{
+        requiresAuth:false
+      }
+
     }
   ]
 })
