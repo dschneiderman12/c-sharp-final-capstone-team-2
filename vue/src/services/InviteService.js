@@ -28,6 +28,9 @@ export default {
 
     getCurrentInvite(inviteID) {
         return axios.get(`/Invite/${inviteID}`)
+    },
+    getUsersForInvite(leagueID,userID){
+        return axios.get(`/Invite/${leagueID}/users/${userID}`)
     }
 
 }

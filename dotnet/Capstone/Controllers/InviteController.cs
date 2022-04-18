@@ -22,7 +22,23 @@ namespace Capstone.Controllers
             leagueDao = _leagueDao;
             inviteDao = _inviteDao;
         }
+        [HttpGet("{leagueId}/users/{userId}")]
+        public ActionResult<List<ReturnUser>> ListUsersForInvite( int leagueId)
+        {
+            List<ReturnUser> usersForInvite = inviteDao.GetUsersForInvite( leagueId);
+           
+            if(usersForInvite != null)
+            {
 
+                return usersForInvite;
+
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
         [HttpPost()]
         public ActionResult<Invite> NewInvite(Invite invite)
         {

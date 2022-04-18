@@ -4,11 +4,13 @@
       <div>
         <h3>Update scores</h3>
         <label>Select user:</label>
-        <select class="user-match" v-model.number="userMatch.userId">
+        <select class="user-match"  v-model.number="userMatch.userId">
+          
           <option
             v-for="user in userMatches"
             v-bind:key="user.counter"
             v-bind:value="user.userId"
+            
           >
             {{ user.username }}
           </option>
@@ -18,11 +20,12 @@
         <label>Select match:</label>
         <select class="user-match" v-model.number="userMatch.matchId">
           <option
-            v-for="match in userMatches"
+            v-for="match in filteredList"
             v-bind:key="match.counter"
+            v-text="match.matchName"
             v-bind:value="match.matchId"
           >
-            {{ match.matchName }}
+            
           </option>
         </select>
       </div>
@@ -98,7 +101,21 @@ export default {
       }
       console.log(this.errorMsg);
     },
+    
   },
+  computed:{
+    filteredList(){
+      let filteredMatches = this.userMatches;
+      
+
+        filteredMatches.filter( match => 
+      match.userId === this.userMatch.userId);
+
+      
+    
+      return filteredMatches;
+    }
+  }
 };
 </script>
 
