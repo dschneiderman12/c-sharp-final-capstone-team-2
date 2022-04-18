@@ -53,9 +53,9 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"INSERT INTO matches (match_name, start_time)
                                                     OUTPUT INSERTED.match_id
-                                                    VALUES (@match_name, @match_datetime)", conn);
+                                                    VALUES (@match_name, @start_time)", conn);
                     cmd.Parameters.AddWithValue("@match_name", match.MatchName);
-                    cmd.Parameters.AddWithValue("@match_name", match.DateAndTime);
+                    cmd.Parameters.AddWithValue("@start_time", match.DateAndTime);
 
                     newMatchId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -98,6 +98,35 @@ namespace Capstone.DAO
             {
                 throw;
             }
+        }
+        public List<Match> GetMatchesByLeagueId(int leagueId)
+        {
+            List<Match> leagueMatches = new List<Match>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"
+                                         select * from matches LEFT JOIN league_match on 
+                                        matches.match_id = league_match.match_id WHERE league_id =@leagueId;", conn);
+                    cmd.Parameters.AddWithValue("@leagueId", leagueId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Match newmatch = createMatchFromReader(reader);
+                        leagueMatches.Add(newmatch);
+                    }
+                }
+                return leagueMatches;
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+
         }
 
 

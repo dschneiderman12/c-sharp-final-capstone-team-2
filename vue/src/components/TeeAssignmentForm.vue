@@ -7,11 +7,10 @@
           
          
         
-             {{userlist}}  
+             
      
           
-          <users-in-league-list>
-          </users-in-league-list>
+          
         enter a userId
         <input
           id="userid"
@@ -36,12 +35,12 @@
 <script>
 import  LeagueService  from '../services/LeagueService';
 
-import UsersInLeagueList from './UsersInLeagueList.vue';
-
 export default {
     name: "TeeAssignmentForm",
     data() {
         return{
+            
+                userlist: [],
                 userMatch: {
                     matchId: "",
                     userId: "",
@@ -51,10 +50,11 @@ export default {
                     errorMsg: "",
         }
         
-    },
-    components:{UsersInLeagueList},
-    created(){
- LeagueService.getUsersByLeague(this.$route.params.id)
+    },  
+ 
+    created() {
+        
+    LeagueService.getUsersByLeague(this.$route.params.id)
   .then((response) => {
         this.userlist = response.data;
       })
@@ -62,8 +62,9 @@ export default {
         this.handleErrorResponse(error, "creating"); //need to add the method
       });
 
-    },
-   
+
+  },
+
     methods:{
         submitForm() {
 
