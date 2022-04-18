@@ -35,7 +35,27 @@ namespace Capstone.Controllers
             }
 
         }
+        [HttpGet("{leagueId}")]
+        public ActionResult<List<Match>> GetMatchesByLeagueId(int leagueId)
+        {
+            List<Match> matches = matchDao.GetMatchesByLeagueId(leagueId);
+            if (matches != null)
+            {
+                return matches;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
         //we need to add http post for create tee time here
+        [HttpPost("/createMatch")]
+        public ActionResult CreateMatch(Match match)
+        {
+            matchDao.CreateMatch(match);
+            return Ok();
+
+        }
 
         [HttpPost()]
         public ActionResult TeeTimeForUser(UserMatch userMatch)

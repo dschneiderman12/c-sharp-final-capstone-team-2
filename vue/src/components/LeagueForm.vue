@@ -10,8 +10,8 @@
           class="form-control"
           v-model="league.leagueName"
         />
-        <!-- not sure what for="cars" is -->
-        <label for="cars">Choose a course:</label>
+        
+        <label>Choose a course:</label>
 
         <select id="course-name" v-model.number="league.leagueCourse.courseId">
           <option

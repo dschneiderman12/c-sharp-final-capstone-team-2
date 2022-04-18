@@ -3,7 +3,7 @@
     <div id="league-title">
       <h1>{{ league.leagueName }}</h1>
     </div> 
-<tee-assignment-form/>
+
 
     <div id="league-info">
       <h2>Course Name: {{ league.leagueCourse.courseName }}</h2>
@@ -40,11 +40,11 @@
 </template>
 
 <script>
-import TeeAssignmentForm from "../components/TeeAssignmentForm.vue";
+
 import LeagueService from "../services/LeagueService.js";
 import InviteForm from "../components/InviteForm.vue";
 export default {
-  components: { InviteForm , TeeAssignmentForm},
+  components: { InviteForm ,},
   data() {
     return {
       league: {
