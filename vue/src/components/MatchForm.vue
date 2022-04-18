@@ -7,14 +7,14 @@
           id="match-name"
           type="text"
           class="form-control"
-          v-model="match.matchId"
+          v-model="match.matchName"
         />
       </div>
       <div>
         enter a startTime
         <input
           id="starttime"
-          type="text"
+          type="datetime-local"
           class="form-control"
           v-model="match.startTime"
         />
@@ -24,53 +24,38 @@
   </div>
 </template>
 <script>
-import MatchService from "../services/MatchService";
-import LeagueService from "../services/LeagueService";
+import MatchService from "../services/MatchService.js";
 export default {
   data() {
     return {
       match: {
-        matchId: "",
+       
         matchName: "",
         startTime: "",
+        leagueId: ""
       },
-      matches: [],
+      
       usersInLeague: [],
       errorMsg: "",
       courses: [],
     };
   },
-  created() {
 
-              //this needs to be league id instead of 1
-    MatchService.getMatches(1)
-      .then((response) => {
-        this.matches = response.data;
-      })
-      .catch((error) => {
-        this.handleErrorResponse(error, "generating matches for");
-      });
-    LeagueService.getCourses()
-      .then((response) => {
-        this.usersInLeague = response.data;
-      })
-      .catch((error) => {
-        this.handleErrorResponse(error, "generating courses for");
-      });
-
-   
-  },
   methods: {
     submitForm() {
+      
       const newMatch = {
-        matchId: this.match.matchId,
+       
         matchName: this.match.matchName,
-        startTime: this.match.startTime,
+        DateAndTime: String(this.match.startTime),
+        leagueId: Number(this.$route.params.id)
+      
       };
       MatchService.newMatch(newMatch)
         .then((response) => {
           if (response.status === 201) {
             this.returnLeague = response.data;
+            alert("match created");
           }
         })
         .catch((error) => {

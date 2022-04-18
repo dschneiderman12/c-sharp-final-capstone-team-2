@@ -8,7 +8,7 @@ export default {
         return axios.get(`/match/${leagueID}`)
     },
     newMatch(match){
-        return axios.post(`/createMatch`,match)
+        return axios.post(`/createMatch`, match)
 
     },
     

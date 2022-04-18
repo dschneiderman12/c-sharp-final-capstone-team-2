@@ -10,6 +10,6 @@ namespace Capstone.Models
         public int MatchId { get; set; }
         public string MatchName { get; set; }
         public int LeagueId { get; set; }
-        public DateTime DateAndTime { get; set; }
+        public string DateAndTime { get; set; }
     }
 }

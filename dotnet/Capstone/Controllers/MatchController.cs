@@ -50,20 +50,14 @@ namespace Capstone.Controllers
         }
         
         [HttpPost("/createMatch")]
-        public ActionResult CreateMatch(Match match)
+        public ActionResult<Match> CreateMatch(Match match)
         {
-            matchDao.CreateMatch(match);
-            return Ok();
+            Match newMatch = matchDao.CreateMatch(match);
+            return Created($"/match/${newMatch.MatchId}", newMatch);
 
         }
 
-        [HttpPost()]
-        public ActionResult TeeTimeForUser(UserMatch userMatch)
-        {
-            matchDao.SetTeeTimeForUser(userMatch);
-            return Ok();
-
-        }
+       
 
        
     }
