@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Controllers
 {
-    [Route("[controller]")]
+    [Route("userMatch")]
     [ApiController]
     //[Authorize]
     public class UserMatchController : ControllerBase
