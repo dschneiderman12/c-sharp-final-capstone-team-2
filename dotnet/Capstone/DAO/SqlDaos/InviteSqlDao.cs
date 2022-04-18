@@ -17,8 +17,8 @@ namespace Capstone.DAO
         }
         public List<ReturnUser> GetUsersForInvite(int leagueId)
         {
-            List<ReturnUser> allUsers = new List<ReturnUser>();
             List<ReturnUser> inviteUsers = new List<ReturnUser>();
+            Dictionary<string, List<int>> allUsers = new Dictionary<string, List<int>>();
 
             try
             {
@@ -37,23 +37,37 @@ namespace Capstone.DAO
                             Username = Convert.ToString(reader["username"]),
                              leagueId = Convert.ToInt32(reader["league_id"])
 
-                    };
-                        
-                         allUsers.Add (u);
-                    }
-                    foreach(ReturnUser user in allUsers)
-                    {
-                        if (leagueId != user.UserId)
+                         };
+
+                        List<int> leagueIds = new List<int>();
+                        if (allUsers.ContainsKey(u.Username))
                         {
-                            inviteUsers.Add(user);
+                            allUsers[u.Username].Add(u.leagueId);
+                        }
+                        else
+                        {
+                            allUsers.Add(u.Username, leagueIds);
+                            allUsers[u.Username].Add(u.leagueId);
+                        }
+                        
+                    }
+                    foreach(KeyValuePair<string, List<int>> kvp in allUsers)
+                    {
+                        if (!kvp.Value.Contains(leagueId)){
+                            ReturnUser u2 = new ReturnUser();
+                            u2.Username = kvp.Key;
+                            inviteUsers.Add(u2);
                         }
                     }
+                    
+
                 }
             }
             catch (SqlException)
             {
                 throw;
             }
+            
             return inviteUsers;
         }
         public Invite CreateInvite(Invite invite)

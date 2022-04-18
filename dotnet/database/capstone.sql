@@ -83,6 +83,8 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg4
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 INSERT INTO courses (course_name) VALUES ('TEST COURSE 1');
 INSERT INTO leagues(league_name,organizer_id,course_id) VALUES ('TEST LEAGUE 1', 2, 1);
+INSERT INTO courses (course_name) VALUES ('Wildcard Golf National Challenge');
+INSERT INTO leagues (league_name,organizer_id,course_id) VALUES ('All Users',2,2);
 INSERT INTO matches (match_name, start_time) VALUES ('TEST MATCH 1- TEST LEAGUE 1', '2022-04-20 12:00:00');
 INSERT INTO league_match (match_id, league_id) VALUES (1, 1);
 INSERT INTO invites (invite_status, to_user, to_league) VALUES ('pending', 1, 1); 
