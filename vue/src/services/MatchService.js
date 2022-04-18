@@ -1,19 +1,14 @@
 import axios from 'axios';
 import store from '../store/index.js';
 store.getters.config;
-const http = axios.create({
-  baseURL: "https://localhost:44315",
-  // headers: {
-  //   'Authorization': `${store.state.token}`
-  // }
-});
+
 
 export default {
-    getMatches(leagueId){
-        return http.get(`/${leagueId}`)
+    getMatches(leagueID){
+        return axios.get(`/match/${leagueID}`)
     },
     newMatch(match){
-        return http.post(`/createMatch`,match)
+        return axios.post(`/createMatch`,match)
 
     }
 
