@@ -17,7 +17,8 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public List<UserMatch> GetUserMatchesForLeague(int leagueId)
+        //method below currently set to only get user matches with no score
+        public List<UserMatch> GetUserMatchesForLeague(int leagueId) 
         {
             List<UserMatch> userMatchesInLeague = new List<UserMatch>();
             try
@@ -25,10 +26,12 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT user_id, user_match.match_id, score, tee_time, league_id, match_name
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, user_match.match_id, 
+                                        score, tee_time, league_id, match_name
                                         FROM user_match
                                         JOIN matches ON matches.match_id = user_match.match_id
-                                        WHERE league_id = @league_id", conn);
+                                        JOIN users ON users.user_id = user_match.user_id
+                                        WHERE league_id = @league_id AND score IS NULL", conn);
                     cmd.Parameters.AddWithValue("@league_id", leagueId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -76,9 +79,11 @@ namespace Capstone.DAO
             UserMatch userMatch = new UserMatch();
 
             userMatch.MatchId = Convert.ToInt32(reader["match_id"]);
+            userMatch.MatchName = Convert.ToString(reader["match_name"]);
             userMatch.UserId = Convert.ToInt32(reader["user_id"]);
+            userMatch.Username = Convert.ToString(reader["username"]);
             userMatch.TeeTime = Convert.ToDateTime(reader["tee_time"]);
-            userMatch.Score = Convert.ToInt32(reader["score"]);
+            //userMatch.Score = Convert.ToInt32(reader["score"]);
 
             return userMatch;
         }

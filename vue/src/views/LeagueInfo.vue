@@ -36,6 +36,7 @@
       </table>
     </div>
     <invite-form v-if="league.organizerId === this.$store.state.user.userId" />
+    <match-score v-if="league.organizerId === this.$store.state.user.userId" />
   </div>
 </template>
 
@@ -43,8 +44,10 @@
 
 import LeagueService from "../services/LeagueService.js";
 import InviteForm from "../components/InviteForm.vue";
+import MatchScore from "../components/MatchScore.vue";
+
 export default {
-  components: { InviteForm ,},
+  components: { InviteForm, MatchScore ,},
   data() {
     return {
       league: {
