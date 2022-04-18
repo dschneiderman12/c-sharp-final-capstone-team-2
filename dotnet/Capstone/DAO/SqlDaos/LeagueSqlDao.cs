@@ -15,7 +15,7 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
-
+        
         public League GetLeague(int leagueId)
         {
             League league = null;

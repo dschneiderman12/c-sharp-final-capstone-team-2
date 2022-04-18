@@ -2,6 +2,17 @@
   <div>
     <form v-on:submit.prevent="submitForm()">
       <div><h2>Invite player to league</h2></div>
+      <h3>Select player:</h3>
+      <select id="user-list" v-model.number="invite.toUserId">
+        <option
+          v-for="user in leagueUsers"
+          v-bind:key="user.userId"
+          v-bind:value="user.userId"
+        >
+          {{ user.username }}
+        </option>
+      </select>
+      <button type="submit" class="btn-submit">Send Invite</button>
     </form>
   </div>
 </template>
@@ -23,20 +34,41 @@ export default {
         toUserId: "",
         toLeagueId: "",
       },
+      users: [],
+      leagueUsers: [],
       pendingInvites: [], //placeholder for when we call in method for the list
     };
+  }, 
+  created() {
+    InviteService.getAllUsers()
+      .then((response) => {
+        this.users = response.data;
+      })
+      .catch((error) => {
+        this.handleErrorResponse(error, "generating users for");
+      });
+      //creates list of users in league
+      InviteService.getUsersForInvite(this.$route.params.id, this.$store.state.user.userId)
+     .then((response) => {
+        this.leagueUsers = response.data;
+      })
+      .catch((error) => {
+        this.handleErrorResponse(error, "creating"); //need to add the method
+      });
   },
   methods: {
     submitForm() {
       const newInvite = {
-        toUserId: this.user.userId, //v-bind to user list selection
-        toLeagueId: this.league.leagueId, // should be in league page we are in, not sure about syntax
+        toUserId: this.invite.toUserId, //v-bind to user list selection
+        toLeagueId: Number(this.$route.params.id) 
       };
-      InviteService.newInvite(newInvite)
+      //runs through list of users in league and checks if intended invitee is already enrolled
+      InviteService.newInvite(newInvite) //currently allows for duplicate invites, need to handle this
         .then((response) => {
           if (response.status === 201) {
             this.returnInvite = response.data;
-            this.$router.push(); // need to decide where to go if successful
+            alert("Invite sent");
+            //this.$router.push(); 
           }
         })
         .catch((error) => {
