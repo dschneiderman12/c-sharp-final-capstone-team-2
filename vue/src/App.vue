@@ -3,7 +3,7 @@
     <div>
     <div id="nav">
       <div id="left-header">
-        <img src="@/images/golfLogo.png" alt="templogo" />
+        <img src="@/images/Image from iOS.png" alt="templogo" />
         "stuff about golf and stuff"
       </div>
       <div class="nav-link">
@@ -42,29 +42,14 @@ export default {
 
 <style scoped>
 * {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-  ;}
-
-#login,
-#register {
-  background-color: rgba(209, 255, 209, 0.5);
-  /* border-color: rgb(43, 126, 43); */
-  /* border-style: solid;
-  border-width: 3px; */
-  border-radius: 6px;
-  padding: 5px;
-  /* margin: 30px; */
-  width: 40%;
-  filter: drop-shadow(5px 5px 5px black);
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  justify-content: space-around;
-  /* height: 100%; */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+
+
 #nav > div > img {
-  width: 10vh;
+  width: 30vh;
   /* margin-right: 80%; */
 }
 #nav {
@@ -128,6 +113,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 #app{
   display:flex;

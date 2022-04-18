@@ -85,7 +85,8 @@ border: 1px rgb(122, 107, 73) solid;
 /* text-shadow:rgba(0, 0, 0, 0.2) 1px 1px 1px; */
 }
 #league-info > div > a:hover{
-  background: #FAD586;
+  background: #706d65;
 }
+
 
 </style>

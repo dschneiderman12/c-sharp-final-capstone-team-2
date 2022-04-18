@@ -34,7 +34,9 @@
       />
 
       <button class="btn" type="submit">Sign in</button>
+   
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      
     </form>
   </div>
 </template>
@@ -77,12 +79,13 @@ export default {
 };
 </script>
 <style>
+
 #login > form {
   /* this controls the properties of the form inside the sign in box */
 
   display: flex;
   flex-direction: column;
-
+  
   row-gap: 10px;
   /* this line adds space between items on sign in form */
 
@@ -100,7 +103,34 @@ export default {
   margin-top: 20px;
 } */
 #login > form > h1 {
+  filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
   display: flex;
-  border:
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+#login > form > label:nth-child(2), #login > form > label:nth-child(4) {
+ width:35%;
+  background-color: rgb(24, 77, 71);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  padding-left: 5px;
+  border-radius: 3px;
+}
+
+#login > form {
+  filter: drop-shadow(3px 3px 3px black);
+  text-shadow: rgb(90, 87, 87) 3px 3px 3px;
+}
+#login > form > a {
+  filter: none;
+  text-shadow:none;
 }
 </style>
