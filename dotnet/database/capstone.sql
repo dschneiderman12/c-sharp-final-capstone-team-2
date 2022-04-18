@@ -29,13 +29,6 @@ CREATE TABLE courses(
 	CONSTRAINT [pk_courseId] PRIMARY KEY (course_id)
 
 )
-CREATE TABLE matches (
-	match_id  int IDENTITY (1,1) NOT NULL,
-	match_name NVARCHAR(100) NOT NULL,
-	start_time SMALLDATETIME NOT NULL
-	CONSTRAINT [pk_matchId] PRIMARY KEY (match_id)
-
-)
 CREATE TABLE leagues(
 	league_id int IDENTITY(1,1) NOT NULL,
 	league_name NVARCHAR(100) NOT NULL,
@@ -46,6 +39,16 @@ CREATE TABLE leagues(
 	CONSTRAINT [fk_organizerId] FOREIGN KEY (organizer_id) REFERENCES users(user_id),
 	CONSTRAINT [fk_courseId] FOREIGN KEY (course_id) REFERENCES courses(course_id)
 )
+CREATE TABLE matches (
+	match_id  int IDENTITY (1,1) NOT NULL,
+	match_name NVARCHAR(100) NOT NULL,
+	league_id  int NOT NULL,
+	start_time SMALLDATETIME NOT NULL
+	CONSTRAINT [pk_matchId] PRIMARY KEY (match_id)
+	CONSTRAINT [fk_league_id_match] FOREIGN KEY(league_id) REFERENCES leagues(league_id)
+
+)
+
 CREATE TABLE user_league(
 	user_id int NOT NULL,
 	league_id int NOT NULL
@@ -62,13 +65,13 @@ CREATE TABLE user_match(
 	CONSTRAINT [fk_user_id_match] FOREIGN KEY (user_id) REFERENCES users(user_id),
 	CONSTRAINT [fk-match_id] FOREIGN KEY (match_id) REFERENCES matches(match_id),
 )
-CREATE TABLE league_match(
-	league_id int NOT NULL,
-	match_id int NOT NULL,
-	CONSTRAINT [pk_league_match] PRIMARY KEY (league_id, match_id),
-	CONSTRAINT [fk_league_id_match] FOREIGN KEY(league_id) REFERENCES leagues(league_id),
-	CONSTRAINT [fk_match_id] FOREIGN KEY(match_id) REFERENCES matches(match_id)
-)
+--CREATE TABLE league_match(
+--	league_id int NOT NULL,
+--	match_id int NOT NULL,
+--	CONSTRAINT [pk_league_match] PRIMARY KEY (league_id, match_id),
+--	CONSTRAINT [fk_league_id_match] FOREIGN KEY(league_id) REFERENCES leagues(league_id),
+--	
+--)
 CREATE TABLE invites (
 	invite_id int NOT NULL IDENTITY(1,1),
 	invite_status varchar(30) NOT NULL,
