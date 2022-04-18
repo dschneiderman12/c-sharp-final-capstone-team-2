@@ -1,34 +1,27 @@
 <template>
   <div>
     <!-- <form v-on:submit.prevent="submitForm()"> -->
-      <div><h2>Create a new teetime</h2></div>
-      
-      <div> 
-          
-         
-        
-             
-     
-          
-          
-        enter a userId
-        <input
-          id="userid"
-          type="text"
-          class="form-control"
-          v-model="userMatch.userId"
-        />
-    
-        <label>enter a time:</label>
+    <div><h2>Create a new teetime</h2></div>
 
-        <input
-          id="teetime"
-          type="text"
-          class="form-control"
-          v-model="userMatch.teeTime"
-        />
-      </div>
-      <button type="submit" class="btn-submit">Submit</button>
+    <div>
+      enter a userId
+      <input
+        id="userid"
+        type="text"
+        class="form-control"
+        v-model="userMatch.userId"
+      />
+
+      <label>enter a time:</label>
+
+      <input
+        id="teetime"
+        type="text"
+        class="form-control"
+        v-model="userMatch.teeTime"
+      />
+    </div>
+    <button type="submit" class="btn-submit">Submit</button>
     <!-- </form> -->
   </div>
 </template>
@@ -92,9 +85,26 @@ export default {
         
       }
     })
-        },
+        }, handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " league. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " league. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " league. Request could not be created.";
+      }
+      console.log(this.errorMsg);
     },
-    };
+    
+    }
+}
 
 </script>
 
