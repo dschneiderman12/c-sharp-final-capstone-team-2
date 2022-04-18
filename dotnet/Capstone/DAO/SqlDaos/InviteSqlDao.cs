@@ -15,6 +15,61 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
+        public List<ReturnUser> GetUsersForInvite(int leagueId)
+        {
+            List<ReturnUser> inviteUsers = new List<ReturnUser>();
+            Dictionary<string, List<int>> allUsers = new Dictionary<string, List<int>>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT DISTINCT users.user_id, username, league_id FROM user_league
+                        JOIN users ON user_league.user_id = users.user_id", conn);
+                    
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ReturnUser u = new ReturnUser()
+                        {
+                            UserId = Convert.ToInt32(reader["user_id"]),
+                            Username = Convert.ToString(reader["username"]),
+                             leagueId = Convert.ToInt32(reader["league_id"])
+
+                         };
+
+                        List<int> leagueIds = new List<int>();
+                        if (allUsers.ContainsKey(u.Username))
+                        {
+                            allUsers[u.Username].Add(u.leagueId);
+                        }
+                        else
+                        {
+                            allUsers.Add(u.Username, leagueIds);
+                            allUsers[u.Username].Add(u.leagueId);
+                        }
+                        
+                    }
+                    foreach(KeyValuePair<string, List<int>> kvp in allUsers)
+                    {
+                        if (!kvp.Value.Contains(leagueId)){
+                            ReturnUser u2 = new ReturnUser();
+                            u2.Username = kvp.Key;
+                            inviteUsers.Add(u2);
+                        }
+                    }
+                    
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            
+            return inviteUsers;
+        }
         public Invite CreateInvite(Invite invite)
         {
             int newInviteId;
