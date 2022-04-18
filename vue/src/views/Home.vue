@@ -4,7 +4,7 @@
       <h1>My Leagues</h1>
       <div class="nav-link">
         <router-link class="leagueLink" v-bind:to="{ name: 'league' }"
-          >Create League</router-link
+          >New League</router-link
         >
         <!-- &nbsp;&nbsp; -->
       </div>
@@ -50,7 +50,7 @@ h1 {
   background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
-  text-shadow: darkslateblue 5px 5px 5px;
+  text-shadow: black 5px 5px 5px;
   color: white;
   font-size: x-large;
   display: flex;
@@ -67,5 +67,25 @@ h1 {
 #league-info > div {
   display: flex;
   justify-content: flex-end;
+
+
 }
+#league-info > div > a{
+  margin-top: 3px;
+  text-decoration: none;
+background: oldlace;
+border-radius: 40px;
+padding:4px;
+padding-top: 0;
+padding-bottom: 0;
+font-size: 75%;
+color: rgb(122, 107, 73);
+font-weight:bold;
+border: 1px rgb(122, 107, 73) solid;
+/* text-shadow:rgba(0, 0, 0, 0.2) 1px 1px 1px; */
+}
+#league-info > div > a:hover{
+  background: #FAD586;
+}
+
 </style>
