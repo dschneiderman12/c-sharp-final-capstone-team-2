@@ -129,6 +129,29 @@ namespace Capstone.DAO
 
         }
 
+        public void InsertMatchScore(UserMatch userMatch)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"UPDATE user_match
+                                                SET score = @score
+                                                WHERE user_id = @userId AND match_id = @matchId", conn);
+                    cmd.Parameters.AddWithValue("@score", userMatch.Score);
+                    cmd.Parameters.AddWithValue("@user_id", userMatch.UserId);
+                    cmd.Parameters.AddWithValue("@user_id", userMatch.MatchId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
 
 
         private Match createMatchFromReader(SqlDataReader reader)

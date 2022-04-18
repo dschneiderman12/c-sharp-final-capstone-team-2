@@ -59,10 +59,17 @@ namespace Capstone.Controllers
 
         [HttpPost()]
         public ActionResult TeeTimeForUser(UserMatch userMatch)
-             {
+        {
             matchDao.setTeeTimeForUser(userMatch);
             return Ok();
 
-              }
+        }
+
+        [HttpPut()]
+        public ActionResult AddMatchScore(UserMatch userMatch)
+        {
+            matchDao.InsertMatchScore(userMatch);
+            return Ok();
+        }
     }
 }
