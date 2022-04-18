@@ -48,7 +48,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-        //we need to add http post for create tee time here
+        
         [HttpPost("/createMatch")]
         public ActionResult CreateMatch(Match match)
         {
@@ -60,16 +60,11 @@ namespace Capstone.Controllers
         [HttpPost()]
         public ActionResult TeeTimeForUser(UserMatch userMatch)
         {
-            matchDao.setTeeTimeForUser(userMatch);
+            matchDao.SetTeeTimeForUser(userMatch);
             return Ok();
 
         }
 
-        [HttpPut()]
-        public ActionResult AddMatchScore(UserMatch userMatch)
-        {
-            matchDao.InsertMatchScore(userMatch);
-            return Ok();
-        }
+       
     }
 }

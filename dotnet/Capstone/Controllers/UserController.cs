@@ -19,6 +19,7 @@ namespace Capstone.Controllers
         {
             this.userDao = dao;
         }
+
         [HttpGet()]
         public ActionResult<List<ReturnUser>> GetUsers()
         {
