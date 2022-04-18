@@ -30,6 +30,7 @@ namespace Capstone.Controllers
 
             // Need to set up so organizer is automatically entered into league
         }
+        
 
         [HttpGet("{leagueId}")]
         public ActionResult<League> GetLeagueById(int leagueId)

@@ -13,5 +13,6 @@ namespace Capstone.DAO
         public void AcceptInvite(int inviteId);
         public void DeclineInvite(int inviteId);
         public List<Invite> ListPendingInvites(int userId);
+        public List<ReturnUser> GetUsersForInvite(int leagueId, int userId);
     }
 }

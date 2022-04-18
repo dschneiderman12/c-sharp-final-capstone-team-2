@@ -15,6 +15,41 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
+        public List<ReturnUser> GetUsersForInvite(int leagueId, int userId)
+        {
+
+            List<ReturnUser> allUsers = new List<ReturnUser>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT DISTINCT users.user_id, username FROM users
+                                                    JOIN user_league ON user_league.user_id = users.user_id
+                                                    WHERE league_id != @league_id AND users.user_id != @user_id", conn);
+                    cmd.Parameters.AddWithValue("@league_id", leagueId);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ReturnUser u = new ReturnUser()
+                        {
+                            UserId = Convert.ToInt32(reader["user_id"]),
+                            Username = Convert.ToString(reader["username"]),
+
+                        };
+                        allUsers.Add(u);
+                    }
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return allUsers;
+        }
         public Invite CreateInvite(Invite invite)
         {
             int newInviteId;

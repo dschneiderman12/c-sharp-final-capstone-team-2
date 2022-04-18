@@ -30,13 +30,14 @@
     <!-- need invite form to show ONLY IF you are the organizer 
     Currently shows for everyone
     v-if league.organizerId = current user??
-    Need to add something like that to the element-->
-    <invite-form /> 
+    Need to add something like that to the element--> 
+    <!-- ADDED BELOW -->
+    <invite-form v-if= "league.organizerId === this.$store.state.user.userId "/> 
   </div>
 </template>
 
 <script>
-import LeagueService from "../services/LeagueService.js";
+import LeagueService from "../services/LeagueService.js";                                                                                                                 
 import InviteForm from "../components/InviteForm.vue";
 export default {
   components: { InviteForm },
@@ -44,11 +45,12 @@ export default {
     return {
       league: {
         leagueName: "",
+        organizerId: "",
         leagueCourse: {
           courseName: "",
         },
         organizerName: "",
-      },
+      }
     };
   },
   created() {
@@ -59,6 +61,7 @@ export default {
       .catch((error) => {
         this.handleErrorResponse(error, "creating"); //need to add the method
       });
+   
   },
 };
 </script>

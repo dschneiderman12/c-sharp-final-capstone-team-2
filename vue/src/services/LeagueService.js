@@ -30,5 +30,8 @@ export default {
   getCourses(){
   return http.get('/courses')
 
-  }
+  },
+  getUsersByLeague(leagueId){
+    return axios.get(`/league/users/${leagueId}`)
+}
 }
