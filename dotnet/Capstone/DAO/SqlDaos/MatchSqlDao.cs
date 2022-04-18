@@ -24,7 +24,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT match_id, match_name, start_time
+                    SqlCommand cmd = new SqlCommand(@"SELECT match_id, match_name, league_id, start_time
                                                     FROM matches
                                                     WHERE match_id = @match_id", conn);
                     cmd.Parameters.AddWithValue("@match_id", matchId);
@@ -51,10 +51,11 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO matches (match_name, start_time)
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO matches (match_name, league_id, start_time)
                                                     OUTPUT INSERTED.match_id
-                                                    VALUES (@match_name, @start_time)", conn);
+                                                    VALUES (@match_name, @league_id, @start_time)", conn);
                     cmd.Parameters.AddWithValue("@match_name", match.MatchName);
+                    cmd.Parameters.AddWithValue("@league_id", match.LeagueId);
                     cmd.Parameters.AddWithValue("@start_time", match.DateAndTime);
 
                     newMatchId = Convert.ToInt32(cmd.ExecuteScalar());
@@ -99,6 +100,7 @@ namespace Capstone.DAO
                 throw;
             }
         }
+
         public List<Match> GetMatchesByLeagueId(int leagueId)
         {
             List<Match> leagueMatches = new List<Match>();
@@ -127,44 +129,9 @@ namespace Capstone.DAO
             }
 
 
-        }
+        }    
 
-        public void InsertMatchScore(UserMatch userMatch)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"UPDATE user_match
-                                                SET score = @score
-                                                WHERE user_id = @userId AND match_id = @matchId", conn);
-                    cmd.Parameters.AddWithValue("@score", userMatch.Score);
-                    cmd.Parameters.AddWithValue("@user_id", userMatch.UserId);
-                    cmd.Parameters.AddWithValue("@user_id", userMatch.MatchId);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-        }
-
-
-
-        private Match createMatchFromReader(SqlDataReader reader)
-        {
-            Match match = new Match();
-
-            match.MatchId = Convert.ToInt32(reader["match_id"]);
-            match.MatchName = Convert.ToString(reader["match_name"]);
-            match.DateAndTime = Convert.ToDateTime(reader["start_time"]);
-
-            return match;
-        }
-        public void setTeeTimeForUser(UserMatch userMatch)
+        public void SetTeeTimeForUser(UserMatch userMatch)
         {
 
             try
@@ -189,6 +156,20 @@ namespace Capstone.DAO
 
 
         }
+
+
+        private Match createMatchFromReader(SqlDataReader reader)
+        {
+            Match match = new Match();
+
+            match.MatchId = Convert.ToInt32(reader["match_id"]);
+            match.MatchName = Convert.ToString(reader["match_name"]);
+            match.MatchId = Convert.ToInt32(reader["league_id"]);
+            match.DateAndTime = Convert.ToDateTime(reader["start_time"]);
+
+            return match;
+        }
+        
 
     }
 }
