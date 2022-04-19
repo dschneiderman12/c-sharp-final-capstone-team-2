@@ -12,26 +12,7 @@
   {{userlist}}
 </h3>      this is a list of users in this league- we can use it to choose a user to setr-->
     </div>
-    <div id="scoreboard">
-      <table>
-        <tr>
-          <td>Player Name</td>
-          <td>Player Score</td>
-        </tr>
-        <tr>
-          <td>Mario</td>
-          <td>-50</td>
-        </tr>
-        <tr>
-          <td>Mario</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>Mario</td>
-          <td>-50</td>
-        </tr>
-      </table>
-    </div>
+    <league-scores />
     <invite-form v-if="league.organizerId === this.$store.state.user.userId" />
     <match-form v-if="league.organizerId === this.$store.state.user.userId" />
     <league-matches />
@@ -45,8 +26,10 @@ import InviteForm from "../components/InviteForm.vue";
 //import MatchScore from "../components/MatchScore.vue";
 import MatchForm from "../components/MatchForm.vue";
 import LeagueMatches from "../components/LeagueMatchList.vue";
+import LeagueScores from "../components/LeagueScores.vue"
+
 export default {
-  components: { InviteForm, MatchForm, LeagueMatches },
+  components: { InviteForm, MatchForm, LeagueMatches, LeagueScores },
   data() {
     return {
       league: {
@@ -155,8 +138,8 @@ export default {
   /* justify-content: space-around; */
 }
 
-#invite-form {
-}
+/*#invite-form {
+}*/
 
 #submit-score-form > div:nth-child(1),
 #submit-score-form > div:nth-child(2),

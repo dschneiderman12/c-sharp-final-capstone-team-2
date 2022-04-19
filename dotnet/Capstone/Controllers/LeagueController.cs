@@ -27,10 +27,8 @@ namespace Capstone.Controllers
             League addedLeague = leagueDao.CreateLeague(league);
             leagueDao.AddUserLeagueTable(league.OrganizerId, addedLeague.LeagueId);
             return Created($"/league/{addedLeague.LeagueId}", addedLeague);
-
-            // Need to set up so organizer is automatically entered into league - DONE
         }
-        
+
 
         [HttpGet("{leagueId}")]
         public ActionResult<League> GetLeagueById(int leagueId)
@@ -46,11 +44,11 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpGet("user/{userId}")]        
+        [HttpGet("user/{userId}")]
         public ActionResult<List<League>> GetLeaguesByUserId(int userId)
         {
             List<League> userLeagues = leagueDao.GetLeaguesByUserId(userId);
-            if(userLeagues != null)
+            if (userLeagues != null)
             {
                 return userLeagues;
             }
@@ -59,10 +57,34 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-                
 
-        
-        
+        [HttpGet("/courses")]
+        public ActionResult<List<Course>> GetAllCourses()
+        {
+            List<Course> allCourses = leagueDao.GetCourses();
+            if (allCourses != null)
+            {
+                return allCourses;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("scores/{leagueId}")]
+        public ActionResult<List<LeagueScore>> GetUserLeagueScores(int leagueId)
+        {
+            List<LeagueScore> userLeagueScores = leagueDao.GetLeagueScores(leagueId);
+            if (userLeagueScores != null)
+            {
+                return userLeagueScores;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
 

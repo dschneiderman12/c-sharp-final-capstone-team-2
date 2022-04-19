@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     [Route("userMatch")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class UserMatchController : ControllerBase
     {
         private IUserMatchDao userMatchDao;
@@ -61,6 +61,20 @@ namespace Capstone.Controllers
         {
             userMatchDao.InsertMatchScore(userMatch);
             return Ok();
+        }
+
+        [HttpGet("match/{matchId}")]
+        public ActionResult<List<UserMatch>> GetMatchScores(int matchId)
+        {
+            List<UserMatch> matchScores = userMatchDao.GetUserScoresByMatch(matchId);
+            if (matchScores != null)
+            {
+                return matchScores;
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
     }

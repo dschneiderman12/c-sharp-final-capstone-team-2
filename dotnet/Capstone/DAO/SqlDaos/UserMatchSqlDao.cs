@@ -127,6 +127,39 @@ namespace Capstone.DAO
             }
         }
 
+        public List<UserMatch> GetUserScoresByMatch(int matchId)
+        {
+            List<UserMatch> matchScores = new List<UserMatch>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, score
+                                                FROM user_match
+                                                JOIN users ON users.user_id = user_match.user_id
+                                                WHERE match_id = @match_id AND score IS NOT NULL
+                                                ORDER BY score ASC", conn);
+                    cmd.Parameters.AddWithValue("@match_id", matchId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        UserMatch userMatchScore = new UserMatch();
+                        userMatchScore.UserId = Convert.ToInt32(reader["user_id"]);
+                        userMatchScore.Username = Convert.ToString(reader["username"]);
+                        userMatchScore.Score = Convert.ToInt32(reader["score"]);
+                        matchScores.Add(userMatchScore);
+                    }
+                }
+                return matchScores;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
 
         private UserMatch createUserMatchFromReader(SqlDataReader reader)
         {
