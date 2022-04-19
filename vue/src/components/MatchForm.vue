@@ -29,17 +29,15 @@ export default {
   data() {
     return {
       match: {
-       
-        matchName: "",
-        startTime: "",
-        leagueId: ""
-      },
-      returnMatch: {
-       
         matchName: "",
         startTime: "",
         leagueId: "",
-        matchID: ""
+      },
+      returnMatch: {
+        matchName: "",
+        startTime: "",
+        leagueId: "",
+        matchID: "",
       },
       usersInLeague: [],
       errorMsg: "",
@@ -49,13 +47,10 @@ export default {
 
   methods: {
     submitForm() {
-      
       const newMatch = {
-       
         matchName: this.match.matchName,
         DateAndTime: String(this.match.startTime),
-        leagueId: Number(this.$route.params.id)
-      
+        leagueId: Number(this.$route.params.id),
       };
       MatchService.newMatch(newMatch)
         .then((response) => {
@@ -85,19 +80,11 @@ export default {
           "Error " + verb + " match. Request could not be created.";
       }
       console.log(this.errorMsg);
-   },
-    
-    filterMatches(){
-      
-    }
+    },
+
+    filterMatches() {},
   },
-   
 };
-
-
-   
-
-
 </script>
 <style scoped>
 </style>
