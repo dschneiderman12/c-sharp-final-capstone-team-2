@@ -2,7 +2,7 @@
   <div>
     <form v-on:submit.prevent="submitForm()">
       <div id="newLeague"><h2>Create a new League</h2></div>
-      <div id = pagetext>
+      <div id = leaguetext>
         <div id=leagueName>
         League Name
         </div>
@@ -15,10 +15,11 @@
         />
         
 
+<!-- 
+        <label id = selectacourse>
+          Choose a course:</label> -->
 
-        <label id = selectacourse>Choose a course:</label>
-
-
+choose a course
         
         <div class = "this">
         <select id="course-name" v-model.number="league.leagueCourse.courseId">
@@ -123,89 +124,6 @@ export default {
 </script>
 
 <style>
-#page-body > div:nth-child(1) > div > form > div:nth-child(2){
-  display:flex;
-  flex-direction: column;
-  align-content: space-between;
-}
-#page-body > div:nth-child(1) {
-  background: rgba(150, 187, 124, 0.6);
-  border-radius: 5px;
-}
 
-    .this {
-        position: relative;
-        display: block;
-      
-        height: 3em;
-        line-height: 3;
-        overflow: hidden;
-        border-radius: .25em;
-    }
-     
-    select {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0 0 0 .5em;
-   
-        cursor: pointer;
-    }
- 
-  
-     
-    .this::after {
-        content: '\25BC';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        padding: 0 1em;
-        background: #34495E;
-        pointer-events: none;
-    }
-     
-     .select{
-       background-color: #184D47 ;
-       color: tan;
-      
-     
-     
-     
-     }
-h2{
-background-color: #184D47;
- text-shadow: black 3px 3px 3px;
-  filter: drop-shadow(3px 3px 3px black);
-border-radius: 3px;
-color: white;
-padding: 5px;
-border: solid tan 3px;
-
-}
-     #pagetext{
-         filter: drop-shadow(3px 3px 3px black);
-  text-shadow: rgb(90, 87, 87) 3px 3px 3px;
-  color: white;
-  margin: 0px;
-  
-       
-     }
-
-form{
-  padding:5%;
-  
-}
-     #leagueName, #selectacourse{
-       width:35%;
-       background-color: rgb(24, 77, 71);
-       margin-top: 5px;
-       margin-bottom: 5px;
-       
-       padding-left: 5px;
-       border-radius: 3px;
-       
-      
-     }
 
 </style>

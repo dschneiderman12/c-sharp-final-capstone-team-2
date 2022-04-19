@@ -116,7 +116,7 @@ export default {
 
 #login > form > button{
   margin-top: 20px;
-} */
+} 
 #login > form > h1 {
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
@@ -139,7 +139,15 @@ export default {
   padding-left: 5px;
   border-radius: 3px;
 }
-
+/* 
+#login > form {
+  filter: drop-shadow(3px 3px 3px black);
+  text-shadow: rgb(90, 87, 87) 3px 3px 3px;
+}
+#login > form > a {
+  filter: none;
+  text-shadow:none;
+} 
 
 
 /* form starting stylings ------------------------------- */
@@ -159,7 +167,7 @@ input:focus     { outline:none; }
 
 /* LABEL ======================================= */
 label          {
-  color:rgb(112, 112, 112); 
+  color:#999; 
   font-size:18px;
   font-weight:normal;
   position:absolute;
@@ -175,17 +183,16 @@ label          {
 input:focus ~ label, input:valid ~ label    {
   top:-20px;
   font-size:14px;
-  color:rgb(24, 77, 71);
-  font-weight: bold;
+  color:#5264AE;
 }
 
 /* BOTTOM BARS ================================= */
-.bar  { position:relative; display:block; width:85%; }
+.bar  { position:relative; display:block; width:300px; }
 .bar:before, .bar:after   {
   content:'';
   height:2px; 
   width:0;
-  bottom:2px; 
+  bottom:1px; 
   position:absolute;
   background:#5264AE; 
   transition:0.2s ease all; 
@@ -234,12 +241,5 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
   from { background:#5264AE; }
   to  { width:0; background:transparent; }
-}
-
-
-
-
-#login{
-  width: 50px;
 }
 </style>

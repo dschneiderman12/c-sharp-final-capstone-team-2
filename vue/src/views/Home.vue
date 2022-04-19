@@ -44,8 +44,8 @@ export default {
   /* justify-content: space-around; */
   align-items: center;
 }
-#league-info > h1,
-h1 {
+#league-info > h1
+ {
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
   text-decoration: none;
@@ -54,7 +54,7 @@ h1 {
   color: white;
   font-size: x-large;
   display: flex;
-  width: 100%;
+  width: 60%;
   justify-content: center;
   margin-bottom: 3px;
 }
@@ -62,6 +62,8 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+ 
+
   width: 80%;
 }
 #league-info > div {
