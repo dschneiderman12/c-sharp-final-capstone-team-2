@@ -1,13 +1,12 @@
 <template>
     <div>
-        
-        <table id = "league-matches">
+
+
+        <table id = "league-matches" v-if="this.matches.length >0">
             <thead>
                 <tr>
                     <th>Match Name</th>
                     <th>Date And Start Time</th>
-                    
-
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +20,10 @@
                 </tr>
             </tbody>
         </table>
+            <div id=noMatch v-if="this.matches.length <= 0">
+        You do not have any upcoming matches.
 
+    </div>
     </div>
 </template>
 

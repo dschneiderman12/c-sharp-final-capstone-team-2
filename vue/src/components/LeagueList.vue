@@ -1,7 +1,11 @@
 <template>
   <div id="league-board">
     <div id="league-div">
+      <div class= "loading" v-if="isLoading">
+          <img src= "../images/spinner.svg"/>
+      </div>
     <div id="league-list" v-for="league in leagues" :key="league.id">
+      
       <div id="league-names"> 
         <router-link :to="{ path: '/league/' + league.leagueId }">
       
@@ -26,12 +30,14 @@ export default {
   data() {
     return {
       leagues: [],
+      isLoading: true
     };
   },
   created() {
     LeagueService.getLeagues(this.$store.state.user.userId)
       .then((response) => {
         this.leagues = response.data;
+        this.isLoading= false;
       })
       .catch((error) => {
         this.handleErrorResponse(error, "creating");

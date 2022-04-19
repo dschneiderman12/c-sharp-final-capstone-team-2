@@ -1,7 +1,7 @@
 <template>
   <div>
     <form v-on:submit.prevent="submitForm()">
-      <label for="course-name">Course Name:</label>
+      <!-- <label for="course-name">Course Name:</label> -->
       <input type="text" v-model="course.courseName" />
       <button type="submit" class="btn-submit">Add Course</button>
     </form>
