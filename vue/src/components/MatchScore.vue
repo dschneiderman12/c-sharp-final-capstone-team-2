@@ -53,6 +53,7 @@ export default {
     };
   },
   created() {
+    //need to pass in correct leagueId, dont have the correct route now that it is moved into matchinfo.vue
     MatchService.getUserMatches(this.$route.params.id)
       .then((response) => {
         this.userMatches = response.data;
