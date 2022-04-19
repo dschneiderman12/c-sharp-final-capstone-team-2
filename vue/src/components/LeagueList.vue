@@ -61,28 +61,18 @@ export default {
 </script>
 
 <style>
-#league-list {
-  background: #184d47;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  ;
-  
-}
+
 #league-board {
-  width: 90%;
-  background: #184d47;
-
-}
-#league-names{
-  text-decoration: none;
-  background: yellow;
+  margin-top:5px;
+  border-radius:15px;
+background: rgb(250,213,134);
+background: linear-gradient(0deg, rgba(250,213,134,0.9164040616246498) 0%, rgba(251,237,206,1) 50%, rgba(250,213,134,0.7847514005602241) 100%);
+ filter: drop-shadow(3px 3px 3px black);
 }
 
-#league-info {
-  background: black
-}
-#league-list > a {
-  text-decoration: none
-}
+
+
+
+
+</style>
 

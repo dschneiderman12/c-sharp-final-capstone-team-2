@@ -3,7 +3,7 @@
     <div>
     <div id="nav">
       <div id="left-header">
-        <img src="@/images/Image from iOS.png" alt="templogo" />
+        <img src="@/images/Image from iOS.png" alt="" />
         
       </div>
       <div class="nav-link">

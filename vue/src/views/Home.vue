@@ -35,7 +35,7 @@ export default {
   border-radius: 6px;
   padding: 5px;
   /* margin: 30px; */
-  width: 60%;
+  width: 80%;
   filter: drop-shadow(5px 5px 5px black);
   display: flex;
   margin-top: 20px;
@@ -85,7 +85,7 @@ border: 1px rgb(122, 107, 73) solid;
 /* text-shadow:rgba(0, 0, 0, 0.2) 1px 1px 1px; */
 }
 #league-info > div > a:hover{
-  background: #706d65;
+  background: #ebc96e;
 }
 
 
