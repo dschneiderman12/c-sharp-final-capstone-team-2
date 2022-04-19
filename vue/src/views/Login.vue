@@ -117,7 +117,19 @@ export default {
 #login > form > button{
   margin-top: 20px;
 } */
-
+#login > form > h1 {
+  filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 3px;
+}
 #login > form > label:nth-child(2), #login > form > label:nth-child(4) {
  width:35%;
   background-color: rgb(24, 77, 71);

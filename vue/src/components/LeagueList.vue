@@ -1,5 +1,6 @@
 <template>
   <div id="league-board">
+    <div id="league-div">
     <div id="league-list" v-for="league in leagues" :key="league.id">
       <div id="league-names"> 
         <router-link :to="{ path: '/league/' + league.leagueId }">
@@ -13,6 +14,7 @@
         {{ league.organizerName }}
       </p>
       -->
+      </div>
     </div>
   </div>
 </template>
@@ -76,5 +78,11 @@ export default {
   text-decoration: none;
   background: yellow;
 }
-#league-names > a{background: #184d47;}
+
+#league-info {
+  background: black
+}
+#league-list > a {
+  text-decoration: none
+}
 
