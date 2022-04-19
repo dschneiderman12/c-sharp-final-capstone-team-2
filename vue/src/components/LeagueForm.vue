@@ -34,6 +34,7 @@ Choose a Course
         
           </option>
         </select>
+        <button v-on:click="routeToCourseForm()">Don't see your course?</button>
 </div>
 
 
@@ -47,8 +48,8 @@ Choose a Course
 </template>
 
 <script>
-import LeagueService from "../services/LeagueService";
-
+import LeagueService from "../services/LeagueService.js";
+import CourseService from "../services/CourseService.js"
 export default {
   name: "league-form",
   data() {
@@ -74,7 +75,7 @@ export default {
     };
   },
   created() {
-    LeagueService.getCourses()
+    CourseService.getCourses()
       .then((response) => {
         this.courses = response.data;
       })
@@ -119,6 +120,10 @@ export default {
       }
       console.log(this.errorMsg);
     },
+    routeToCourseForm(){
+      this.$router.push(`/addCourse`)
+
+    }
   },
 };
 </script>

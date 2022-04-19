@@ -9,5 +9,7 @@ namespace Capstone.Models
     {
         public int CourseId { get; set; }
         public string CourseName { get; set; }
+        public string Address { get; set; }
+
     }
 }

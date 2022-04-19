@@ -22,10 +22,11 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO courses(course_name)
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO courses(course_name, address)
                                                 OUTPUT INSERTED.course_id
-                                                VALUES (@course_name)", conn);
+                                                VALUES (@course_name, @address)", conn);
                     cmd.Parameters.AddWithValue("@course_name", course.CourseName);
+                    cmd.Parameters.AddWithValue("@address", course.Address);
 
                     newCourseId = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -79,10 +80,10 @@ namespace Capstone.DAO
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        
+
                         course.CourseId = Convert.ToInt32(reader["course_id"]);
                         course.CourseName = Convert.ToString(reader["course_name"]);
-                        
+                        course.Address = Convert.ToString(reader["address"]);
                     }
                 }
                 return course;
@@ -93,6 +94,35 @@ namespace Capstone.DAO
                 throw;
             }
 
+        }
+
+        public List<League> GetLeaguesByCourseId(int courseId)
+        {
+            List<League> leagueList = new List<League>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM leagues WHERE course_id = @course_id", conn);
+                    cmd.Parameters.AddWithValue("@course_id", courseId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        League league = new League();
+                        league.LeagueId = Convert.ToInt32(reader["league_id"]);
+                        league.LeagueName = Convert.ToString(reader["league_name"]);
+                        league.OrganizerId = Convert.ToInt32(reader["organizer_id"]);
+                        leagueList.Add(league);
+                    }
+                }
+                return leagueList;
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
         }
     }
 }

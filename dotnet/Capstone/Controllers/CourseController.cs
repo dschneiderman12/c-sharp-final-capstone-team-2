@@ -1,4 +1,4 @@
-﻿using Capstone.DAO;
+﻿susing Capstone.DAO;
 using Capstone.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -54,8 +54,29 @@ namespace Capstone.Controllers
         [HttpGet("{courseId}")]
         public ActionResult<Course> GetCourseById(int courseId)
         {
-
-
+            Course returnCourse = courseDao.GetCourseById(courseId);
+            if(returnCourse == null)
+            {
+                return NotFound();
+            }
+            else if(returnCourse != null)
+            {
+                return returnCourse;
+            }
+            return StatusCode(500);
+        }
+        [HttpGet("leagues/{courseId}")]
+        public ActionResult<List<League>> GetLeaguesByCourseId(int courseId)
+        {
+            List<League> courseLeagues = courseDao.GetLeaguesByCourseId(courseId);
+            if (courseLeagues == null)
+            {
+                return NotFound();
+            }
+            else if (courseLeagues != null)
+            {
+                return courseLeagues;
+            }
             return StatusCode(500);
         }
     }
