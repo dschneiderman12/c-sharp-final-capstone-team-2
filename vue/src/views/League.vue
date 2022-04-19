@@ -39,7 +39,7 @@ div> #league-list {
   justify-content: center;
   filter: drop-shadow(3px 3px 3px black);
   width:300px;
-
+text-transform: capitalize;
 }
 #league-list > #league-names> a:hover{
   background-color: rgb(58, 124, 117);

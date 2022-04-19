@@ -19,7 +19,7 @@
         <label id = selectacourse>
           Choose a course:</label> -->
 
-choose a course
+Choose a Course
         
         <div class = "this">
         <select id="course-name" v-model.number="league.leagueCourse.courseId">
@@ -129,6 +129,35 @@ export default {
 </script>
 
 <style>
+#newLeague > h2 {
+  filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+#pagetext {
+  display: flex;
+  flex-direction: column;
+  
+}
+#leagueName {
+  margin-top: 30px
+}
 
+#league-name {
+  margin-bottom: 30px;
+}
 
+#pagetext > div.this {
+  margin-bottom: 30px;
+}
+#invite-form {
+  row-gap:20px
+}
 </style>

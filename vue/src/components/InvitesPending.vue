@@ -5,6 +5,7 @@
       v-for="invite in pendingInvites"
       :key="invite.inviteId"
     >
+  
       <router-link :to="{ path: '/invite/' + invite.inviteId }"
         >Invite to {{ invite.toLeagueName }}
       </router-link>
@@ -22,7 +23,7 @@ export default {
     };
   },
   created() {
-    //doesn't seem to be getting to the method on the backend
+
     InviteService.getPendingInvites(this.$store.state.user.userId)
       .then((response) => {
         this.pendingInvites = response.data;
