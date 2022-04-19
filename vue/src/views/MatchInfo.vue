@@ -1,6 +1,9 @@
 <template>
   <div>
     <div>
+      <match-score-list />
+    </div>
+    <div>
       <h2 v-on:created="populateLeague()">Match Name: {{ match.matchName }}</h2>
       <tee-assignment-form
         v-if="league.organizerId === $store.state.user.userId"
@@ -17,9 +20,10 @@ import LeagueService from "../services/LeagueService.js";
 import MatchService from "../services/MatchService.js";
 import TeeAssignmentForm from "../components/TeeAssignmentForm.vue";
 import MatchScore from "../components/MatchScore.vue";
+import MatchScoreList from "../components/MatchScoreList.vue";
 
 export default {
-  components: { TeeAssignmentForm, MatchScore },
+  components: { TeeAssignmentForm, MatchScore, MatchScoreList },
   data() {
     return {
       match: {

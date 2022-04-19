@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    // [Authorize]
+    [Authorize]
     public class MatchController : ControllerBase
     {
         private readonly IMatchDao matchDao;
@@ -72,11 +72,6 @@ namespace Capstone.Controllers
         {
             Match newMatch = matchDao.CreateMatch(match);
             return Created($"/match/${newMatch.MatchId}", newMatch);
-
-        }
-
-       
-
-       
+        }     
     }
 }
