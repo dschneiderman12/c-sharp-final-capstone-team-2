@@ -2,6 +2,7 @@
   <div>
     <div>
       <h2 v-on:created="populateLeague()">Match Name: {{ match.matchName }}</h2>
+<<<<<<< HEAD
       <tee-assignment-form
         v-if="league.organizerId === $store.state.user.userId"
       />
@@ -9,6 +10,20 @@
     <div>
       <match-score v-if="league.organizerId === $store.state.user.userId" />
     </div>
+=======
+      <p>{{ league.leagueId }}</p>
+
+      <tee-assignment-form
+        v-if="league.organizerId === $store.state.user.userId"
+      />
+    </div>
+    <div>
+      <!-- moved from leagueinfo.vue, not showing currently -->
+      <match-score
+        v-if="league.organizerId === $store.state.user.userId"
+      />
+    </div>
+>>>>>>> 977b8dffa7ecc05da838f37fe9fe847add6f2bdc
   </div>
 </template>
 
@@ -46,11 +61,19 @@ export default {
             this.league = response.data;
           })
           .catch((error) => {
+<<<<<<< HEAD
             this.handleErrorResponse(error, "getting current league");
           });
       })
       .catch((error) => {
         this.handleErrorResponse(error, "getting current league");
+=======
+            this.handleErrorResponse(error, "gettingcurrentleague");
+          });
+      })
+      .catch((error) => {
+        this.handleErrorResponse(error, "gettingcurrentleague");
+>>>>>>> 977b8dffa7ecc05da838f37fe9fe847add6f2bdc
       });
   },
   methods: {

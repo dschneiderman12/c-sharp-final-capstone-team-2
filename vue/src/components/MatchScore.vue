@@ -55,6 +55,7 @@ export default {
   },
   created() {
     //need to pass in correct leagueId, dont have the correct route now that it is moved into matchinfo.vue
+<<<<<<< HEAD
     MatchService.getMatch(this.$route.params.id).then((response) => {
       this.match = response.data;
       MatchService.getUserMatches(this.match.leagueId)
@@ -68,6 +69,15 @@ export default {
         })
         .catch((error) => {
           this.handleErrorResponse(error, "finding");
+=======
+    MatchService.getUserMatches(this.$route.params.id)
+      .then((response) => {
+        this.userMatches = response.data;
+        let adder = 0;
+        this.userMatches.forEach((item) => {
+          adder++;
+          item.counter = adder;
+>>>>>>> 977b8dffa7ecc05da838f37fe9fe847add6f2bdc
         });
     });
   },
