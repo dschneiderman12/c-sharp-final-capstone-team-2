@@ -20,9 +20,7 @@ export default {
     return axios.post(`/League/invite/user/${userId}`, league)
   },
 
-  getCourses() {
-    return axios.get('/courses')
-  },
+ 
  
   getUsersByLeague(leagueId) {
     return axios.get(`/match/user/${leagueId}`)

@@ -9,7 +9,7 @@ import League from '../views/League.vue'
 import LeagueInfo from '../views/LeagueInfo.vue'
 import InviteInfo from '../views/InviteInfo.vue'
 import MatchInfo from '../views/MatchInfo.vue'
-
+import CourseAdditionPage from '../views/CourseAdditionPage.vue'
 Vue.use(Router)
 
 /**
@@ -70,7 +70,7 @@ const router = new Router({
       name: "leagueInfo",
       component: LeagueInfo,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -78,7 +78,7 @@ const router = new Router({
       name: "inviteInfo",
       component: InviteInfo,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -86,9 +86,17 @@ const router = new Router({
       name:"matchInfo",
       component: MatchInfo, 
       meta:{
-        requiresAuth:false
+        requiresAuth:true
       }
 
+    },
+    {
+      path: "/addCourse",
+      name: "addCourse",
+      component: CourseAdditionPage,
+      meta:{
+        requiresAuth:true
+      }
     }
   ]
 })

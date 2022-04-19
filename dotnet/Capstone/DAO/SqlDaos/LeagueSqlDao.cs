@@ -122,6 +122,7 @@ namespace Capstone.DAO
             }
         }
 
+<<<<<<< HEAD
         public List<Course> GetCourses()
         {
             List<Course> courseList = new List<Course>();
@@ -148,6 +149,10 @@ namespace Capstone.DAO
                 throw;
             }
         }
+=======
+
+      
+>>>>>>> 3bc3c64ff45a75e1fae85725ef0f03824028b237
 
         public List<LeagueScore> GetLeagueScores(int leagueId)
         {
