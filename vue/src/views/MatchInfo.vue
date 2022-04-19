@@ -2,17 +2,12 @@
   <div>
     <div>
       <h2 v-on:created="populateLeague()">Match Name: {{ match.matchName }}</h2>
-      <p>{{ league.leagueId }}</p>
-
       <tee-assignment-form
         v-if="league.organizerId === $store.state.user.userId"
       />
     </div>
     <div>
-      <!-- moved from leagueinfo.vue, not showing currently -->
-      <match-score
-        v-if="league.organizerId === $store.state.user.userId"
-      />
+      <match-score v-if="league.organizerId === $store.state.user.userId" />
     </div>
   </div>
 </template>
@@ -51,11 +46,11 @@ export default {
             this.league = response.data;
           })
           .catch((error) => {
-            this.handleErrorResponse(error, "gettingcurrentleague");
+            this.handleErrorResponse(error, "getting current league");
           });
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "gettingcurrentleague");
+        this.handleErrorResponse(error, "getting current league");
       });
   },
   methods: {

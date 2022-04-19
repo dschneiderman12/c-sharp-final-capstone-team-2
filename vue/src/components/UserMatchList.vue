@@ -28,37 +28,35 @@
 </template>
 
 <script>
-import MatchService from '../services/MatchService.js';
+import MatchService from "../services/MatchService.js";
 export default {
-    name: "user_matches",
-    data(){
-        return{
-            matches: [],
-        }
-
-    },
-    created(){
-    MatchService.getUserMatchesHomePage(this.$store.state.user.userId).then((response)=>{
+  name: "user_matches",
+  data() {
+    return {
+      matches: [],
+    };
+  },
+  created() {
+    MatchService.getUserMatchesHomePage(this.$store.state.user.userId)
+      .then((response) => {
         this.matches = response.data;
-        
-        
-      //  this.matches.forEach((item) => {
-     //      let newObj =  {
-           // date : item.dateAndTime.substring(0,10),
-           // time : item.dateAndTime.substring(10),
-           // matchId: item.matchId
-       // } 
-            
+
+        //  this.matches.forEach((item) => {
+        //      let newObj =  {
+        // date : item.dateAndTime.substring(0,10),
+        // time : item.dateAndTime.substring(10),
+        // matchId: item.matchId
+        // }
+
         //    this.dateAndTimes.push(newObj);
-       // })
-    })
-    .catch((error) => {
+        // })
+      })
+      .catch((error) => {
         this.handleErrorResponse(error, "creating"); //need to add the method
       });
-}
-}
+  },
+};
 </script>
 
 <style>
-
 </style>

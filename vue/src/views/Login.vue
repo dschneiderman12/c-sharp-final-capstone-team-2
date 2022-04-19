@@ -13,47 +13,36 @@
         Thank you for registering, please sign in.
       </div>
 
-
-<div class="group">
-      <!-- <label for="username" class="sr-only">Username</label> -->
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-      
-        v-model="user.username"
-        required
-        
-      />
-      <span class="highlight">
-      </span>
-      <span class="bar">
-      </span>
-      <label>Username</label>
-</div>
-<div class = "group">
-
-      <!-- <label for="password" class="sr-only">Password</label> -->
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-    
-        v-model="user.password"
-        required
-      />
-       <span class="highlight">
-      </span>
-      <span class="bar">
-      </span>
-      <label>password</label>
-</div>
-
+      <div class="group">
+        <!-- <label for="username" class="sr-only">Username</label> -->
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          v-model="user.username"
+          required
+        />
+        <span class="highlight"> </span>
+        <span class="bar"> </span>
+        <label>Username</label>
+      </div>
+      <div class="group">
+        <!-- <label for="password" class="sr-only">Password</label> -->
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          v-model="user.password"
+          required
+        />
+        <span class="highlight"> </span>
+        <span class="bar"> </span>
+        <label>password</label>
+      </div>
 
       <button class="btn" type="submit">Sign in</button>
-   
+
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      
     </form>
   </div>
 </template>
@@ -96,27 +85,24 @@ export default {
 };
 </script>
 <style>
-
 #login > form {
   /* this controls the properties of the form inside the sign in box */
 
   display: flex;
   flex-direction: column;
-  
+
   row-gap: 10px;
   /* this line adds space between items on sign in form */
 
   width: 80%;
-  
 }
 .btn {
-  width: 30%
+  width: 30%;
 }
 
-
-#login > form > button{
+#login > form > button {
   margin-top: 20px;
-} 
+}
 #login > form > h1 {
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
@@ -130,8 +116,9 @@ export default {
   justify-content: center;
   margin-bottom: 3px;
 }
-#login > form > label:nth-child(2), #login > form > label:nth-child(4) {
- width:35%;
+#login > form > label:nth-child(2),
+#login > form > label:nth-child(4) {
+  width: 35%;
   background-color: rgb(24, 77, 71);
   margin-top: 5px;
   margin-bottom: 5px;
@@ -151,95 +138,120 @@ export default {
 
 
 /* form starting stylings ------------------------------- */
-.group        { 
-  position:relative; 
-  margin-bottom:45px; 
+.group {
+  position: relative;
+  margin-bottom: 45px;
 }
-#username, #password         {
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:300px;
-  border:none;
-  border-bottom:1px solid #757575;
+#username,
+#password {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
 }
-input:focus     { outline:none; }
+input:focus {
+  outline: none;
+}
 
 /* LABEL ======================================= */
-label          {
-  color:#999; 
-  font-size:18px;
-  font-weight:normal;
-  position:absolute;
-  pointer-events:none;
-  left:5px;
-  top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
+label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
 }
 
 /* active state */
-input:focus ~ label, input:valid ~ label    {
-  top:-20px;
-  font-size:14px;
-  color:#5264AE;
+input:focus ~ label,
+input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264ae;
 }
 
 /* BOTTOM BARS ================================= */
-.bar  { position:relative; display:block; width:300px; }
-.bar:before, .bar:after   {
-  content:'';
-  height:2px; 
-  width:0;
-  bottom:1px; 
-  position:absolute;
-  background:#5264AE; 
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
+.bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
 }
 .bar:before {
-  left:50%;
+  left: 50%;
 }
 .bar:after {
-  right:50%; 
+  right: 50%;
 }
 
 /* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
 }
 
 /* HIGHLIGHTER ================================== */
 .highlight {
-  position:absolute;
-  height:60%; 
-  width:100px; 
-  top:25%; 
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 /* active state */
 input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
 }
 
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
-  from { background:#5264AE; }
-  to  { width:0; background:transparent; }
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
 }
 @-moz-keyframes inputHighlighter {
-  from { background:#5264AE; }
-  to  { width:0; background:transparent; }
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
 }
 @keyframes inputHighlighter {
-  from { background:#5264AE; }
-  to  { width:0; background:transparent; }
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
 }
 </style>
