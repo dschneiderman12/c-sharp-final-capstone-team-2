@@ -126,6 +126,9 @@ export default {
   padding-left: 5px;
   border-radius: 3px;
 }
+#login > form > div:nth-child(2) {
+  margin-top: 30px;
+}
 /* 
 #login > form {
   filter: drop-shadow(3px 3px 3px black);

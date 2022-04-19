@@ -114,7 +114,7 @@ input {
   display: flex;
   flex-direction: column;
 
-  row-gap: 10px;
+  row-gap: 30px;
   /* this line adds space between items on sign in form */
 
   width: 85%;
