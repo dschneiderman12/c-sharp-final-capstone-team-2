@@ -185,7 +185,7 @@ input:focus ~ label, input:valid ~ label    {
   content:'';
   height:2px; 
   width:0;
-  bottom:1px; 
+  bottom:2px; 
   position:absolute;
   background:#5264AE; 
   transition:0.2s ease all; 
@@ -234,5 +234,12 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
   from { background:#5264AE; }
   to  { width:0; background:transparent; }
+}
+
+
+
+
+#login{
+  width: 50px;
 }
 </style>

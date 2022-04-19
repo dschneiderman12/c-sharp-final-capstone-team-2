@@ -130,4 +130,7 @@ background: rgb(24,77,71);
 height: 8%;
 
 }
+#login{
+  width: 69px;
+}
 </style>
