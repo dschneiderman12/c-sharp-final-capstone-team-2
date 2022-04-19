@@ -29,9 +29,7 @@ namespace Capstone.Controllers
            
             if(usersForInvite != null)
             {
-
                 return usersForInvite;
-
             }
             else
             {
