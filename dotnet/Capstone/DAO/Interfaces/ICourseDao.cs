@@ -11,6 +11,7 @@ namespace Capstone.DAO
         public Course CreateCourse(Course course);
         public List<Course> GetCourses();
         public Course GetCourseById(int courseId);
+        public List<League> GetLeaguesByCourseId(int courseId);
     }
 
 }
