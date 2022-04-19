@@ -1,49 +1,54 @@
 <template>
 <div>
-    <tee-assignment-form/>
-    <match-form/>
+    <div>
+    <h2 v-on:created="populateLeague()">Match Name: {{match.matchName}}</h2> 
+    <p>{{league.leagueId}}</p>
+
+    <tee-assignment-form v-if="league.organizerId === $store.state.user.userId"/>
+    </div>
 </div>    
 </template>
 
 <script>
 import LeagueService from "../services/LeagueService.js";
+import MatchService from "../services/MatchService.js";
 import TeeAssignmentForm from "../components/TeeAssignmentForm.vue";
-import MatchForm from "../components/MatchForm.vue"
 export default {
-  components: { TeeAssignmentForm, MatchForm},
+  components: { TeeAssignmentForm },
   data(){ return {
-      league: {
+      match: {
+        matchId: "",
+        matchName: "",
+        leagueId: "",
         leagueName: "",
-        organizerId: "",
-        leagueCourse: {
-          courseName: "",
-        },
-        organizerName: "",
-      
+        StartTime: ""
+      },
+      league:{
+        leagueId: "",
+        organizerId: ""
       },
         errorMsg:"",
+        clicker:""
       };
 
   },created() {
-    LeagueService.getCurrentLeague(this.$route.params.id)
+    MatchService.getMatch(this.$route.params.id)
       .then((response) => {
-        this.league = response.data;
+        this.match = response.data;
+         LeagueService.getCurrentLeague(this.match.leagueId)
+         .then((response) => {
+      this.league = response.data;
+    })
+    .catch((error) => {
+        this.handleErrorResponse(error, "gettingcurrentleague"); 
+      });
+
+
+
       })
       .catch((error) => {
         this.handleErrorResponse(error, "gettingcurrentleague"); 
       });
-  
-    
-                        //need to make this take in current league :(
-    LeagueService.getUsersByLeague(2)
-  .then((response) => {
-        this.userlist = response.data;
-      })
-      .catch((error) => {
-        this.handleErrorResponse(error, "getusersbyleague");
-      });
-
-
   },
     methods:{
       handleErrorResponse(error, verb) {

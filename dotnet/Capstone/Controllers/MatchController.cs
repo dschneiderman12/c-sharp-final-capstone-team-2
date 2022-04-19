@@ -20,6 +20,23 @@ namespace Capstone.Controllers
         {
             matchDao = _matchDao;
         }
+        [HttpGet("info/{matchId}")]
+        public ActionResult<Match> GetMatchById(int matchId)
+        {
+            Match match = matchDao.GetMatch(matchId);
+            if(match == null)
+            {
+                return NotFound();
+            }
+            else if (match != null)
+            {
+                return match;
+            }
+            else
+            {
+                return StatusCode(500);
+            }
+        }
         [HttpGet("user/{leagueId}")]
         public ActionResult<List<User>> GetUsersByLeague(int leagueId)
         {
@@ -50,20 +67,14 @@ namespace Capstone.Controllers
         }
         
         [HttpPost("/createMatch")]
-        public ActionResult CreateMatch(Match match)
+        public ActionResult<Match> CreateMatch(Match match)
         {
-            matchDao.CreateMatch(match);
-            return Ok();
+            Match newMatch = matchDao.CreateMatch(match);
+            return Created($"/match/${newMatch.MatchId}", newMatch);
 
         }
 
-        [HttpPost()]
-        public ActionResult TeeTimeForUser(UserMatch userMatch)
-        {
-            matchDao.SetTeeTimeForUser(userMatch);
-            return Ok();
-
-        }
+       
 
        
     }

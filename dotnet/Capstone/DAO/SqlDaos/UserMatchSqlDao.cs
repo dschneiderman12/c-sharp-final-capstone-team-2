@@ -17,6 +17,32 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
+        public void SetTeeTimeForUser(UserMatch userMatch)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO user_match (user_id, match_id, tee_time) 
+                                                VALUES(@user_id, @match_id, @tee_time); ", conn);
+                    cmd.Parameters.AddWithValue("@match_id", userMatch.MatchId);
+                    cmd.Parameters.AddWithValue("@user_id", userMatch.UserId);
+                    cmd.Parameters.AddWithValue("@tee_time", userMatch.TeeTime);
+
+                    cmd.ExecuteNonQuery();
+                }
+                ;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+
+        }
+
         //method below currently set to only get user matches with no score
         public List<UserMatch> GetUserMatchesForLeague(int leagueId) 
         {
