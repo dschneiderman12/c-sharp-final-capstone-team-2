@@ -101,6 +101,6 @@ export default {
 } */
 #login > form > h1 {
   display: flex;
-  border:
+  border: 10px
 }
 </style>
