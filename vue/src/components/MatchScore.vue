@@ -1,8 +1,8 @@
 <template>
   <div>
     <form id="submit-score-form" v-on:submit.prevent="submitScore()">
+      <h3>Update scores</h3>
       <div>
-        <h3>Update scores</h3>
         <label>Select user:</label>
         <select class="user-match" v-model.number="userMatch.userId">
           <option
@@ -28,7 +28,14 @@
       </div>
       -->
       <div>
-        <input id="score" type="text" v-model.number="userMatch.score" />
+        <label>Enter score (relative to par):</label>
+        <input
+          id="score"
+          type="number"
+          min="-30"
+          max="80"
+          v-model.number="userMatch.score"
+        />
       </div>
       <button type="submit" class="btn-submit">Submit</button>
     </form>

@@ -8,9 +8,7 @@ namespace Capstone.DAO
 
         User AddUser(string username, string password, string role);
 
-//        public List<User> GetUserList();
-
-              
+        //        public List<User> GetUserList();
 
         public List<ReturnUser> GetUserList();
 

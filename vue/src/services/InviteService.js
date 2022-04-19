@@ -6,31 +6,32 @@ export default {
         return axios.post('/Invite', invite)
     },
 
-    getPendingInvites(userID) {
-        return axios.get(`/Invite/user/${userID}`)
+    getPendingInvites(userId) {
+        return axios.get(`/Invite/user/${userId}`)
     },
 
-    addUserToLeague(userID, league) {
-        return axios.post(`/Invite/${userID}`, league)
+    addUserToLeague(userId, league) {
+        return axios.post(`/Invite/${userId}`, league)
     },
 
-    acceptInvite(inviteID) {
-        return axios.put(`/Invite/${inviteID}/accept`)
+    acceptInvite(inviteId) {
+        return axios.put(`/Invite/${inviteId}/accept`)
     },
 
-    declineInvite(inviteID) {
-        return axios.put(`/Invite/${inviteID}/decline`)
+    declineInvite(inviteId) {
+        return axios.put(`/Invite/${inviteId}/decline`)
     },
 
     getAllUsers() {
         return axios.get('/user')
     },
 
-    getCurrentInvite(inviteID) {
-        return axios.get(`/Invite/${inviteID}`)
+    getCurrentInvite(inviteId) {
+        return axios.get(`/Invite/${inviteId}`)
     },
-    getUsersForInvite(leagueID,userID){
-        return axios.get(`/Invite/${leagueID}/users/${userID}`)
+
+    getUsersForInvite(leagueId, userId){
+        return axios.get(`/Invite/${leagueId}/users/${userId}`)
     }
 
 }
