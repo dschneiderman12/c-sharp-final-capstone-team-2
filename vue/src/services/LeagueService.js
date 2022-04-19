@@ -28,8 +28,8 @@ export default {
     return axios.get(`/match/user/${leagueID}`)
   },
 
-  setTeetimeForUser(userMatch) {
-    return axios.post('/userMatch', userMatch)
-  },
+  getScoresForLeague(leagueID) {
+    return axios.get(`/league/scores/${leagueID}`)
+  }
 
 }

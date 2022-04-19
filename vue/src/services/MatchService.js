@@ -4,26 +4,32 @@ store.getters.config;
 
 
 export default {
-    getMatches(leagueID){
+    getMatches(leagueID) {
         return axios.get(`/match/${leagueID}`)
     },
-    newMatch(match){
+    newMatch(match) {
         return axios.post(`/createMatch`, match)
 
     },
-    
+
     getUserMatches(leagueId) {
         return axios.get(`/userMatch/${leagueId}`)
     },
 
     addMatchScore(userMatch) {
         return axios.put('/userMatch', userMatch)
-    }, 
-    getMatch(matchId){
+    },
+
+    getMatch(matchId) {
         return axios.get(`/match/info/${matchId}`)
     },
-    getUserMatchesHomePage(userId){
+    
+    getUserMatchesHomePage(userId) {
         return axios.get(`/userMatch/list/${userId}`)
-    }
+    },
+
+    setTeeTimeForUser(userMatch) {
+        return axios.post('/userMatch', userMatch)
+    },
 
 }
