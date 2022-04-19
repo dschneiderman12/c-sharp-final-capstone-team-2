@@ -124,33 +124,7 @@ namespace Capstone.DAO
         }
 
 
-        public List<Course> GetCourses()
-        {
-            List<Course> courseList = new List<Course>();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM courses", conn);
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Course course = new Course();
-                        course.CourseId = Convert.ToInt32(reader["course_id"]);
-                        course.CourseName = Convert.ToString(reader["course_name"]);
-                        courseList.Add(course);
-                    }
-                }
-                return courseList;
-
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-        }
+      
 
 
         private League createLeagueFromReader(SqlDataReader reader)

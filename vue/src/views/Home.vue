@@ -20,9 +20,7 @@
       <h1>Upcoming Matches</h1>
       <user-matches/>  
     </div>
-    <div id= "AddCourse">
-      <course-form/>
-    </div>
+    
     </div>
   </div>
 </template>
@@ -31,10 +29,9 @@
 import InvitesPending from "../components/InvitesPending.vue";
 import LeagueList from "../components/LeagueList.vue";
 import UserMatches from "../components/UserMatchList.vue";
-import CourseForm from "../components/CourseForm.vue";
 export default {
   name: "home",
-  components: { LeagueList, InvitesPending, UserMatches, CourseForm},
+  components: { LeagueList, InvitesPending, UserMatches},
 };
 </script>
 <style scoped>

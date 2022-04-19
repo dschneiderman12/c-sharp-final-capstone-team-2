@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class LeagueController : ControllerBase
     {
         private readonly ILeagueDao leagueDao;
@@ -61,19 +61,7 @@ namespace Capstone.Controllers
         }
                 
 
-        [HttpGet("/courses")]
-        public ActionResult<List<Course>> GetAllCourses()
-        {
-            List<Course> allCourses = leagueDao.GetCourses();
-            if(allCourses != null)
-            {
-                return allCourses;
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
+        
         
     }
 }
