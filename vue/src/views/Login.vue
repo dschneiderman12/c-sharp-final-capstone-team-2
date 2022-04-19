@@ -126,7 +126,6 @@ export default {
   color: white;
   font-size: x-large;
   display: flex;
-<<<<<<< HEAD
   width: 100%;
   justify-content: center;
   margin-bottom: 3px;
@@ -242,8 +241,5 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
   from { background:#5264AE; }
   to  { width:0; background:transparent; }
-=======
-  border: 10px
->>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
 }
 </style>
