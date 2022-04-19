@@ -63,5 +63,19 @@ namespace Capstone.Controllers
             return Ok();
         }
 
+        [HttpGet("match/{matchId}")]
+        public ActionResult<List<UserMatch>> GetMatchScores(int matchId)
+        {
+            List<UserMatch> matchScores = userMatchDao.GetUserScoresByMatch(matchId);
+            if (matchScores != null)
+            {
+                return matchScores;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
     }
 }

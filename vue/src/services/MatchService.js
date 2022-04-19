@@ -4,12 +4,11 @@ store.getters.config;
 
 
 export default {
-    getMatches(leagueID) {
-        return axios.get(`/match/${leagueID}`)
+    getMatches(leagueId) {
+        return axios.get(`/match/${leagueId}`)
     },
     newMatch(match) {
         return axios.post(`/createMatch`, match)
-
     },
 
     getUserMatches(leagueId) {
@@ -31,5 +30,9 @@ export default {
     setTeeTimeForUser(userMatch) {
         return axios.post('/userMatch', userMatch)
     },
+
+    getAllMatchScores(matchId) {
+        return axios.get(`/userMatch/match/${matchId}`)
+    }
 
 }

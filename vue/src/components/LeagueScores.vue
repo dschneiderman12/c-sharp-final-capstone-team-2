@@ -6,7 +6,7 @@
       <thead>
         <tr>
           <th>Player</th>
-          <th>Cumulative Score (+/- Par)</th>
+          <th>Cumulative Score</th>
         </tr>
       </thead>
       <tbody>

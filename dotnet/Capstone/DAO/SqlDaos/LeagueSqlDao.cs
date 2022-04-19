@@ -161,7 +161,7 @@ namespace Capstone.DAO
                                                 FROM user_match
                                                 JOIN users ON users.user_id = user_match.user_id
                                                 JOIN matches ON matches.match_id = user_match.match_id
-                                                WHERE league_id = @league_id
+                                                WHERE league_id = @league_id AND score IS NOT NULL
                                                 GROUP BY user_match.user_id, username
                                                 ORDER BY total_score ASC", conn);
                     cmd.Parameters.AddWithValue("@league_id", leagueId);

@@ -7,29 +7,29 @@ export default {
     return axios.post('/League', league)
   },
 
-  getLeagues(userID) {
-    return axios.get(`/League/user/${userID}`)
+  getLeagues(userId) {
+    return axios.get(`/League/user/${userId}`)
   },
 
-  getCurrentLeague(leagueID) {
-    return axios.get(`/League/${leagueID}`)
+  getCurrentLeague(leagueId) {
+    return axios.get(`/League/${leagueId}`)
   },
 
   //Don't think we will need this anymore in this service
-  addUserToLeague(userID, league) {
-    return axios.post(`/League/invite/user/${userID}`, league)
+  addUserToLeague(userId, league) {
+    return axios.post(`/League/invite/user/${userId}`, league)
   },
 
   getCourses() {
     return axios.get('/courses')
   },
  
-  getUsersByLeague(leagueID) {
-    return axios.get(`/match/user/${leagueID}`)
+  getUsersByLeague(leagueId) {
+    return axios.get(`/match/user/${leagueId}`)
   },
 
-  getScoresForLeague(leagueID) {
-    return axios.get(`/league/scores/${leagueID}`)
+  getScoresForLeague(leagueId) {
+    return axios.get(`/league/scores/${leagueId}`)
   }
 
 }
