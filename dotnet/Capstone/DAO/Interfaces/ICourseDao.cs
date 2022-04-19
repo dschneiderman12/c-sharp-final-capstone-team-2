@@ -9,5 +9,8 @@ namespace Capstone.DAO
     public interface ICourseDao
     {
         public Course CreateCourse(Course course);
+        public List<Course> GetCourses();
+        public Course GetCourseById(int courseId);
     }
+
 }
