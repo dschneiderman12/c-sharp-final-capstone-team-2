@@ -24,7 +24,8 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT match_id, match_name, league_id, start_time
+                    SqlCommand cmd = new SqlCommand(@"SELECT match_id, match_name, league_id, start_time,
+                                                     (SELECT league_name FROM leagues WHERE leagues.league_id = matches.league_id) AS league_name   
                                                     FROM matches
                                                     WHERE match_id = @match_id", conn);
                     cmd.Parameters.AddWithValue("@match_id", matchId);
@@ -33,6 +34,7 @@ namespace Capstone.DAO
                     if (reader.Read())
                     {
                         match = createMatchFromReader(reader);
+                        match.LeagueName = Convert.ToString(reader["league_name"]);    
                     }
                 }
                 return match;
@@ -142,6 +144,7 @@ namespace Capstone.DAO
             match.MatchName = Convert.ToString(reader["match_name"]);
             match.LeagueId = Convert.ToInt32(reader["league_id"]);
             match.DateAndTime = Convert.ToString(reader["start_time"]);
+            
 
             return match;
         }

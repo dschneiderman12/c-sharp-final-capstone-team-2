@@ -20,6 +20,23 @@ namespace Capstone.Controllers
         {
             matchDao = _matchDao;
         }
+        [HttpGet("info/{matchId}")]
+        public ActionResult<Match> GetMatchById(int matchId)
+        {
+            Match match = matchDao.GetMatch(matchId);
+            if(match == null)
+            {
+                return NotFound();
+            }
+            else if (match != null)
+            {
+                return match;
+            }
+            else
+            {
+                return StatusCode(500);
+            }
+        }
         [HttpGet("user/{leagueId}")]
         public ActionResult<List<User>> GetUsersByLeague(int leagueId)
         {

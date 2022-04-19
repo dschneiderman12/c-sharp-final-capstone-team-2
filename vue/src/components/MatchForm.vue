@@ -34,7 +34,13 @@ export default {
         startTime: "",
         leagueId: ""
       },
-      
+      returnMatch: {
+       
+        matchName: "",
+        startTime: "",
+        leagueId: "",
+        matchID: ""
+      },
       usersInLeague: [],
       errorMsg: "",
       courses: [],
@@ -54,8 +60,9 @@ export default {
       MatchService.newMatch(newMatch)
         .then((response) => {
           if (response.status === 201) {
-            this.returnLeague = response.data;
+            this.returnMatch = response.data;
             alert("match created");
+            this.$router.push(`/match/${this.returnMatch.matchId}`);
           }
         })
         .catch((error) => {
