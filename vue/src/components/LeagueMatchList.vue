@@ -29,33 +29,16 @@ import MatchService from '../services/MatchService.js';
 export default {
 name: "league-matches",
 data(){
-<<<<<<< HEAD
-    return{
-        matches: [],
-       dateAndTimes : []
-=======
     
     return{
         matches: [],
        //dateAndTimes : []
->>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
     }
 },created(){
     MatchService.getMatches(this.$route.params.id).then((response)=>{
         this.matches = response.data;
         
         
-<<<<<<< HEAD
-        this.matches.forEach((item) => {
-           let newObj =  {
-            date : item.dateAndTime.substring(0,10),
-            time : item.dateAndTime.substring(10),
-            matchId: item.matchId
-        } 
-            
-            this.dateAndTimes.push(newObj);
-        })
-=======
       //  this.matches.forEach((item) => {
      //      let newObj =  {
            // date : item.dateAndTime.substring(0,10),
@@ -65,7 +48,6 @@ data(){
             
         //    this.dateAndTimes.push(newObj);
        // })
->>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
     })
     .catch((error) => {
         this.handleErrorResponse(error, "creating"); //need to add the method
