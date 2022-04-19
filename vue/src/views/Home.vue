@@ -4,7 +4,7 @@
       <h1>My Leagues</h1>
       <div class="nav-link">
         <router-link class="leagueLink" v-bind:to="{ name: 'league' }"
-          >Create League</router-link
+          >New League</router-link
         >
         <!-- &nbsp;&nbsp; -->
       </div>
@@ -46,7 +46,7 @@ export default {
   border-radius: 6px;
   padding: 5px;
   /* margin: 30px; */
-  width: 60%;
+  width: 80%;
   filter: drop-shadow(5px 5px 5px black);
   display: flex;
   margin-top: 20px;
@@ -55,17 +55,17 @@ export default {
   /* justify-content: space-around; */
   align-items: center;
 }
-#league-info > h1,
-h1 {
+#league-info > h1
+ {
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
-  text-shadow: darkslateblue 5px 5px 5px;
+  text-shadow: black 5px 5px 5px;
   color: white;
   font-size: x-large;
   display: flex;
-  width: 100%;
+  width: 60%;
   justify-content: center;
   margin-bottom: 3px;
 }
@@ -73,14 +73,33 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+ 
+
   width: 80%;
 }
 #league-info > div {
   display: flex;
   justify-content: flex-end;
-}
-.dashboard-flex{
-  display: flex;
+
 
 }
+#league-info > div > a{
+  margin-top: 3px;
+  text-decoration: none;
+background: oldlace;
+border-radius: 40px;
+padding:4px;
+padding-top: 0;
+padding-bottom: 0;
+font-size: 75%;
+color: rgb(122, 107, 73);
+font-weight:bold;
+border: 1px rgb(122, 107, 73) solid;
+/* text-shadow:rgba(0, 0, 0, 0.2) 1px 1px 1px; */
+}
+#league-info > div > a:hover{
+  background: #ebc96e;
+}
+
+
 </style>

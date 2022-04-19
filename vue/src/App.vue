@@ -3,8 +3,8 @@
     <div>
     <div id="nav">
       <div id="left-header">
-        <img src="@/images/golfLogo.png" alt="templogo" />
-        "stuff about golf and stuff"
+        <img src="@/images/Image from iOS.png" alt="" />
+        
       </div>
       <div class="nav-link">
         <router-link class="homeLink" v-bind:to="{ name: 'home' }"
@@ -46,26 +46,10 @@ export default {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-#login,
-#register {
-  background-color: rgba(209, 255, 209, 0.5);
-  /* border-color: rgb(43, 126, 43); */
-  /* border-style: solid;
-  border-width: 3px; */
-  border-radius: 6px;
-  padding: 5px;
-  /* margin: 30px; */
-  width: 40%;
-  filter: drop-shadow(5px 5px 5px black);
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  justify-content: space-around;
-  /* height: 100%; */
-}
+
 
 #nav > div > img {
-  width: 10vh;
+  width: 35vh;
   /* margin-right: 80%; */
 }
 #nav {
@@ -98,15 +82,17 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
 #left-header {
   color: #184d47;
   font-weight: bolder;
+  width:10vw;
 }
 
 #nav > div > a {
   /* this selects all of the navigation links */
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
+  
   text-decoration: none;
   font-weight: bold;
-  text-shadow: darkslateblue 5px 5px 5px;
+  text-shadow: rgb(0, 0, 0) 5px 5px 5px;
   color: white;
   font-size: x-large;
   /* -webkit-text-stroke-width: 1px;
@@ -114,6 +100,8 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
 
   margin-right: 5px;
   padding: 10px;
+  padding-top:0;
+  padding-bottom:0;
   border-radius: 8px;
 }
 #page-body {
@@ -129,6 +117,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 #app{
   display:flex;
@@ -136,6 +125,7 @@ flex-direction: column;
 justify-content:space-between;
 
 }
+
 #footer{
  
 
@@ -144,4 +134,5 @@ background: rgb(24,77,71);
 height: 8%;
 
 }
+
 </style>

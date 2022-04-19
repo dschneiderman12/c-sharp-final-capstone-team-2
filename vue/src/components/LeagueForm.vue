@@ -1,9 +1,12 @@
 <template>
   <div>
     <form v-on:submit.prevent="submitForm()">
-      <div><h2>Create a new League</h2></div>
-      <div>
+      <div id="newLeague"><h2>Create a new League</h2></div>
+      <div id = pagetext>
+        <div id=leagueName>
         League Name
+        </div>
+        
         <input
           id="league-name"
           type="text"
@@ -11,17 +14,32 @@
           v-model="league.leagueName"
         />
         
-        <label>Choose a course:</label>
 
+<!-- 
+        <label id = selectacourse>
+          Choose a course:</label> -->
+
+choose a course
+        
+        <div class = "this">
         <select id="course-name" v-model.number="league.leagueCourse.courseId">
-          <option
+          <option class="select"
             v-for="course in courses"
             v-bind:key="course.courseId"
             v-bind:value="course.courseId"
           >
+        
+            
             {{ course.courseName }}
+        
           </option>
         </select>
+</div>
+
+
+
+
+
       </div>
       <button type="submit" class="btn-submit">Submit</button>
     </form>
@@ -106,18 +124,6 @@ export default {
 </script>
 
 <style>
-#page-body > div:nth-child(1) {
-  background: rgba(150, 187, 124, 0.6);
-  border-radius: 5px;
-}
-#page-body > div:nth-child(1) > form > div:nth-child(1) > h2 {
-  filter: drop-shadow(3px 3px 3px black);
-  text-shadow: darkslateblue 3px 3px 3px;
-  color: white;
-  font-weight: bolder;
-  background: rgb(250, 213, 134);
-  background: rgba(150, 187, 124);
-  /* border-radius: 7px;*/
-  border-bottom: blanchedalmond solid 3px;
-}
+
+
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form v-on:submit.prevent="submitForm()">
+    <form id="invite-form" v-on:submit.prevent="submitForm()">
       <div><h2>Invite player to league</h2></div>
       <h3>Select player:</h3>
       <select id="user-list" v-model.number="invite.toUserId">

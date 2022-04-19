@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form v-on:submit.prevent="submitForm()">
+    <form id="match-form" v-on:submit.prevent="submitForm()">
       <div>
         <h2>..... create a new match...please enter a title for your match</h2>
         <input

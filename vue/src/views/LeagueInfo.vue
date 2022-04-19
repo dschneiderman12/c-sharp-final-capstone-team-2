@@ -95,5 +95,69 @@ export default {
 #page-body > div:nth-child(1) {
   width: 90%;
 }
+#league-title > h1 {
+  filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+#league-info > h3, 
+#page-body > div:nth-child(1) > div:nth-child(4) > form > h3,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(1) > label,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(2) > label {
+ width:35%;
+  background-color: rgb(24, 77, 71);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  padding-left: 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  filter: drop-shadow(3px 3px 3px black);
+}
+#user-list,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(1) > select,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(2) > select,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(3) {
+ filter: drop-shadow(3px 3px 3px black);
+  text-shadow: rgb(90, 87, 87) 3px 3px 3px;
+}
+#page-body > div:nth-child(1) {
+  background-color: rgba(209, 255, 209, 0.5);
+  /* border-color: rgb(43, 126, 43); */
+  /* border-style: solid;
+  border-width: 3px; */
+  border-radius: 6px;
+  padding: 5px;
+  /* margin: 30px; */
+  width: 80%;
+  filter: drop-shadow(5px 5px 5px black);
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  
+}
+
+#invite-form {
+
+}
+
+#submit-score-form > div:nth-child(1),
+#submit-score-form > div:nth-child(2),
+#submit-score-form > div:nth-child(3){
+  display: flex;
+  flex-direction: column;
+}
+
 </style>
 

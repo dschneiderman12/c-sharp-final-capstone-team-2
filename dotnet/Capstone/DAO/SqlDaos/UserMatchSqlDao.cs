@@ -19,8 +19,11 @@ namespace Capstone.DAO
 
         public void SetTeeTimeForUser(UserMatch userMatch)
         {
+<<<<<<< HEAD
+=======
             DateTime teeTime = DateTime.Parse(userMatch.TeeTime);
 
+>>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
 
             try
             {
@@ -31,7 +34,11 @@ namespace Capstone.DAO
                                                 VALUES(@user_id, @match_id, @tee_time); ", conn);
                     cmd.Parameters.AddWithValue("@match_id", userMatch.MatchId);
                     cmd.Parameters.AddWithValue("@user_id", userMatch.UserId);
+<<<<<<< HEAD
+                    cmd.Parameters.AddWithValue("@tee_time", userMatch.TeeTime);
+=======
                     cmd.Parameters.AddWithValue("@tee_time", teeTime);
+>>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
 
                     cmd.ExecuteNonQuery();
                 }
