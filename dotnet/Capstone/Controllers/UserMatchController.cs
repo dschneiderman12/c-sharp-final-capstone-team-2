@@ -20,6 +20,14 @@ namespace Capstone.Controllers
             this.userMatchDao = _userMatchDao;
         }
 
+        [HttpPost()]
+        public ActionResult TeeTimeForUser(UserMatch userMatch)
+        {
+            userMatchDao.SetTeeTimeForUser(userMatch);
+            return Ok();
+
+        }
+
         [HttpGet("{leagueId}")]
         public ActionResult<List<UserMatch>> UserMatchesInLeague(int leagueId)
         {

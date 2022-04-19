@@ -1,49 +1,50 @@
 <template>
 <div>
+    <div>
+    <h2>Match Name: {{match.matchName}}</h2> 
+    
+
     <tee-assignment-form/>
-    <match-form/>
+    </div>
 </div>    
 </template>
 
 <script>
 import LeagueService from "../services/LeagueService.js";
+import MatchService from "../services/MatchService.js";
 import TeeAssignmentForm from "../components/TeeAssignmentForm.vue";
-import MatchForm from "../components/MatchForm.vue"
 export default {
-  components: { TeeAssignmentForm, MatchForm},
+  components: { TeeAssignmentForm },
   data(){ return {
-      league: {
+      match: {
+        matchId: "",
+        matchName: "",
+        leagueId: "",
         leagueName: "",
-        organizerId: "",
-        leagueCourse: {
-          courseName: "",
-        },
-        organizerName: "",
-      
+        StartTime: ""
+      },
+      league:{
+        leagueId: "",
+        organizerId: ""
       },
         errorMsg:"",
       };
 
   },created() {
-    LeagueService.getCurrentLeague(this.$route.params.id)
+    MatchService.getMatch(this.$route.params.id)
       .then((response) => {
-        this.league = response.data;
+        this.match = response.data;
       })
       .catch((error) => {
         this.handleErrorResponse(error, "gettingcurrentleague"); 
       });
-  
-    
-                        //need to make this take in current league :(
-    LeagueService.getUsersByLeague(2)
-  .then((response) => {
-        this.userlist = response.data;
-      })
-      .catch((error) => {
-        this.handleErrorResponse(error, "getusersbyleague");
+    LeagueService.getCurrentLeague(this.match.leagueId).
+    then((response) => {
+      this.league = response.data;
+    })
+    .catch((error) => {
+        this.handleErrorResponse(error, "gettingcurrentleague"); 
       });
-
-
   },
     methods:{
       handleErrorResponse(error, verb) {

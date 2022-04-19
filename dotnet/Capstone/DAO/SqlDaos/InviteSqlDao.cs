@@ -18,7 +18,7 @@ namespace Capstone.DAO
         public List<ReturnUser> GetUsersForInvite(int leagueId)
         {
             List<ReturnUser> inviteUsers = new List<ReturnUser>();
-            Dictionary<string, List<int>> allUsers = new Dictionary<string, List<int>>();
+            Dictionary<Tuple<string, int>, List<int>> allUsers = new Dictionary<Tuple<string,int>, List<int>>();
 
             try
             {
@@ -40,22 +40,25 @@ namespace Capstone.DAO
                          };
 
                         List<int> leagueIds = new List<int>();
-                        if (allUsers.ContainsKey(u.Username))
+                        Tuple<string, int> keyTuple = new Tuple<string,int>(u.Username, u.UserId); 
+
+                        if (allUsers.ContainsKey(keyTuple))
                         {
-                            allUsers[u.Username].Add(u.leagueId);
+                            allUsers[keyTuple].Add(u.leagueId);
                         }
                         else
                         {
-                            allUsers.Add(u.Username, leagueIds);
-                            allUsers[u.Username].Add(u.leagueId);
+                            allUsers.Add(keyTuple, leagueIds);
+                            allUsers[keyTuple].Add(u.leagueId);
                         }
                         
                     }
-                    foreach(KeyValuePair<string, List<int>> kvp in allUsers)
+                    foreach(KeyValuePair<Tuple<string, int>, List<int>> kvp in allUsers)
                     {
                         if (!kvp.Value.Contains(leagueId)){
                             ReturnUser u2 = new ReturnUser();
-                            u2.Username = kvp.Key;
+                            u2.Username = kvp.Key.Item1;
+                            u2.UserId = kvp.Key.Item2;
                             inviteUsers.Add(u2);
                         }
                     }
