@@ -111,6 +111,7 @@ export default {
   color: #184d47;
 }
 
+
 #username,
 #password,
 #confirmPassword {
@@ -126,7 +127,7 @@ export default {
   background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
-  /* text-shadow: black 5px 5px 5px; */
+  text-shadow: black 5px 5px 5px;
   color: white;
   font-size: x-large;
   display: flex;
