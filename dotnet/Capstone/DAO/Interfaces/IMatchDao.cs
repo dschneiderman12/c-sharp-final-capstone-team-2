@@ -11,7 +11,7 @@ namespace Capstone.DAO
         public Match GetMatch(int matchId);
         public Match CreateMatch(Match match);
         public List<User> GetUsersByLeague(int LeagueId);
-        public void SetTeeTimeForUser(UserMatch userMatch);        
+              
         public List<Match> GetMatchesByLeagueId(int leagueId);
 
     }

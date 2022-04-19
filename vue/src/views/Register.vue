@@ -90,7 +90,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+input{style:none}
+
 #register > form > h1 {
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
@@ -114,6 +116,10 @@ export default {
   /* this line adds space between items on sign in form */
 
   width: 85%;
+}
+  #register > form > label:nth-child(2){display:none}
+sr-only{
+  display:none;
 }
 .btn {
   width: 30%

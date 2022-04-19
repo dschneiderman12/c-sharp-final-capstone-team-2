@@ -82,8 +82,8 @@ const router = new Router({
       }
     },
     {
-      path:"/Match",
-      name:"",
+      path:"/Match/:id",
+      name:"matchInfo",
       component: MatchInfo, 
       meta:{
         requiresAuth:false

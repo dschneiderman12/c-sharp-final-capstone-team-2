@@ -3,8 +3,8 @@
     <div>
     <div id="nav">
       <div id="left-header">
-        <img src="@/images/Image from iOS.png" alt="templogo" />
-        "stuff about golf and stuff"
+        <img src="@/images/Image from iOS.png" alt="" />
+        
       </div>
       <div class="nav-link">
         <router-link class="homeLink" v-bind:to="{ name: 'home' }"
@@ -49,7 +49,7 @@ export default {
 
 
 #nav > div > img {
-  width: 30vh;
+  width: 35vh;
   /* margin-right: 80%; */
 }
 #nav {
@@ -82,15 +82,17 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
 #left-header {
   color: #184d47;
   font-weight: bolder;
+  width:10vw;
 }
 
 #nav > div > a {
   /* this selects all of the navigation links */
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
+  
   text-decoration: none;
   font-weight: bold;
-  text-shadow: darkslateblue 5px 5px 5px;
+  text-shadow: rgb(0, 0, 0) 5px 5px 5px;
   color: white;
   font-size: x-large;
   /* -webkit-text-stroke-width: 1px;
@@ -98,6 +100,8 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
 
   margin-right: 5px;
   padding: 10px;
+  padding-top:0;
+  padding-bottom:0;
   border-radius: 8px;
 }
 #page-body {
@@ -121,6 +125,7 @@ flex-direction: column;
 justify-content:space-between;
 
 }
+
 #footer{
  
 
@@ -129,4 +134,5 @@ background: rgb(24,77,71);
 height: 8%;
 
 }
+
 </style>
