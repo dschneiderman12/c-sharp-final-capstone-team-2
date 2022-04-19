@@ -23,6 +23,7 @@
 </template>
 
 <script>
+
 import LeagueService from "../services/LeagueService.js";
 export default {
   name: "League-List",
@@ -41,6 +42,7 @@ export default {
       .catch((error) => {
         this.handleErrorResponse(error, "creating");
       });
+   
   },
 
   methods: {
@@ -62,6 +64,7 @@ export default {
       console.log(this.errorMsg);
     },
   },
+  
 };
 </script>
 
