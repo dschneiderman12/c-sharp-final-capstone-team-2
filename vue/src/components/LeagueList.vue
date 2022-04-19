@@ -6,7 +6,7 @@
       </div>
     <div id="league-list" v-for="league in leagues" :key="league.id">
       
-      <div id="league-names"> 
+      <div id="league-names" class = "grow"> 
         <router-link :to="{ path: '/league/' + league.leagueId }">
       
         {{ league.leagueName }}
@@ -78,5 +78,6 @@ export default {
   );
   filter: drop-shadow(3px 3px 3px black);
 }
+
 </style>
 
