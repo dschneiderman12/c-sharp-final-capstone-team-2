@@ -1,10 +1,10 @@
 <template>
 <div>
     <div>
-    <h2>Match Name: {{match.matchName}}</h2> 
-    
+    <h2 v-on:created="populateLeague()">Match Name: {{match.matchName}}</h2> 
+    <p>{{league.leagueId}}</p>
 
-    <tee-assignment-form/>
+    <tee-assignment-form v-if="league.organizerId === $store.state.user.userId"/>
     </div>
 </div>    
 </template>
@@ -28,21 +28,25 @@ export default {
         organizerId: ""
       },
         errorMsg:"",
+        clicker:""
       };
 
   },created() {
     MatchService.getMatch(this.$route.params.id)
       .then((response) => {
         this.match = response.data;
-      })
-      .catch((error) => {
-        this.handleErrorResponse(error, "gettingcurrentleague"); 
-      });
-    LeagueService.getCurrentLeague(this.match.leagueId).
-    then((response) => {
+         LeagueService.getCurrentLeague(this.match.leagueId)
+         .then((response) => {
       this.league = response.data;
     })
     .catch((error) => {
+        this.handleErrorResponse(error, "gettingcurrentleague"); 
+      });
+
+
+
+      })
+      .catch((error) => {
         this.handleErrorResponse(error, "gettingcurrentleague"); 
       });
   },
