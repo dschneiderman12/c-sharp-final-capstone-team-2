@@ -15,15 +15,26 @@
       <h1>League Invitations</h1>
     </div>
     <invites-pending />
+    <div id="dashboard-flex">
+    <div id ="upcoming">
+      <h1>Upcoming Matches</h1>
+      <user-matches/>  
+    </div>
+    <div id= "AddCourse">
+      <course-form/>
+    </div>
+    </div>
   </div>
 </template>
 
 <script>
 import InvitesPending from "../components/InvitesPending.vue";
 import LeagueList from "../components/LeagueList.vue";
+import UserMatches from "../components/UserMatchList.vue";
+import CourseForm from "../components/CourseForm.vue";
 export default {
   name: "home",
-  components: { LeagueList, InvitesPending },
+  components: { LeagueList, InvitesPending, UserMatches, CourseForm},
 };
 </script>
 <style scoped>
@@ -67,5 +78,9 @@ h1 {
 #league-info > div {
   display: flex;
   justify-content: flex-end;
+}
+.dashboard-flex{
+  display: flex;
+
 }
 </style>
