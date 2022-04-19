@@ -21,6 +21,12 @@ export default {
     }, 
     getMatch(matchId){
         return axios.get(`/match/info/${matchId}`)
+<<<<<<< HEAD
+=======
+    },
+    getUserMatchesHomePage(userId){
+        return axios.get(`/userMatch/list/${userId}`)
+>>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
     }
 
 }
