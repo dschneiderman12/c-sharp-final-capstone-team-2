@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     [Route("userMatch")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class UserMatchController : ControllerBase
     {
         private IUserMatchDao userMatchDao;

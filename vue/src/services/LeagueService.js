@@ -18,9 +18,7 @@ export default {
   //Don't think we will need this anymore in this service
   addUserToLeague(userId, league) {
     return axios.post(`/League/invite/user/${userId}`, league)
-  },
-
- 
+  }, 
  
   getUsersByLeague(leagueId) {
     return axios.get(`/match/user/${leagueId}`)

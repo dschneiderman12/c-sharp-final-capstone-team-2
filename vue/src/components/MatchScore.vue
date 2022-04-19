@@ -33,7 +33,7 @@
           id="score"
           type="number"
           min="-30"
-          max="100"
+          max="80"
           v-model.number="userMatch.score"
         />
       </div>

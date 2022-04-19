@@ -58,7 +58,6 @@ namespace Capstone.Controllers
             }
         }
 
-<<<<<<< HEAD
         [HttpGet("/courses")]
         public ActionResult<List<Course>> GetAllCourses()
         {
@@ -86,10 +85,6 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-=======
-        
-        
->>>>>>> 3bc3c64ff45a75e1fae85725ef0f03824028b237
     }
 }
 
