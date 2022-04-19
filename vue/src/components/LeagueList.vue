@@ -1,9 +1,12 @@
 <template>
   <div id="league-board">
     <div id="league-list" v-for="league in leagues" :key="league.id">
-      <router-link :to="{ path: '/league/' + league.leagueId }">
+      <div id="league-names"> 
+        <router-link :to="{ path: '/league/' + league.leagueId }">
+      
         {{ league.leagueName }}
-      </router-link>
+      
+      </router-link> </div>
       <!-- Commenting out - probably don't need here, just click link to league to get these details
       <p class="course-name">{{ league.leagueCourse.courseName }}</p>
       <p>
@@ -61,8 +64,17 @@ export default {
   color: white;
   display: flex;
   flex-direction: column;
+  ;
+  
 }
 #league-board {
   width: 90%;
   background: #184d47;
+
 }
+#league-names{
+  text-decoration: none;
+  background: yellow;
+}
+#league-names > a{background: #184d47;}
+

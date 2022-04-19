@@ -89,5 +89,40 @@ export default {
 #page-body > div:nth-child(1) {
   width: 90%;
 }
+#league-title > h1 {
+  filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+#league-info > h3, 
+#page-body > div:nth-child(1) > div:nth-child(4) > form > h3,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(1) > label,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(2) > label {
+ width:35%;
+  background-color: rgb(24, 77, 71);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  padding-left: 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  filter: drop-shadow(3px 3px 3px black);
+}
+#user-list,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(1) > select,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(2) > select,
+#page-body > div:nth-child(1) > div:nth-child(5) > form > div:nth-child(3) {
+ filter: drop-shadow(3px 3px 3px black);
+  text-shadow: rgb(90, 87, 87) 3px 3px 3px;
+}
 </style>
 

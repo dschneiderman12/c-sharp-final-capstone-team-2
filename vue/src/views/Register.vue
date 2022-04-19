@@ -91,6 +91,19 @@ export default {
 </script>
 
 <style>
+#register > form > h1 {
+  filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 3px;
+}
 #register > form {
   /* this controls the properties of the form inside the sign in box */
 
@@ -104,5 +117,23 @@ export default {
 }
 .btn {
   width: 30%
+}
+#register > form > label:nth-child(2), #register > form > label:nth-child(4) {
+ width:35%;
+  background-color: rgb(24, 77, 71);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  padding-left: 5px;
+  border-radius: 3px;
+}
+
+#register > form {
+  filter: drop-shadow(3px 3px 3px black);
+  text-shadow: rgb(90, 87, 87) 3px 3px 3px;
+}
+#register > form > a {
+  filter: none;
+  text-shadow:none;
 }
 </style>
