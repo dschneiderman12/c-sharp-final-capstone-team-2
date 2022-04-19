@@ -5,7 +5,10 @@
     </div>
 
     <div id="league-info">
-      <h2>Course Name: {{ league.leagueCourse.courseName }}</h2>
+      <h3>
+        Course:
+      <router-link :to="{path: '/course/'+league.leagueCourse.courseId} " text-decoration="none">{{ league.leagueCourse.courseName }}</router-link>
+      </h3>
       <h3>Organizer: {{ league.organizerName }}</h3>
 
       <!-- <h3>
@@ -37,6 +40,7 @@ export default {
         organizerId: "",
         leagueCourse: {
           courseName: "",
+          courseId: ""
         },
         organizerName: "",
       },

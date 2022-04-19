@@ -7,4 +7,10 @@ export default {
     getCourses() {
         return axios.get('/course')
       },
+    getCourseById(courseId){
+        return axios.get(`course/${courseId}`)
+    },
+    getLeaguesByCourseId(courseId){
+        return axios.get(`/course/leagues/${courseId}`)
+    }
 }
