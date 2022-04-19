@@ -25,7 +25,8 @@ CREATE TABLE users (
 )
 CREATE TABLE courses(
 	course_id int IDENTITY (1,1) NOT NULL,
-	course_name NVARCHAR(100) NOT NULL
+	course_name NVARCHAR(100) NOT NULL,
+	address NVARCHAR(100) NOT NULL
 	CONSTRAINT [pk_courseId] PRIMARY KEY (course_id)
 
 )
@@ -84,9 +85,9 @@ CREATE TABLE invites (
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-INSERT INTO courses (course_name) VALUES ('TEST COURSE 1');
+INSERT INTO courses (course_name, address) VALUES ('TEST COURSE 1', '1234 Test Lane Cleveland, OH');
 INSERT INTO leagues(league_name,organizer_id,course_id) VALUES ('TEST LEAGUE 1', 2, 1);
-INSERT INTO courses (course_name) VALUES ('Wildcard Golf National Challenge');
+INSERT INTO courses (course_name, address) VALUES ('Wildcard Golf National Challenge', '1234 Test Lane Cleveland, OH');
 INSERT INTO leagues (league_name,organizer_id,course_id) VALUES ('All Users',2,2);
 INSERT INTO invites (invite_status, to_user, to_league) VALUES ('pending', 1, 1); 
 -- UNCOMMENT AND RUN LINES 82-86 AFTER CREATING 3rd USER PER INSTRUCTIONS ON MERGE REQUEST
