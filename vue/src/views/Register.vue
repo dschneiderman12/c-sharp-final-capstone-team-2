@@ -91,7 +91,9 @@ export default {
 </script>
 
 <style scoped>
-input{style:none}
+input {
+  style: none;
+}
 
 #register > form > h1 {
   filter: drop-shadow(3px 3px 3px black);
@@ -117,15 +119,18 @@ input{style:none}
 
   width: 85%;
 }
-  #register > form > label:nth-child(2){display:none}
-sr-only{
-  display:none;
+#register > form > label:nth-child(2) {
+  display: none;
+}
+sr-only {
+  display: none;
 }
 .btn {
-  width: 30%
+  width: 30%;
 }
-#register > form > label:nth-child(2), #register > form > label:nth-child(4) {
- width:35%;
+#register > form > label:nth-child(2),
+#register > form > label:nth-child(4) {
+  width: 35%;
   background-color: rgb(24, 77, 71);
   margin-top: 5px;
   margin-bottom: 5px;
@@ -140,8 +145,6 @@ sr-only{
 }
 #register > form > a {
   filter: none;
-  text-shadow:none;
+  text-shadow: none;
 }
-
-
 </style>

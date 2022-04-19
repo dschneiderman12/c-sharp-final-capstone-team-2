@@ -8,7 +8,7 @@
       placeholder="Search Map"
       v-model="courseSearch"
     />
-    
+
     <button v-on:click="locationToSearch()">Search</button>
     <button v-if="showButton === true" v-on:click="hideButton()">Hide</button>
     <div class="map">
@@ -39,14 +39,11 @@ export default {
       this.showMap = true;
       this.showButton = true;
       this.srcString = `https://www.google.com/maps/embed/v1/search?key=AIzaSyCMwjT48KCWWEad9HoL0IRtRAEG2rB96os&q=golf+course+${this.courseSearch}`;
-      
     },
-    hideButton(){
+    hideButton() {
       this.showMap = false;
       this.showButton = false;
-    
-    }
-    
+    },
   },
 };
 </script>
@@ -55,7 +52,7 @@ export default {
 .search-map {
   /* width: 100%; */
   height: 30vh;
-  width:60vw;
+  width: 60vw;
 }
 /* #map-block {
   
@@ -82,17 +79,17 @@ h3 {
   /* margin: 30px; */
   width: 60%;
   filter: drop-shadow(5px 5px 5px black);
-  display:flex;
+  display: flex;
   margin-top: 20px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   /* margin-left:30%; */
   /* justify-content: space-around; */
   /* padding: 4%;  */
   padding-top: 2%;
-  height:80%;
+  height: 80%;
 }
-button{
-  background-color: #184D47 ;
+button {
+  background-color: #184d47;
   color: white;
 }
 </style>
