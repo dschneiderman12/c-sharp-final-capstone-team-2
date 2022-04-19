@@ -90,7 +90,6 @@ namespace Capstone.DAO
             }
         }
 
-
         public List<League> GetLeaguesByUserId(int userId)
         {
             List<League> userLeagues = new List<League>();
@@ -107,6 +106,7 @@ namespace Capstone.DAO
                                             JOIN user_league on leagues.league_id = user_league.league_id
                                             WHERE user_id = @user_id;", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
+
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -115,14 +115,12 @@ namespace Capstone.DAO
                     }
                 }
                 return userLeagues;
-
             }
             catch (SqlException)
             {
                 throw;
             }
         }
-
 
         public List<Course> GetCourses()
         {
@@ -144,7 +142,6 @@ namespace Capstone.DAO
                     }
                 }
                 return courseList;
-
             }
             catch (SqlException)
             {
@@ -152,6 +149,37 @@ namespace Capstone.DAO
             }
         }
 
+        public List<LeagueScore> GetLeagueScores(int leagueId)
+        {
+            List<LeagueScore> leagueScores = new List<LeagueScore>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, SUM(score) AS total_score
+                                                FROM user_match
+                                                JOIN users ON users.user_id = user_match.user_id
+                                                JOIN matches ON matches.match_id = user_match.match_id
+                                                WHERE league_id = @league_id AND score IS NOT NULL
+                                                GROUP BY user_match.user_id, username
+                                                ORDER BY total_score ASC", conn);
+                    cmd.Parameters.AddWithValue("@league_id", leagueId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        LeagueScore leagueScore = createLeagueScoreFromReader(reader);
+                        leagueScores.Add(leagueScore);                        
+                    }
+                    return leagueScores;
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
 
         private League createLeagueFromReader(SqlDataReader reader)
         {
@@ -167,6 +195,17 @@ namespace Capstone.DAO
 
             league.LeagueCourse = course;
             return league;
+        }
+
+        private LeagueScore createLeagueScoreFromReader(SqlDataReader reader)
+        {
+            LeagueScore leagueScore = new LeagueScore();
+
+            leagueScore.UserId = Convert.ToInt32(reader["user_id"]);
+            leagueScore.Username = Convert.ToString(reader["username"]);
+            leagueScore.TotalScore = Convert.ToInt32(reader["total_score"]);
+
+            return leagueScore;
         }
     }
 }

@@ -38,5 +38,25 @@ namespace Capstone.Controllers
             }
 
         }
+        [HttpGet()]
+        public ActionResult<List<Course>> GetAllCourses()
+        {
+            List<Course> allCourses = courseDao.GetCourses();
+            if (allCourses != null)
+            {
+                return allCourses;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        [HttpGet("{courseId}")]
+        public ActionResult<Course> GetCourseById(int courseId)
+        {
+
+
+            return StatusCode(500);
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace Capstone.DAO
         public void AddUserLeagueTable(int userId, int leagueId);
         public List<League> GetLeaguesByUserId(int userId);
         public List<Course> GetCourses();
+        public List<LeagueScore> GetLeagueScores(int leagueId);
     }
 }

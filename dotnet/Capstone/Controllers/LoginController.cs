@@ -8,6 +8,7 @@ namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    
     public class LoginController : ControllerBase
     {
         private readonly ITokenGenerator tokenGenerator;
