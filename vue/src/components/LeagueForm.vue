@@ -2,7 +2,7 @@
   <div>
     <form v-on:submit.prevent="submitForm()">
       <div id="newLeague"><h2>Create a new League</h2></div>
-      <div id = leaguetext>
+      <div id = pagetext>
         <div id=leagueName>
         League Name
         </div>

@@ -155,7 +155,7 @@ export default {
   position:relative; 
   margin-bottom:45px; 
 }
-input         {
+#username, #password         {
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;

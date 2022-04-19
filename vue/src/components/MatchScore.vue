@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form v-on:submit.prevent="submitScore()">
+    <form id="submit-score-form" v-on:submit.prevent="submitScore()">
       <div>
         <h3>Update scores</h3>
         <label>Select user:</label>
@@ -120,4 +120,5 @@ export default {
 </script>
 
 <style>
+
 </style>
