@@ -24,15 +24,10 @@ namespace Capstone.Controllers
         public ActionResult TeeTimeForUser(UserMatch userMatch)
         {
             userMatchDao.SetTeeTimeForUser(userMatch);
-<<<<<<< HEAD
-            return Ok();
-
-        }
-
-=======
+            //return Ok();
             return Created($"userMatch/{userMatch}", userMatch);
-
         }
+
         [HttpGet("list/{userId}")]
         public ActionResult<List<UserMatch>>  GetUserMatchesForUser(int userId)
         {
@@ -46,7 +41,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
->>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
+
         [HttpGet("{leagueId}")]
         public ActionResult<List<UserMatch>> UserMatchesInLeague(int leagueId)
         {

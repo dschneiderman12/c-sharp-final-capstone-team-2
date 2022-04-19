@@ -37,6 +37,7 @@ namespace Capstone.Controllers
                 return StatusCode(500);
             }
         }
+
         [HttpGet("user/{leagueId}")]
         public ActionResult<List<User>> GetUsersByLeague(int leagueId)
         {
@@ -50,8 +51,8 @@ namespace Capstone.Controllers
             {
                 return NotFound();
             }
-
         }
+
         [HttpGet("{leagueId}")]
         public ActionResult<List<Match>> GetMatchesByLeagueId(int leagueId)
         {

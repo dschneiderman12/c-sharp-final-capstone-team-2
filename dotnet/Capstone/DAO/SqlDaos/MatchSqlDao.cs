@@ -70,6 +70,7 @@ namespace Capstone.DAO
                 throw;
             }
         }
+
         public List<User> GetUsersByLeague(int LeagueId)
         {
             List<User> usersInLeague = new List<User>();
@@ -129,12 +130,8 @@ namespace Capstone.DAO
             {
                 throw;
             }
-
-
         }    
-
-       
-
+             
 
         private Match createMatchFromReader(SqlDataReader reader)
         {
@@ -145,10 +142,8 @@ namespace Capstone.DAO
             match.LeagueId = Convert.ToInt32(reader["league_id"]);
             match.DateAndTime = Convert.ToString(reader["start_time"]);
             
-
             return match;
         }
         
-
     }
 }

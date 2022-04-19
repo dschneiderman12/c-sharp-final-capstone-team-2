@@ -28,7 +28,7 @@ namespace Capstone.Controllers
             leagueDao.AddUserLeagueTable(league.OrganizerId, addedLeague.LeagueId);
             return Created($"/league/{addedLeague.LeagueId}", addedLeague);
 
-            // Need to set up so organizer is automatically entered into league
+            // Need to set up so organizer is automatically entered into league - DONE
         }
         
 
@@ -45,6 +45,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+
         [HttpGet("user/{userId}")]        
         public ActionResult<List<League>> GetLeaguesByUserId(int userId)
         {
@@ -73,7 +74,6 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-
         
     }
 }
