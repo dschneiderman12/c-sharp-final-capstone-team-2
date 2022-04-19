@@ -37,7 +37,7 @@
         />
         <span class="highlight"> </span>
         <span class="bar"> </span>
-        <label>password</label>
+        <label>Password</label>
       </div>
 
       <button class="btn" type="submit">Sign in</button>
@@ -85,12 +85,17 @@ export default {
 };
 </script>
 <style>
-#login > form {
-  /* this controls the properties of the form inside the sign in box */
-
+#login {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
+}
+#login > form {
+  /* this controls the properties of the form inside the sign in box */
+  filter: drop-shadow(3px 3px 3px black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   row-gap: 10px;
   /* this line adds space between items on sign in form */
 
@@ -104,7 +109,7 @@ export default {
   margin-top: 20px;
 }
 #login > form > h1 {
-  filter: drop-shadow(3px 3px 3px black);
+  
   background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
@@ -126,6 +131,16 @@ export default {
   padding-left: 5px;
   border-radius: 3px;
 }
+#login > form > div:nth-child(2) {
+  margin-top: 30px;
+}
+
+#login > form > div:nth-child(2) > label,
+#login > form > div:nth-child(3) > label {
+  color: #184d47;
+}
+
+
 /* 
 #login > form {
   filter: drop-shadow(3px 3px 3px black);

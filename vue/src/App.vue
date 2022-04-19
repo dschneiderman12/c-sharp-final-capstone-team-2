@@ -1,5 +1,8 @@
 <template>
+
   <div id="app">
+    
+
     <div>
     <div id="nav">
       <div id="left-header">
@@ -29,6 +32,9 @@
 </template>
 
 <script>
+
+
+
 import CourseLocator from "./components/CourseLocator.vue";
 
 export default {
@@ -36,7 +42,9 @@ export default {
   components: {
     CourseLocator,
   },
+  
 };
+
 </script>
 
 
@@ -45,7 +53,19 @@ export default {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-
+.preloader {
+  align-items: center;
+  background: rgb(23, 22, 22);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.3s linear;
+  width: 100%;
+  z-index: 9999;
+}
 
 
 #nav > div > img {

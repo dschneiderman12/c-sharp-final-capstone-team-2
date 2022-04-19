@@ -1,13 +1,18 @@
 <template>
   <div id="league-board">
     <div id="league-div">
-      <div id="league-list" v-for="league in leagues" :key="league.id">
-        <div id="league-names">
-          <router-link :to="{ path: '/league/' + league.leagueId }">
-            {{ league.leagueName }}
-          </router-link>
-        </div>
-        <!-- Commenting out - probably don't need here, just click link to league to get these details
+      <div class= "loading" v-if="isLoading">
+          <img src= "../images/spinner.svg"/>
+      </div>
+    <div id="league-list" v-for="league in leagues" :key="league.id">
+      
+      <div id="league-names" class = "grow"> 
+        <router-link :to="{ path: '/league/' + league.leagueId }">
+      
+        {{ league.leagueName }}
+      
+      </router-link> </div>
+      <!-- Commenting out - probably don't need here, just click link to league to get these details
       <p class="course-name">{{ league.leagueCourse.courseName }}</p>
       <p>
         {{ league.organizerName }}
@@ -24,12 +29,14 @@ export default {
   data() {
     return {
       leagues: [],
+      isLoading: true
     };
   },
   created() {
     LeagueService.getLeagues(this.$store.state.user.userId)
       .then((response) => {
         this.leagues = response.data;
+        this.isLoading= false;
       })
       .catch((error) => {
         this.handleErrorResponse(error, "creating");
@@ -71,5 +78,6 @@ export default {
   );
   filter: drop-shadow(3px 3px 3px black);
 }
+
 </style>
 

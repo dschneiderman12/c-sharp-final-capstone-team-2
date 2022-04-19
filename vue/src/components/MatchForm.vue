@@ -11,7 +11,7 @@
         />
       </div>
       <div>
-        enter a startTime
+        Please Choose a Start Time
         <input
           id="starttime"
           type="datetime-local"
@@ -87,4 +87,7 @@ export default {
 };
 </script>
 <style scoped>
+#match-form {
+  row-gap: 20px;
+}
 </style>
