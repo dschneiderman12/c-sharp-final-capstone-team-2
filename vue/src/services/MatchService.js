@@ -21,6 +21,9 @@ export default {
     }, 
     getMatch(matchId){
         return axios.get(`/match/info/${matchId}`)
+    },
+    getUserMatchesHomePage(userId){
+        return axios.get(`/userMatch/list/${userId}`)
     }
 
 }

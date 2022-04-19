@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <table id = "league-matches">
             <thead>
                 <tr>
@@ -16,7 +17,7 @@
                         {{match.matchName}}
                         </router-link>
                     </td>
-                    <td >{{match.dateAndTime}}</td>
+                    <td >{{match.teeTime}}</td>
                 </tr>
             </tbody>
         </table>
@@ -27,15 +28,15 @@
 <script>
 import MatchService from '../services/MatchService.js';
 export default {
-name: "league-matches",
-data(){
-    
-    return{
-        matches: [],
-       //dateAndTimes : []
-    }
-},created(){
-    MatchService.getMatches(this.$route.params.id).then((response)=>{
+    name: "user_matches",
+    data(){
+        return{
+            matches: [],
+        }
+
+    },
+    created(){
+    MatchService.getUserMatchesHomePage(this.$store.state.user.userId).then((response)=>{
         this.matches = response.data;
         
         
@@ -53,7 +54,6 @@ data(){
         this.handleErrorResponse(error, "creating"); //need to add the method
       });
 }
-
 }
 </script>
 

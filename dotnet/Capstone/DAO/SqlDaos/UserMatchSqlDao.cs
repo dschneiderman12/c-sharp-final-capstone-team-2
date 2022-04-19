@@ -19,6 +19,11 @@ namespace Capstone.DAO
 
         public void SetTeeTimeForUser(UserMatch userMatch)
         {
+<<<<<<< HEAD
+=======
+            DateTime teeTime = DateTime.Parse(userMatch.TeeTime);
+
+>>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
 
             try
             {
@@ -29,7 +34,11 @@ namespace Capstone.DAO
                                                 VALUES(@user_id, @match_id, @tee_time); ", conn);
                     cmd.Parameters.AddWithValue("@match_id", userMatch.MatchId);
                     cmd.Parameters.AddWithValue("@user_id", userMatch.UserId);
+<<<<<<< HEAD
                     cmd.Parameters.AddWithValue("@tee_time", userMatch.TeeTime);
+=======
+                    cmd.Parameters.AddWithValue("@tee_time", teeTime);
+>>>>>>> 26b1b4afaba4993f5a3b977693f7728663f6c261
 
                     cmd.ExecuteNonQuery();
                 }
@@ -74,6 +83,36 @@ namespace Capstone.DAO
                 throw;
             }
         }
+        public List<UserMatch> GetUserMatchesUpcoming(int userId)
+        {
+            List<UserMatch> userMatchesInLeague = new List<UserMatch>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, user_match.match_id, 
+                                        score, tee_time, league_id, match_name
+                                        FROM user_match
+                                        JOIN matches ON matches.match_id = user_match.match_id
+                                        JOIN users ON users.user_id = user_match.user_id
+                                        WHERE user_match.user_id = @user_id AND score IS NULL", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        UserMatch userMatch = createUserMatchFromReader(reader);
+                        userMatchesInLeague.Add(userMatch);
+                    }
+                }
+                return userMatchesInLeague;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
 
         public void InsertMatchScore(UserMatch userMatch)
         {
@@ -108,7 +147,7 @@ namespace Capstone.DAO
             userMatch.MatchName = Convert.ToString(reader["match_name"]);
             userMatch.UserId = Convert.ToInt32(reader["user_id"]);
             userMatch.Username = Convert.ToString(reader["username"]);
-            userMatch.TeeTime = Convert.ToDateTime(reader["tee_time"]);
+            userMatch.TeeTime = Convert.ToString(reader["tee_time"]);
             //userMatch.Score = Convert.ToInt32(reader["score"]);
 
             return userMatch;

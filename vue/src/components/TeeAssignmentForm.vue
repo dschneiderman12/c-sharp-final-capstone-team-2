@@ -1,70 +1,78 @@
 <template>
   <div>
-    <!-- <form v-on:submit.prevent="submitForm()"> -->
-    <div><h2>Create a new teetime</h2></div>
-
-    <div>
-      enter a userId
-      <input
-        id="userid"
+   <form v-on:submit.prevent="submitForm()"> 
+    <h2>Create a New Tee-Time</h2>
+     <label> Select A User </label>
+      <select
+        id="userList"
         type="text"
-        class="form-control"
-        v-model="userMatch.userId"
-      />
+        
+        v-model.number="userMatch.userId">
+        <option v-for="user in userList" v-bind:key="user.userId" v-bind:value="user.userId">
+          {{user.username}}
+        </option>
+      </select>
 
       <label>enter a time:</label>
 
       <input
         id="teetime"
-        type="text"
+        type="datetime-local"
         class="form-control"
         v-model="userMatch.teeTime"
       />
-    </div>
+    
     <button type="submit" class="btn-submit">Submit</button>
-    <!-- </form> -->
+    </form> 
   </div>
 </template>
 <script>
-import  LeagueService  from '../services/LeagueService';
-
+import  LeagueService  from '../services/LeagueService.js';
+import MatchService from '../services/MatchService.js';
 export default {
     name: "TeeAssignmentForm",
     data() {
         return{
             
-                userlist: [],
+                userList: [],
                 userMatch: {
                     matchId: "",
                     userId: "",
                     teeTime: "",
 
                 },
+                match:{
+                  leagueId: ""
+                },
+
                     errorMsg: "",
         }
         
     },  
  
     created() {
-        
-    LeagueService.getUsersByLeague(this.$route.params.id)
-  .then((response) => {
-        this.userlist = response.data;
-      })
-      .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
-      });
-
+        MatchService.getMatch(this.$route.params.id)
+        .then((response) => {
+          this.match = response.data;
+          LeagueService.getUsersByLeague(this.match.leagueId)
+          .then((response) => {
+            this.userList = response.data;
+          })
+        })
 
   },
 
     methods:{
         submitForm() {
-
-            LeagueService.setTeetimeForUser(this.userMatch)
+            const newUm = {
+              matchId: Number(this.$route.params.id),
+              userId: this.userMatch.userId,
+              teeTime: String(this.userMatch.teeTime)
+            }
+            LeagueService.setTeetimeForUser(newUm)
             .then(response => {
-        if (response.status === 201) { // 201 = "Created"
-          this.userMatch = { matchId: '', userId: '', teeTime:'' };
+        if (response.status === 201) { // 2010 = "Created"
+            alert("TeeTime set.");
         }
       })
         
