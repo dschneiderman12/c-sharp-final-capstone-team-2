@@ -40,6 +40,13 @@ export default {
 };
 </script>
 <style scoped>
+.grow { 
+transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+transform: scale(1.1); 
+}
 #page-body > div.home {
   background-color: rgba(209, 255, 209, 0.5);
   /* border-color: rgb(43, 126, 43); */
@@ -120,7 +127,7 @@ font-size:large;
 color:#184D47;
 
  filter: drop-shadow(3px 3px 3px black);
-
+text-transform: capitalize;
 
 }
 #inviteHead{
@@ -144,9 +151,6 @@ margin-bottom: 10px;
   background-color: rgba(24, 77, 71, .5);
   margin:20px;
  
-}
-#league-matches > tbody > tr > td:nth-child(1) > a{
-  background: yellow;
 }
 
 </style>
