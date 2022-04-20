@@ -3,7 +3,6 @@
     <div id="league-div">
       <div class="loading" v-if="isLoading">
         <img src="../images/spinner.svg" />
-<<<<<<< HEAD
       </div>
       <div id="league-list" v-for="league in leagues" :key="league.id">
         <div id="league-names" class="grow">
@@ -12,21 +11,6 @@
           </router-link>
         </div>
       </div>
-=======
-      </div>
-      <div id="league-list" v-for="league in leagues" :key="league.id">
-        <div id="league-names" class="grow">
-          <router-link :to="{ path: '/league/' + league.leagueId }">
-            {{ league.leagueName }}
-          </router-link>
-        </div>
-        <!-- Commenting out - probably don't need here, just click link to league to get these details
-      <p class="course-name">{{ league.leagueCourse.courseName }}</p>
-      <p>
-        {{ league.organizerName }}
-      </p>
-      --></div>
->>>>>>> 3fd77b9bd44d1eae865f792e865537203f834db1
     </div>
   </div>
 </template>
