@@ -1,10 +1,35 @@
 <template>
-  <div>
+  <div id="add-course-page">
     <form v-on:submit.prevent="submitForm()">
+<<<<<<< HEAD
       <label for="course-name">Course Name:</label>
       <input placeholder="course name" type="text" v-model="course.courseName" />
       <label for="course-name">Street Address:</label>
       <input placeholder="street address" type="text" v-model="course.address" />
+=======
+      <div class="group">
+      <input 
+      type="text"
+      id="course-name" 
+      v-model="course.courseName"
+      required
+      />
+      <span class="highlight"> </span>
+      <span class="bar"> </span>
+      <label>Course Name</label>
+      </div>
+      <div class="group">
+      <input 
+      type="text" 
+      id="course-address"
+      v-model="course.address" 
+      required
+      />
+      <span class="highlight"> </span>
+      <span class="bar"> </span>
+      <label>Street Address</label>
+      </div>
+>>>>>>> 6890aa776f9bac0d79b84642d32345e73d1b327c
       <button type="submit" class="btn-submit">Add Course</button>
     </form>
   </div>
@@ -71,4 +96,145 @@ export default {
 </script>
 
 <style>
+#add-course-page > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#add-course-header > h1 {
+     background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  
+  margin-bottom: 30px;
+  filter: drop-shadow(3px 3px 3px black);
+}
+
+#page-body > div:nth-child(1)
+.group {
+  position: relative;
+  margin-bottom: 45px;
+}
+#course-name,
+#course-address {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+#page-body > div:nth-child(1) > div > div > form > div:nth-child(1) > label,
+#page-body > div:nth-child(1) > div > div > form > div:nth-child(2) > label {
+  color: #184d47;
+}
+input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+label {
+  color: #184d47;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label,
+input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264ae;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+
+/* active state */
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
 </style>

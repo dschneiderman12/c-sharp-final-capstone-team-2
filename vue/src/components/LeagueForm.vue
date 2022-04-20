@@ -1,47 +1,40 @@
 <template>
   <div>
     <form v-on:submit.prevent="submitForm()">
-      <div id="newLeague"><h2>Create a new League</h2></div>
-      <div id = pagetext>
-        <div id=leagueName>
-        League Name
-        </div>
-        
+      <h2 id="newLeague">Create a new League</h2>
+
+      <div class="group">
         <input
-          id="league-name"
           type="text"
+          id="league-name"
           class="form-control"
           v-model="league.leagueName"
+          required
         />
-        
-
-<!-- 
+        <span class="highlight"> </span>
+        <span class="bar"> </span>
+        <label>League Name</label>
+      </div>
+      <!-- 
         <label id = selectacourse>
           Choose a course:</label> -->
 
-Choose a Course
-        
-        <div class = "this">
+      Choose a Course
+
+      <div class="this">
         <select id="course-name" v-model.number="league.leagueCourse.courseId">
-          <option class="select"
+          <option
+            class="select"
             v-for="course in courses"
             v-bind:key="course.courseId"
             v-bind:value="course.courseId"
           >
-        
-            
             {{ course.courseName }}
-        
           </option>
         </select>
-        <button v-on:click="routeToCourseForm()">Don't see your course?</button>
-</div>
-
-
-
-
-
+        <button id="no-course" v-on:click="routeToCourseForm()">Don't see your course?</button>
       </div>
+
       <button type="submit" class="btn-submit">Submit</button>
     </form>
   </div>
@@ -49,7 +42,7 @@ Choose a Course
 
 <script>
 import LeagueService from "../services/LeagueService.js";
-import CourseService from "../services/CourseService.js"
+import CourseService from "../services/CourseService.js";
 export default {
   name: "league-form",
   data() {
@@ -120,44 +113,160 @@ export default {
       }
       console.log(this.errorMsg);
     },
+<<<<<<< HEAD
     routeToCourseForm(){
       this.$router.push(`/addCourse`)
 
     }
+=======
+    routeToCourseForm() {
+      this.$router.push(`/addCourse`);
+    },
+>>>>>>> 6890aa776f9bac0d79b84642d32345e73d1b327c
   },
 };
 </script>
 
 <style>
-#newLeague > h2 {
-  filter: drop-shadow(3px 3px 3px black);
+#newLeague {
+  /* filter: drop-shadow(3px 3px 3px black); */
   background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
   text-shadow: black 5px 5px 5px;
   color: white;
   font-size: x-large;
-  display: flex;
   justify-content: center;
+  display: flex;
   margin-bottom: 3px;
 }
-#pagetext {
-  display: flex;
-  flex-direction: column;
-  
-}
-#leagueName {
-  margin-top: 30px
-}
-
-#league-name {
+#newLeague {
   margin-bottom: 30px;
 }
-
+#pagetext > div.group > label {
+  color: #184d47;
+}
+#page-body > div:nth-child(1) > div > form > div.this {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
 #pagetext > div.this {
   margin-bottom: 30px;
 }
 #invite-form {
-  row-gap:20px
+  row-gap: 20px;
 }
+
+#pagetext > div.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+#no-course {
+  margin-bottom: 30px;
+}
+
+#page-body > div:nth-child(1) > div > form > div.group > label {
+  color: #184d47;
+}
+#league-name {
+  color: #184d47;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264ae;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+
+/* active state */
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
 </style>
