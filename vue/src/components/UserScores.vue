@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th>Match</th>
-          <th>Date and Tee Time</th>
+          <th>Date</th>
           <th>Score</th>
         </tr>
       </thead>

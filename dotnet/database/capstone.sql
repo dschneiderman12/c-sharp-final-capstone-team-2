@@ -61,6 +61,7 @@ CREATE TABLE user_match(
 	user_id int NOT NULL,
 	match_id int NOT NULL,
 	score int NULL,
+	par int NULL,
 	tee_time SMALLDATETIME NOT NULL
 	CONSTRAINT [pk_user_match] PRIMARY KEY (user_id, match_id),
 	CONSTRAINT [fk_user_id_match] FOREIGN KEY (user_id) REFERENCES users(user_id),

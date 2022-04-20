@@ -4,22 +4,22 @@
       <thead>
         <tr>
           <th>Match Name</th>
-          <th>Date And Start Time</th>
+          <th>Date</th>
           <th>Start Time</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="match in matches" v-bind:key="match.matchId">
+        <tr v-for="match in matchInfo" v-bind:key="match.matchId">
           <td>
             <router-link :to="{ path: '/match/' + match.matchId }">
-              {{ match.matchName }}
+              {{ match.name }}
             </router-link>
           </td>
-          <td>{{ match.dateAndTime }}</td>
+          <td>{{ match.date }}</td>
+          <td>{{ match.time }}</td>
         </tr>
       </tbody>
     </table>
-    
   </div>
 </template>
 
@@ -30,7 +30,13 @@ export default {
   data() {
     return {
       matches: [],
-      dateTimes: [],
+      matchInfo: [],
+      match: {
+        matchId: "",
+        name: "",
+        date: "",
+        time: "",
+      },
     };
   },
   created() {
@@ -38,12 +44,17 @@ export default {
       .then((response) => {
         this.matches = response.data;
         this.matches.forEach((item) => {
+          let newMatch = {};
+          newMatch.matchId = item.matchId;
+          newMatch.name = item.matchName;
           let fullDate = item.dateAndTime;
-          let date = new Date(fullDate).toDateString();
-          let time = new Date(fullDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-          this.dateTimes.push(date);
-          this.dateTimes.push(time);
-        })
+          newMatch.date = new Date(fullDate).toDateString();
+          newMatch.time = new Date(fullDate).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+          this.matchInfo.push(newMatch);
+        });
       })
       .catch((error) => {
         this.handleErrorResponse(error, "creating"); //need to add the method
