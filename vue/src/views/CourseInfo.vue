@@ -23,7 +23,7 @@
       <vue-weather
       v-if="showForecast == true"
     api-key="8967dc1398824eb30d8ee9b314182915"
-    units="uk"
+    units="us"
    v-bind:latitude="[geometry.lat]"
     v-bind:longitude="[geometry.lon]"
     />
@@ -63,7 +63,7 @@ export default {
       CourseService.getLeaguesByCourseId(this.course.courseId)
         .then((response) => {
           this.leagueList = response.data;
-          CourseService.getLatitudeAndLongitude(this.course.address.substr(this.course.address.length-5))
+          CourseService.getCoordinates(this.course.address.substr(this.course.address.length-5))
           .then((response) =>
           {
             this.geometry = response.data;
