@@ -80,7 +80,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   max-width: 100%;
   min-height: 100vh;
   background-blend-mode: overlay;
-  background: url("images/golfCourse1.jpg"),
+  background: url("images/Great_Waters_at_Reynolds_Lake_Oconee_-_Oct_2019.png"),
     linear-gradient(to bottom, #688884, #a79a7d);
   
   /* height: 500px; You must set a specified height */
