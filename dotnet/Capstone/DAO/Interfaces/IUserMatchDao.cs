@@ -8,7 +8,7 @@ namespace Capstone.DAO.Interfaces
 {
     public interface IUserMatchDao
     {
-        public List<UserMatch> GetUserMatchesForLeague(int leagueId);
+        public List<UserMatch> GetUserMatchesForMatch(int leagueId);
         public void InsertMatchScore(UserMatch userMatch);
         public void SetTeeTimeForUser(UserMatch userMatch);
         public List<UserMatch> GetUserMatchesUpcoming(int userId);

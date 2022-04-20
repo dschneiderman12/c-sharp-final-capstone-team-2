@@ -10,12 +10,7 @@
             {{ league.leagueName }}
           </router-link>
         </div>
-        <!-- Commenting out - probably don't need here, just click link to league to get these details
-      <p class="course-name">{{ league.leagueCourse.courseName }}</p>
-      <p>
-        {{ league.organizerName }}
-      </p>
-      --></div>
+      </div>
     </div>
   </div>
 </template>
