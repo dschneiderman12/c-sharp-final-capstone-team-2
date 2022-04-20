@@ -33,6 +33,7 @@
 
 <script>
 
+document.body.style.margin = 0;
 
 
 import CourseLocator from "./components/CourseLocator.vue";
