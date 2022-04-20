@@ -1,8 +1,9 @@
 <template>
   <div>
     <form id="match-form" v-on:submit.prevent="submitForm()">
+      <h2 id="setup">Set up a new match</h2>
       <div>
-        <h2>..... create a new match...please enter a title for your match</h2>
+      <h2 class="inputPrompt"> Enter a title for your new match </h2>
         <input
           id="match-name"
           type="text"
@@ -11,7 +12,9 @@
         />
       </div>
       <div>
-        Please Choose a Start Time
+        <h2 class="inputPrompt">
+        Please choose a start date and time
+        </h2>
         <input
           id="starttime"
           type="datetime-local"
@@ -88,6 +91,32 @@ export default {
 </script>
 <style scoped>
 #match-form {
-  row-gap: 20px;
+  background: rgba(189, 236, 162, 0.8);
+  border-radius: 3px;
+  padding: 20px;
+  margin: 20px;
+   filter: drop-shadow(black 3px 3px 3px);
+}
+.inputPrompt{
+  font-size: medium;
+  font-weight: medium;
+  
+  margin: 0%;
+}
+#starttime{
+  color:rgb(24, 77, 71);
+}
+#setup{
+  margin: 0;
+  font-weight: bolder;
+  border: 4px rgb(24, 77, 71) solid;
+  border-radius: 2px;
+  background: #e1fad4;
+  margin-bottom:5px;
+  padding: 2px;
+  padding-left: 1px;
+  display: flex;
+  justify-content: center;
+ 
 }
 </style>

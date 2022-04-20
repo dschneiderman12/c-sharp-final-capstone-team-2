@@ -77,6 +77,27 @@ export default {
   );
   filter: drop-shadow(3px 3px 3px black);
   width: 80%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
+#leagueNames{
+  text-decoration: none;
+  background-color: rgb(24, 77, 71);
+  border-radius: 40px;
+  text-shadow: black 1px 1px 1px;
+  color: rgb(226, 213, 184);;
+  font-weight: bolder;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(3px 3px 3px black);
+  width:300px;
+  margin:10px;
+/* text-transform: ca; */
+}
+#leagueNames:hover
+{  background-color: rgb(58, 124, 117);}
+
 </style>
 

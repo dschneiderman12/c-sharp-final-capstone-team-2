@@ -52,6 +52,7 @@ transition: all .2s ease-in-out;
 .grow:hover { 
 transform: scale(1.1); 
 }
+
 #page-body > div.home {
   background-color: rgba(209, 255, 209, 0.5);
   /* border-color: rgb(43, 126, 43); */
@@ -76,7 +77,7 @@ transform: scale(1.1);
   background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
-  text-shadow: black 5px 5px 5px;
+  /* text-shadow: black 5px 5px 5px; */
   color: white;
   font-size: x-large;
   display: flex;

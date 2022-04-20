@@ -34,7 +34,7 @@
 <script>
 
 document.body.style.margin = 0;
-document.body.style.backgroundImage =("images/golfCourse1.jpg")
+
 
 import CourseLocator from "./components/CourseLocator.vue";
 
