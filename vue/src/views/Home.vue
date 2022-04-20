@@ -11,11 +11,14 @@
     </div>
     
     <league-list />
+
+    <div>
     <div id = "inviteBox">
     <div id="invites">
       <h3 id= inviteHead>League Invitations</h3>
     </div>
     <invites-pending />
+    </div>
     </div>
     <div id="dashboard-flex">
     <div id ="upcoming">
@@ -52,7 +55,7 @@ transform: scale(1.1);
   border-radius: 6px;
   padding: 5px;
   /* margin: 30px; */
-  width: 80%;
+  width: 90%;
   filter: drop-shadow(5px 5px 5px black);
   display: flex;
   margin-top: 20px;
@@ -60,6 +63,7 @@ transform: scale(1.1);
   flex-direction: column;
   /* justify-content: space-around; */
   align-items: center;
+  max-width: 95vh;
 }
 #league-info > h1
  {
@@ -71,17 +75,17 @@ transform: scale(1.1);
   color: white;
   font-size: x-large;
   display: flex;
-  width: 60%;
+  border-radius: 3px;
   justify-content: center;
   margin-bottom: 3px;
+  
 }
 #league-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
- 
 
-  width: 80%;
+ display:flex;
+ flex-direction: column;
+
+  width: 100%;
 }
 #league-info > div {
   display: flex;
@@ -128,26 +132,32 @@ text-transform: capitalize;
 
 }
 #inviteHead{
-  
-  filter: drop-shadow(3px 3px 3px black);
-  background-color: rgba(24, 77, 71, .5);
-  text-decoration: none;
+   font-style: italic;
   font-weight: bold;
+background:wheat;
+border-radius:4px;
+font-size:large;
+color:#184D47;
+
+ filter: drop-shadow(3px 3px 3px black);
+text-transform: capitalize;
+
 text-shadow: none;
-  color: white;
-  font-size: x-large;
-  display: flex;
-
-margin:30px;
-margin-bottom: 10px;
-
 }
 #inviteBox{
   display:flex;
   flex-direction:column;
   background-color: rgba(24, 77, 71, .5);
-  margin:20px;
+  width:100%;
+  border-radius:4px;
+  padding:10px;
+  margin-bottom: 10px;
+  margin-top:10px
+
  
+}
+#page-body > div.home > div:nth-child(3){
+  width: 100%;
 }
 
 </style>

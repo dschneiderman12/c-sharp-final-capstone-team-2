@@ -80,6 +80,8 @@ export default {
     rgba(250, 213, 134, 0.7847514005602241) 100%
   );
   filter: drop-shadow(3px 3px 3px black);
+ width: 80%;
+  
 }
 
 </style>
