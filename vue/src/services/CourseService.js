@@ -1,11 +1,10 @@
 import axios from 'axios';
-   
 
     
 export default {
 
     createCourse(course) {
-        return axios.post("/course/", course)
+        return axios.post('/course', course)
     },
 
     getCourses() {
@@ -19,7 +18,8 @@ export default {
     getLeaguesByCourseId(courseId) {
         return axios.get(`/course/leagues/${courseId}`)
     },
-    getLatitudeAndLongitude(zipCode){
+    getCoordinates(zipCode){
         return axios.get(`/weather/${zipCode}`)
     }
+   
 }
