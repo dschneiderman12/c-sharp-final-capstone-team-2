@@ -20,13 +20,21 @@
       <router-link :to="{path:'/league/' + league.leagueId}" v-for="league in leagueList" v-bind:key="league.leagueId" v-text="`${league.leagueName }||`+ ' '">
         
       </router-link>
-      
+      <vue-weather
+    api-key="8967dc1398824eb30d8ee9b314182915"
+    units="uk"
+    latitude="41.5876"
+    longitude="81.4395"
+    />
+
     </div>
   </div>
 </template>
 
 <script>
+
 import CourseService from "../services/CourseService.js";
+import VueWeather from "vue-weather-widget";
 export default {
   data() {
     return {
@@ -45,6 +53,9 @@ export default {
       }
     };
   },
+  components: {
+      VueWeather,
+    },
   created() {
     CourseService.getCourseById(this.$route.params.id).then((response) => {
       this.course = response.data;
