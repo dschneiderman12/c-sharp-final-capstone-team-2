@@ -24,12 +24,11 @@ namespace Capstone.Controllers
         public ActionResult TeeTimeForUser(UserMatch userMatch)
         {
             userMatchDao.SetTeeTimeForUser(userMatch);
-            //return Ok();
             return Created($"userMatch/{userMatch}", userMatch);
         }
 
         [HttpGet("list/{userId}")]
-        public ActionResult<List<UserMatch>>  GetUserMatchesForUser(int userId)
+        public ActionResult<List<UserMatch>> GetUserMatchesForUser(int userId)
         {
             List<UserMatch> userMatches = userMatchDao.GetUserMatchesUpcoming(userId);
             if (userMatches != null)
@@ -70,6 +69,20 @@ namespace Capstone.Controllers
             if (matchScores != null)
             {
                 return matchScores;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("user/{userId}")]
+        public ActionResult<List<UserMatch>> GetUserScores(int userId)
+        {
+            List<UserMatch> userScores = userMatchDao.GetMatchScoresByUser(userId);
+            if (userScores != null)
+            {
+                return userScores;
             }
             else
             {

@@ -13,6 +13,7 @@ namespace Capstone.DAO.Interfaces
         public void SetTeeTimeForUser(UserMatch userMatch);
         public List<UserMatch> GetUserMatchesUpcoming(int userId);
         public List<UserMatch> GetUserScoresByMatch(int matchId);
+        public List<UserMatch> GetMatchScoresByUser(int userId);
 
     }
 }

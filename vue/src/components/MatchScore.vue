@@ -3,8 +3,10 @@
     <form id="submit-score-form" v-on:submit.prevent="submitScore()">
       <h3>Update scores</h3>
       <div>
-        <label>Select user:</label>
         <select class="user-match" v-model.number="userMatch.userId">
+          <option value="" selected="selected" class="default-selector">
+            Select a Player
+          </option>
           <option
             v-for="user in userMatches"
             v-bind:key="user.counter"
@@ -14,27 +16,22 @@
           </option>
         </select>
       </div>
-      <!--
       <div>
-        <label>Select match:</label>
-        <select class="user-match" v-model.number="userMatch.matchId">
-          <option
-            v-for="match in filteredList"
-            v-bind:key="match.counter"
-            v-text="match.matchName"
-            v-bind:value="match.matchId"
-          ></option>
-        </select>
-      </div>
-      -->
-      <div>
-        <label>Enter score (relative to par):</label>
         <input
           id="score"
           type="number"
-          min="-30"
-          max="80"
+          min="0"
+          placeholder="Enter player score"
           v-model.number="userMatch.score"
+        />
+      </div>
+      <div>
+        <input
+          id="score"
+          type="number"
+          min="0"
+          placeholder="Enter par score"
+          v-model.number="userMatch.par"
         />
       </div>
       <button type="submit" class="btn-submit">Submit</button>
@@ -53,6 +50,7 @@ export default {
         matchId: "",
         userId: "",
         score: "",
+        par: "",
       },
       match: {
         leagueId: "",
@@ -83,6 +81,7 @@ export default {
         matchId: Number(this.$route.params.id),
         userId: this.userMatch.userId,
         score: this.userMatch.score,
+        par: this.userMatch.par,
       };
       MatchService.addMatchScore(this.userMatch)
         .then((response) => {
@@ -126,4 +125,9 @@ export default {
 </script>
 
 <style>
+.default-selector {
+  color: lightgray;
+  text-decoration-style: wavy;
+  display: none;
+}
 </style>
