@@ -22,9 +22,7 @@
       <h1 id="upcomingMatches">Upcoming Matches</h1>
       <user-matches/>  
     </div>
-    <div id= "AddCourse">
-      <course-form/>
-    </div>
+    
     </div>
   </div>
 </template>
@@ -33,13 +31,19 @@
 import InvitesPending from "../components/InvitesPending.vue";
 import LeagueList from "../components/LeagueList.vue";
 import UserMatches from "../components/UserMatchList.vue";
-import CourseForm from "../components/CourseForm.vue";
 export default {
   name: "home",
-  components: { LeagueList, InvitesPending, UserMatches, CourseForm},
+  components: { LeagueList, InvitesPending, UserMatches},
 };
 </script>
 <style scoped>
+.grow { 
+transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+transform: scale(1.1); 
+}
 #page-body > div.home {
   background-color: rgba(209, 255, 209, 0.5);
   /* border-color: rgb(43, 126, 43); */
@@ -120,7 +124,7 @@ font-size:large;
 color:#184D47;
 
  filter: drop-shadow(3px 3px 3px black);
-
+text-transform: capitalize;
 
 }
 #inviteHead{

@@ -16,7 +16,7 @@
       <label>enter a time:</label>
 
       <input
-        id="teetime"
+        id="tee-time"
         type="datetime-local"
         class="form-control"
         v-model="userMatch.teeTime"
@@ -63,7 +63,7 @@ export default {
         userId: this.userMatch.userId,
         teeTime: String(this.userMatch.teeTime),
       };
-      LeagueService.setTeetimeForUser(newUm)
+      MatchService.setTeeTimeForUser(newUm)
         .then((response) => {
           if (response.status === 201) {
             // 2010 = "Created"

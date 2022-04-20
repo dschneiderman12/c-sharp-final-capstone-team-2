@@ -6,7 +6,7 @@
       </div>
     <div id="league-list" v-for="league in leagues" :key="league.id">
       
-      <div id="league-names"> 
+      <div id="league-names" class = "grow"> 
         <router-link :to="{ path: '/league/' + league.leagueId }">
       
         {{ league.leagueName }}
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+
 import LeagueService from "../services/LeagueService.js";
 export default {
   name: "League-List",
@@ -41,6 +42,7 @@ export default {
       .catch((error) => {
         this.handleErrorResponse(error, "creating");
       });
+   
   },
 
   methods: {
@@ -62,6 +64,7 @@ export default {
       console.log(this.errorMsg);
     },
   },
+  
 };
 </script>
 
@@ -78,5 +81,6 @@ export default {
   );
   filter: drop-shadow(3px 3px 3px black);
 }
+
 </style>
 
