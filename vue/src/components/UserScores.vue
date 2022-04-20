@@ -16,6 +16,12 @@
         </tr>
       </tbody>
     </table>
+    <!--
+    <div>
+      <h3>Your handicap:</h3>
+      <h4>{{ totals.handicap }}</h4>
+    </div>
+    -->
   </div>
 </template>
 
@@ -27,6 +33,11 @@ export default {
   data() {
     return {
       userScores: [],
+      // userTotals: {
+      //   score: "",
+      //   par: "",
+      //   handicap: "",
+      // },
     };
   },
   created() {
@@ -44,6 +55,33 @@ export default {
       });
   },
 };
+
+//   const totals = {
+//     score: Number(
+//       this.userScores.score.reduce((sum, score) => {
+//         return sum + score;
+//       }, 0)
+//     ),
+//     par: Number(
+//       this.userScores.par.reduce((sum, score) => {
+//         return sum + score;
+//       }, 0)
+//     ),
+//     handicap:
+//       (totals.score - totals.par) / Number(this.userScores.length),
+//   };
+// computed: {
+//   getTotalScore() {
+//     return this.userScores.score.reduce((sum, score) => {
+//       return sum + score;
+//     }, 0);
+//   },
+//   getTotalPar() {
+//     return this.userScores.par.reduce((sum, score) => {
+//       return sum + score;
+//     }, 0);
+//   },
+// },
 </script>
 
 <style>
