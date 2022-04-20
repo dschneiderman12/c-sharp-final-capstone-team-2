@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h3>Match Leaderboard</h3>
+    <div id= "match_board">
+    <h2 id d="matchboard">Match Leaderboard</h2>
+    </div>
     <table id="match-scores">
       <thead>
         <tr>
@@ -48,4 +50,15 @@ export default {
 </script>
 
 <style>
+#match_board{
+   font-style: italic;
+  font-weight: bold;
+background:wheat;
+border-radius:4px;
+font-size:large;
+color:#184D47;
+font-size: small;
+ filter: drop-shadow(3px 3px 3px black);
+text-transform: capitalize;
+}
 </style>

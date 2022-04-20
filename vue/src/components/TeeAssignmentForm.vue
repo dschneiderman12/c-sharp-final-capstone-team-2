@@ -1,7 +1,9 @@
 <template>
   <div>
     <form v-on:submit.prevent="submitForm()">
-      <h3>Create a New Tee-Time</h3>
+      <div id="teetime">
+      <h2>Create a New Tee-Time</h2>
+      </div>
       <div>
         <select id="userList" type="text" v-model.number="userMatch.userId">
           <option value="" selected="selected" class="default-selector">Select a Player</option>
@@ -118,5 +120,16 @@ export default {
   color: lightgray;
   text-decoration-style: wavy;
   display: none;
+}
+#teetime{
+    font-style: italic;
+  font-weight: bold;
+background:wheat;
+border-radius:4px;
+font-size:large;
+color:#184D47;
+font-size: small;
+ filter: drop-shadow(3px 3px 3px black);
+text-transform: capitalize;
 }
 </style>

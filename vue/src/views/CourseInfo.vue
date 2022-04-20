@@ -21,10 +21,11 @@
         
       </router-link>
       <vue-weather
+      v-if="showForecast == true"
     api-key="8967dc1398824eb30d8ee9b314182915"
-    units="uk"
-    latitude="41.5876"
-    longitude="81.4395"
+    units="us"
+   v-bind:latitude="[geometry.lat]"
+    v-bind:longitude="[geometry.lon]"
     />
 
     </div>
@@ -46,11 +47,10 @@ export default {
       leagueList: [],
       srcString: "",
       geometry:{
-        location:{
-          lat: "",
-          lng: ""
-        }
-      }
+        
+          
+        },
+      showForecast : false
     };
   },
   components: {
@@ -63,10 +63,11 @@ export default {
       CourseService.getLeaguesByCourseId(this.course.courseId)
         .then((response) => {
           this.leagueList = response.data;
-          CourseService.getLatitudeAndLongitude(this.course.address)
+          CourseService.getCoordinates(this.course.address.substr(this.course.address.length-5))
           .then((response) =>
           {
             this.geometry = response.data;
+            this.showForecast = true;
           })
         })
         

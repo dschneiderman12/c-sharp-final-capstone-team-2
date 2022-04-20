@@ -100,7 +100,7 @@ transform: scale(1.1);
 
 }
 
-#league-info > div > a{
+#league-info-home > div > a{
   margin-top: 3px;
   text-decoration: none;
 background: oldlace;

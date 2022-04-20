@@ -89,7 +89,7 @@ export default {
   filter: drop-shadow(3px 3px 3px black);
   width:300px;
   margin:10px;
-/* text-transform: ca; */
+text-transform: capitalize;
 }
 #leagueNames:hover
 {  background-color: rgb(58, 124, 117);}

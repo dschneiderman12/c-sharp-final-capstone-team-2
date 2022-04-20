@@ -1,4 +1,5 @@
 ﻿using Capstone.DAO;
+using Capstone.DAO.Interfaces;
 using Capstone.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,11 @@ namespace Capstone.Controllers
     public class CourseController : ControllerBase
     {
         private readonly ICourseDao courseDao;
-
-        public CourseController(ICourseDao _courseDao)
+        private readonly IWeatherDAO weather;
+        public CourseController(ICourseDao _courseDao, IWeatherDAO _weather)
         {
             courseDao = _courseDao;
+            weather = _weather;
         }
         [HttpPost()]
         public ActionResult<Course> AddCourse(Course course)
@@ -76,6 +78,20 @@ namespace Capstone.Controllers
             else if (courseLeagues != null)
             {
                 return courseLeagues;
+            }
+            return StatusCode(500);
+        }
+        [HttpGet("/weather/{zipCode}")]
+        public ActionResult<Coordinate> GetCoordinate(int zipCode)
+        {
+            Coordinate coordinate = weather.getCoordinates(zipCode);
+            if(coordinate != null)
+            {
+                return coordinate;
+            }
+            else if(coordinate == null)
+            {
+                return NotFound();
             }
             return StatusCode(500);
         }
