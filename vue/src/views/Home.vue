@@ -22,7 +22,10 @@
       <h1 id="upcomingMatches">Upcoming Matches</h1>
       <user-matches/>  
     </div>
-    
+    <div id ="history">
+      <h1 id="match-history">Match History</h1>
+      <user-scores/>  
+    </div>
     </div>
   </div>
 </template>
@@ -31,9 +34,11 @@
 import InvitesPending from "../components/InvitesPending.vue";
 import LeagueList from "../components/LeagueList.vue";
 import UserMatches from "../components/UserMatchList.vue";
+import UserScores from "../components/UserScores.vue"
+
 export default {
   name: "home",
-  components: { LeagueList, InvitesPending, UserMatches},
+  components: { LeagueList, InvitesPending, UserMatches, UserScores},
 };
 </script>
 <style scoped>

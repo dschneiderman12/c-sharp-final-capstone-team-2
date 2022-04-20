@@ -34,7 +34,7 @@
 <script>
 import MatchService from "../services/MatchService.js";
 export default {
-  name: "user_matches",
+  name: "user-matches",
   data() {
     return {
       matches: [],

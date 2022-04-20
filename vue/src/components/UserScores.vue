@@ -1,18 +1,17 @@
 <template>
   <div>
-    <h3>Match Leaderboard</h3>
-    <table id="match-scores">
+    <table id="user-scores">
       <thead>
         <tr>
-          <th>Player</th>
-          <th>Match Score</th>
+          <th>Match</th>
+          <th>Date and Tee Time</th>
+          <th>Score</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="score in matchScores" v-bind:key="score.userId">
-          <td>
-            {{ score.username }}
-          </td>
+        <tr v-for="score in userScores" v-bind:key="score.matchId">
+          <td>{{ score.matchName }}</td>
+          <td>{{ score.teeTime }}</td>
           <td>{{ score.total }}</td>
         </tr>
       </tbody>
@@ -24,17 +23,17 @@
 import MatchService from "../services/MatchService.js";
 
 export default {
-  name: "match-score-list",
+  name: "user-scores",
   data() {
     return {
-      matchScores: [],
+      userScores: [],
     };
   },
   created() {
-    MatchService.getAllMatchScores(this.$route.params.id)
+    MatchService.getAllUserScores(this.$store.state.user.userId)
       .then((response) => {
-        this.matchScores = response.data;
-        this.matchScores.forEach((item) => {
+        this.userScores = response.data;
+        this.userScores.forEach((item) => {
           if (item.total === 0) {
             item.total = "E";
           }

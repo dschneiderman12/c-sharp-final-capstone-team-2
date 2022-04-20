@@ -157,13 +157,14 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, SUM(score) AS total_score
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, SUM(score) AS total_score, 
+                                                SUM(par) AS total_par, (SUM(score) - SUM(par)) AS score_vs_par
                                                 FROM user_match
                                                 JOIN users ON users.user_id = user_match.user_id
                                                 JOIN matches ON matches.match_id = user_match.match_id
                                                 WHERE league_id = @league_id AND score IS NOT NULL
                                                 GROUP BY user_match.user_id, username
-                                                ORDER BY total_score ASC", conn);
+                                                ORDER BY score_vs_par ASC", conn);
                     cmd.Parameters.AddWithValue("@league_id", leagueId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -203,7 +204,9 @@ namespace Capstone.DAO
 
             leagueScore.UserId = Convert.ToInt32(reader["user_id"]);
             leagueScore.Username = Convert.ToString(reader["username"]);
-            leagueScore.TotalScore = Convert.ToInt32(reader["total_score"]);
+            leagueScore.Score = Convert.ToInt32(reader["total_score"]);
+            leagueScore.Par = Convert.ToInt32(reader["total_par"]);
+            leagueScore.TotalScore = Convert.ToInt32(reader["score_vs_par"]);
 
             return leagueScore;
         }
