@@ -3,20 +3,20 @@
     <table id="league-matches">
       <thead>
         <tr>
-          <th>Match Name</th>
-          <th>Date</th>
-          <th>Start Time</th>
+          <th id="matchHeader">Match Name</th>
+          <th id="matchHeader2">Date</th>
+          <th id="matchHeader2">Start Time</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="match in matchInfo" v-bind:key="match.matchId">
-          <td>
-            <router-link :to="{ path: '/match/' + match.matchId }">
+        <tr v-for="match in matchInfo" v-bind:key="match.matchId" id="match-row">
+          <td id="matchNames">
+            <router-link :to="{ path: '/match/' + match.matchId }" id="match_names">
               {{ match.name }}
             </router-link>
           </td>
-          <td>{{ match.date }}</td>
-          <td>{{ match.time }}</td>
+          <td id="dateAndTimes">{{ match.date }}</td>
+          <td id="dateAndTimes">{{ match.time }}</td>
         </tr>
       </tbody>
     </table>
@@ -64,4 +64,50 @@ export default {
 </script>
 
 <style>
+#leaguePage > div:nth-child(6){
+  background-color:rgb(250, 213, 134);
+margin: 10px;
+  
+}
+
+
+
+#league-matches > tbody > tr:nth-child(){
+  /* padding: 15px; */
+}
+#match_names{
+  margin: 7px;
+}
+#match_names{
+  color:white;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: bold;
+background:rgb(248, 218, 154) ;
+  display: flex;
+  justify-content: center;
+  color:rgb(24, 77, 71) ;
+  
+ /* margin: 10px; */
+ /* margin-top:50px; */
+}
+#match_names:hover{
+  background: rgb(248, 202, 103);
+}
+#dateAndTimes{
+  color:rgb(248, 230, 192);
+  padding-left:5%;
+}
+#matchHeader, #matchHeader2{
+  font-weight: bold;
+}
+#matchHeader2{
+  display: flex;
+  justify-content: flex-start;
+  padding-left:10%;
+
+}
+#dateAndTimes{
+  font-weight: bold;
+}
 </style>
