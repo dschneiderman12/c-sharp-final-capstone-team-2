@@ -1,19 +1,19 @@
 <template>
   <div>
     <form v-on:submit.prevent="submitForm()">
-      <h2>Create a New Tee-Time</h2>
-      <label> Select A User </label>
-      <select id="userList" type="text" v-model.number="userMatch.userId">
-        <option
-          v-for="user in userList"
-          v-bind:key="user.userId"
-          v-bind:value="user.userId"
-        >
-          {{ user.username }}
-        </option>
-      </select>
-
-      <label>enter a time:</label>
+      <h3>Create a New Tee-Time</h3>
+      <div>
+        <select id="userList" type="text" v-model.number="userMatch.userId">
+          <option value="" selected="selected" class="default-selector">Select a Player</option>
+          <option
+            v-for="user in userList"
+            v-bind:key="user.userId"
+            v-bind:value="user.userId"
+          >
+            {{ user.username }}
+          </option>
+        </select>
+      </div>
 
       <input
         id="tee-time"
@@ -114,5 +114,9 @@ export default {
 </script>
 
 <style scoped>
-
+.default-selector{
+  color: lightgray;
+  text-decoration-style: wavy;
+  display: none;
+}
 </style>

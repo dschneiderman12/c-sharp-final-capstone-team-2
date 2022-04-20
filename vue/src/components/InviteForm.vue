@@ -4,6 +4,7 @@
       <div><h2>Invite player to league</h2></div>
       <h3>Select player:</h3>
       <select id="user-list" v-model.number="invite.toUserId">
+        <option value="" selected="selected" class="default-selector">Select a Player</option>
         <option
           v-for="user in leagueUsers"
           v-bind:key="user.userId"
@@ -97,4 +98,9 @@ export default {
 </script>
 
 <style>
+.default-selector{
+  color: lightgray;
+  text-decoration-style: wavy;
+  display: none;
+}
 </style>

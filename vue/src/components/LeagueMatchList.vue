@@ -3,14 +3,14 @@
     <table id="league-matches">
       <thead>
         <tr>
-          <th>Match Name</th>
+          <th  >Match Name</th>
           <th>Date And Start Time</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="match in matches" v-bind:key="match.matchId">
-          <td>
-            <router-link :to="{ path: '/match/' + match.matchId }">
+        <tr v-for="match in matches" v-bind:key="match.matchId" >
+          <td >
+            <router-link :to="{ path: '/match/' + match.matchId }" id="match_names">
               {{ match.matchName }}
             </router-link>
           </td>
@@ -54,4 +54,22 @@ export default {
 </script>
 
 <style>
+#leaguePage > div:nth-child(6){
+  background-color:peachpuff ;
+
+  
+}
+#match_names{
+  margin: 10px;
+}
+#match_names{
+  color:white;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: bold;
+  background:rebeccapurple;
+ margin: 10px;
+ margin-top:50px;
+}
+#leaguePage > div:nth-child(6){}
 </style>

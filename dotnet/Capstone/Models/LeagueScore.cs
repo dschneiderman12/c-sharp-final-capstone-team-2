@@ -9,6 +9,8 @@ namespace Capstone.Models
     {
         public int UserId { get; set; }
         public string Username { get; set; }
+        public int Score { get; set; }
+        public int Par { get; set; }
         public int TotalScore { get; set; }
     }
 }

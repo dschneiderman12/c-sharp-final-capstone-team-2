@@ -7,6 +7,7 @@ export default {
     getMatches(leagueId) {
         return axios.get(`/match/${leagueId}`)
     },
+    
     newMatch(match) {
         return axios.post(`/createMatch`, match)
     },
@@ -33,6 +34,10 @@ export default {
 
     getAllMatchScores(matchId) {
         return axios.get(`/userMatch/match/${matchId}`)
+    },
+
+    getAllUserScores(userId) {
+        return axios.get(`/userMatch/user/${userId}`)
     }
 
 }

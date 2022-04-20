@@ -53,6 +53,9 @@ import authService from "../services/AuthService";
 export default {
   name: "login",
   components: {},
+  created() {
+    // document.app.style.backgroundColor = "#789012";
+  },
   data() {
     return {
       user: {
