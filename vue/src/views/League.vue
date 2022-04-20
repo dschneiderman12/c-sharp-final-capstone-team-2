@@ -12,7 +12,7 @@ components: { LeagueForm },
 }
 </script>
 
-<style>
+<style scoped>
 #league-div {
   display: flex;
   flex-direction: column;
@@ -27,20 +27,7 @@ div> #league-list {
   width: 60vw;
  
 }
-#league-list > #league-names> a {
-  text-decoration: none;
-  background-color: rgb(24, 77, 71);
-  border-radius: 40px;
-  text-shadow: black 1px 1px 1px;
-  color: rgb(226, 213, 184);;
-  font-weight: bolder;
-  padding: 4px;
-  display: flex;
-  justify-content: center;
-  filter: drop-shadow(3px 3px 3px black);
-  width:300px;
-text-transform: capitalize;
-}
+
 #league-list > #league-names> a:hover{
   background-color: rgb(58, 124, 117);
 }
@@ -67,7 +54,7 @@ justify-content: center;}
 }
 #page-body > div:nth-child(1) > div {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 </style>

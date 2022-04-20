@@ -1,8 +1,8 @@
 <template>
   <div>
     <form id="invite-form" v-on:submit.prevent="submitForm()">
-      <div><h2>Invite player to league</h2></div>
-      <h3>Select player:</h3>
+      <div><h2 id = invitePlayer>Invite player to league</h2>
+      <h2 id= selectPlayer>Select player:</h2>
       <select id="user-list" v-model.number="invite.toUserId">
         <option value="" selected="selected" class="default-selector">Select a Player</option>
         <option
@@ -14,6 +14,7 @@
         </option>
       </select>
       <button type="submit" class="btn-submit">Send Invite</button>
+      </div>
     </form>
   </div>
 </template>
@@ -98,9 +99,29 @@ export default {
 </script>
 
 <style>
-.default-selector{
-  color: lightgray;
-  text-decoration-style: wavy;
-  display: none;
+#selectPlayer{
+   font-size: medium;
+  font-weight: medium;
+  
+  margin: 0%;
+}
+#invite-form{
+   background: rgba(189, 236, 162, 0.8);
+  border-radius: 3px;
+  padding: 20px;
+  margin: 20px;
+   filter: drop-shadow(black 3px 3px 3px);
+   }
+#invitePlayer{
+ margin: 0;
+  font-weight: bolder;
+  border: 4px rgb(24, 77, 71) solid;
+  border-radius: 2px;
+  background: #e1fad4;
+  margin-bottom:5px;
+  padding: 2px;
+  padding-left: 1px;
+  display: flex;
+  justify-content: center;
 }
 </style>
