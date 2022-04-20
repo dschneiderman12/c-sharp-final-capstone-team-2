@@ -42,7 +42,7 @@ namespace Capstone.DAO
         }
 
         //method below currently set to only get user matches with no score
-        public List<UserMatch> GetUserMatchesForLeague(int leagueId)
+        public List<UserMatch> GetUserMatchesForMatch(int matchId)
         {
             List<UserMatch> userMatchesInLeague = new List<UserMatch>();
             try
@@ -55,8 +55,8 @@ namespace Capstone.DAO
                                         FROM user_match
                                         JOIN matches ON matches.match_id = user_match.match_id
                                         JOIN users ON users.user_id = user_match.user_id
-                                        WHERE league_id = @league_id AND score IS NULL", conn);
-                    cmd.Parameters.AddWithValue("@league_id", leagueId);
+                                        WHERE user_match.match_id = @match_id AND score IS NULL", conn);
+                    cmd.Parameters.AddWithValue("@match_id", matchId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

@@ -61,7 +61,7 @@ export default {
   created() {
     MatchService.getMatch(this.$route.params.id).then((response) => {
       this.match = response.data;
-      MatchService.getUserMatches(this.match.leagueId)
+      MatchService.getUserMatches(this.$route.params.id)
         .then((response) => {
           this.userMatches = response.data;
           let adder = 0;

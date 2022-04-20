@@ -16,6 +16,11 @@
         </tr>
       </tbody>
     </table>
+
+    <div>
+      <h3>Your handicap:</h3>
+      <p>{{ handicap }}</p>
+    </div>
   </div>
 </template>
 
@@ -27,6 +32,12 @@ export default {
   data() {
     return {
       userScores: [],
+      scores: [],
+      pars: [],
+      scoreTotal: "",
+      parTotal: "",
+      handicap: "Not enough data to calculate handicap",
+      dates: [],
     };
   },
   created() {
@@ -37,10 +48,31 @@ export default {
           if (item.total === 0) {
             item.total = "E";
           }
+          this.scores.push(item.score);
+          this.pars.push(item.par);
+          let myDate = item.teeTime;
+          let date = new Date(myDate).toDateString();
+          item.teeTime = date;
         });
+        this.gameCount = this.userScores.length;
+        this.scoreTotal = this.scores.reduce((sum, number) => {
+          return sum + number;
+        }, 0);
+        this.parTotal = this.pars.reduce((sum, number) => {
+          return sum + number;
+        });
+        if (this.userScores.length >= 1) {
+          this.handicap = (
+            (this.scoreTotal - this.parTotal) /
+            this.userScores.length
+          ).toFixed(1);
+        }
+        if (this.handicap < 1) {
+          this.handicap = "You're a scratch golfer. Well done!";
+        }
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "generating"); //need to add the method
+        this.handleErrorResponse(error, "retrieving"); //need to add the method
       });
   },
 };

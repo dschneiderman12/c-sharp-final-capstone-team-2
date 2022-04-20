@@ -23,7 +23,6 @@ export default {
     };
   },
   created() {
-
     InviteService.getPendingInvites(this.$store.state.user.userId)
       .then((response) => {
         this.pendingInvites = response.data;

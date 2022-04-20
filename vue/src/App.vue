@@ -81,8 +81,8 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   max-width: 100%;
   min-height: 100vh;
   background-blend-mode: overlay;
-  background: url("images/golfCourse1.jpg"),
-    linear-gradient(to bottom, #688884, #a79a7d);
+  background: url("images/GolfCourse2.jpg"),
+    linear-gradient(to bottom, #405a57, #a79a7d);
   
   /* height: 500px; You must set a specified height */
   background-position: center; /* Center the image */

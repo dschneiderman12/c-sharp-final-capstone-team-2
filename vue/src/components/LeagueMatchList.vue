@@ -18,6 +18,7 @@
         </tr>
       </tbody>
     </table>
+    
   </div>
 </template>
 
@@ -28,23 +29,20 @@ export default {
   data() {
     return {
       matches: [],
-      //dateAndTimes : []
+      dateTimes: [],
     };
   },
   created() {
     MatchService.getMatches(this.$route.params.id)
       .then((response) => {
         this.matches = response.data;
-
-        //  this.matches.forEach((item) => {
-        //      let newObj =  {
-        // date : item.dateAndTime.substring(0,10),
-        // time : item.dateAndTime.substring(10),
-        // matchId: item.matchId
-        // }
-
-        //    this.dateAndTimes.push(newObj);
-        // })
+        this.matches.forEach((item) => {
+          let fullDate = item.dateAndTime;
+          let date = new Date(fullDate).toDateString();
+          let time = new Date(fullDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+          this.dateTimes.push(date);
+          this.dateTimes.push(time);
+        })
       })
       .catch((error) => {
         this.handleErrorResponse(error, "creating"); //need to add the method
