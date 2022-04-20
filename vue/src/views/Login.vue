@@ -172,7 +172,7 @@ input:focus {
 
 /* LABEL ======================================= */
 label {
-  color: #999;
+  color: #184d47;
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -269,4 +269,5 @@ input:focus ~ .highlight {
     background: transparent;
   }
 }
+
 </style>
