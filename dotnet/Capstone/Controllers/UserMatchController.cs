@@ -41,10 +41,10 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpGet("{leagueId}")]
-        public ActionResult<List<UserMatch>> UserMatchesInLeague(int leagueId)
+        [HttpGet("{matchId}")]
+        public ActionResult<List<UserMatch>> UserMatchesInLeague(int matchId)
         {
-            List<UserMatch> userMatchesInLeague = userMatchDao.GetUserMatchesForLeague(leagueId);
+            List<UserMatch> userMatchesInLeague = userMatchDao.GetUserMatchesForMatch(matchId);
             if (userMatchesInLeague != null)
             {
                 return userMatchesInLeague;

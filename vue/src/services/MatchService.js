@@ -12,8 +12,8 @@ export default {
         return axios.post(`/createMatch`, match)
     },
 
-    getUserMatches(leagueId) {
-        return axios.get(`/userMatch/${leagueId}`)
+    getUserMatches(matchId) {
+        return axios.get(`/userMatch/${matchId}`)
     },
 
     addMatchScore(userMatch) {
