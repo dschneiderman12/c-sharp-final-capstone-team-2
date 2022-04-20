@@ -6,7 +6,7 @@
     <div>
     <div id="nav">
       <div id="left-header">
-        <img src="@/images/Image from iOS.png" alt="" />
+        <img src="@/images/wildcard.png" alt="" />
         
       </div>
       <div class="nav-link">
@@ -27,7 +27,7 @@
       </div>
     </div>
     </div>
-    <div id="footer">buttons will be here eventually (admin)(links)(easter-egg)</div>
+    <div id="footer"></div>
   </div>
 </template>
 
@@ -53,23 +53,13 @@ export default {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.preloader {
-  align-items: center;
-  background: rgb(23, 22, 22);
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  top: 0;
-  transition: opacity 0.3s linear;
-  width: 100%;
-  z-index: 9999;
-}
+
 
 
 #nav > div > img {
-  width: 35vh;
+  min-height: 150px;min-width:300px;
+  width: 30vh;
+  
   /* margin-right: 80%; */
 }
 #nav {
@@ -83,7 +73,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  padding-bottom:30px;
+  padding-bottom:10px;
 }
 
 #app {
@@ -147,11 +137,9 @@ justify-content:space-between;
 }
 
 #footer{
- 
-
-background: rgb(24,77,71);
-/* background: linear-gradient(180deg, rgba(24,77,71,0) 0%, rgba(24,77,71,0.5578606442577031) 44%, rgba(24,77,71,1) 100%);  height: 20vh; */
-height: 8%;
+ background: rgb(35,156,142);
+background: linear-gradient(180deg, rgba(35,156,142,0) 0%, rgba(33,129,118,0.4654236694677871) 47%, rgba(20,68,62,0.6587009803921569) 100%);
+height:10vh;
 
 }
 

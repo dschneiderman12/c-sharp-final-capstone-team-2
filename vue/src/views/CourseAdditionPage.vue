@@ -1,6 +1,8 @@
 <template>
-  <div>
+  <div id="add-course-box">
+      <div id="add-course-header">
       <h1>Add A Course </h1>
+      </div>
       <div>
           <course-form/>
         
@@ -28,5 +30,12 @@ export default {
 </script>
 
 <style>
+#add-course-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  
+}
 
 </style>

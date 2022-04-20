@@ -14,7 +14,7 @@
         
         v-model="user.username"
         required
-        autofocus
+        
       />
        <span class="highlight"> </span>
         <span class="bar"> </span>
