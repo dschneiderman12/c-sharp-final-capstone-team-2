@@ -36,7 +36,13 @@ export default {
         address: "",
       },
       leagueList: [],
-      srcString: ""
+      srcString: "",
+      geometry:{
+        location:{
+          lat: "",
+          lng: ""
+        }
+      }
     };
   },
   created() {
@@ -46,6 +52,11 @@ export default {
       CourseService.getLeaguesByCourseId(this.course.courseId)
         .then((response) => {
           this.leagueList = response.data;
+          CourseService.getLatitudeAndLongitude(this.course.address)
+          .then((response) =>
+          {
+            this.geometry = response.data;
+          })
         })
         
     });
