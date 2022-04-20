@@ -1,18 +1,16 @@
 <template>
   <div id="league-board">
     <div id="league-div">
-      <div class= "loading" v-if="isLoading">
-          <img src= "../images/spinner.svg"/>
+      <div class="loading" v-if="isLoading">
+        <img src="../images/spinner.svg" />
       </div>
-    <div id="league-list" v-for="league in leagues" :key="league.id">
-      
-      <div id="league-names" class = "grow"> 
-        <router-link :to="{ path: '/league/' + league.leagueId }">
-      
-        {{ league.leagueName }}
-      
-      </router-link> </div>
-      <!-- Commenting out - probably don't need here, just click link to league to get these details
+      <div id="league-list" v-for="league in leagues" :key="league.id">
+        <div id="league-names" class="grow">
+          <router-link :to="{ path: '/league/' + league.leagueId }">
+            {{ league.leagueName }}
+          </router-link>
+        </div>
+        <!-- Commenting out - probably don't need here, just click link to league to get these details
       <p class="course-name">{{ league.leagueCourse.courseName }}</p>
       <p>
         {{ league.organizerName }}
@@ -23,26 +21,25 @@
 </template>
 
 <script>
-
 import LeagueService from "../services/LeagueService.js";
 export default {
   name: "League-List",
   data() {
     return {
       leagues: [],
-      isLoading: true
+      isLoading: true,
     };
   },
   created() {
     LeagueService.getLeagues(this.$store.state.user.userId)
       .then((response) => {
         this.leagues = response.data;
-        this.isLoading= false;
+        this.leagues.shift();
+        this.isLoading = false;
       })
       .catch((error) => {
         this.handleErrorResponse(error, "creating");
       });
-   
   },
 
   methods: {
@@ -64,7 +61,6 @@ export default {
       console.log(this.errorMsg);
     },
   },
-  
 };
 </script>
 
@@ -80,9 +76,7 @@ export default {
     rgba(250, 213, 134, 0.7847514005602241) 100%
   );
   filter: drop-shadow(3px 3px 3px black);
- width: 80%;
-  
+  width: 80%;
 }
-
 </style>
 
