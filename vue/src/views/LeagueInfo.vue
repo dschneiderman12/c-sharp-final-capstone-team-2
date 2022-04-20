@@ -82,6 +82,25 @@ export default {
   width: 100%;
   justify-content: center;
   margin-bottom: 3px;
+  text-transform: capitalize;
+}
+
+#league-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#league-info > h3:nth-child(2) {
+  text-transform: capitalize;
+}
+
+#league-info > h3:nth-child(1) > a {
+  text-decoration: none;
+  color: orange;
+  text-transform:capitalize;
 }
 #league-info > h3,
 #page-body > div:nth-child(1) > div:nth-child(4) > form > h3,
