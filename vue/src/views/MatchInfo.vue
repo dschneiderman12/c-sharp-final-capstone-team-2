@@ -1,17 +1,18 @@
 <template>
-  <div>
-    <div>
+  <div id="matchInformation">
+    <div id ="match_title">
+      <h2 v-on:created="populateLeague()" id="matchTitle"> {{ match.matchName }}</h2>
+    </div>
+    <div id="matchScores">
       <match-score-list />
     </div>
-    <div>
-      <h2 v-on:created="populateLeague()">Match Name: {{ match.matchName }}</h2>
-    </div>
-    <div>
+    
+    <div id="teeTime">
       <tee-assignment-form
         v-if="league.organizerId === $store.state.user.userId"
       />
     </div>
-    <div>
+    <div id="updatescores">
       <match-score v-if="league.organizerId === $store.state.user.userId" />
     </div>
   </div>
@@ -80,4 +81,43 @@ export default {
 </script>
 
 <style scoped>
+#matchScores{
+  background: tan;
+  margin: 10px;
+  border-radius: 10px;
+    padding-left:5px;
+  padding-right:5px;
+}
+#match_title{
+ display: flex;
+justify-content: center;
+background: #FAD586;
+padding: 2px;
+filter: drop-shadow(2px 2px 2px black);
+border-bottom: #22577A 3px solid;
+border-top: #22577A 3px solid;
+text-transform: capitalize;
+color:#22577A;
+font-variant: small-caps;
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#teeTime{
+  background: tan;
+  margin: 10px;
+  border-radius: 10px;
+  padding-left:5px;
+  padding-right:5px;
+}
+#updatescores{
+   background: tan;
+  margin: 10px;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right:5px;
+}
+#matchTitle{
+
+  margin:0px;
+}
+
 </style>

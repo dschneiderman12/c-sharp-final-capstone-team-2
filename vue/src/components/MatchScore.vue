@@ -1,7 +1,9 @@
 <template>
   <div>
     <form id="submit-score-form" v-on:submit.prevent="submitScore()">
-      <h3>Update scores</h3>
+      <div id ="updatescore">
+      <h2>Update scores</h2>
+      </div>
       <div>
         <select class="user-match" v-model.number="userMatch.userId">
           <option value="" selected="selected" class="default-selector">
@@ -125,6 +127,17 @@ export default {
 </script>
 
 <style>
+#updatescore{
+      font-style: italic;
+  font-weight: bold;
+background:wheat;
+border-radius:4px;
+font-size:large;
+color:#184D47;
+font-size: small;
+ filter: drop-shadow(3px 3px 3px black);
+text-transform: capitalize;
+}
 .default-selector {
   color: lightgray;
   text-decoration-style: wavy;
