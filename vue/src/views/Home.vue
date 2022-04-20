@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div id="league-info">
+    <div id="league-info-home">
       <h1>My Leagues</h1>
       <div class="nav-link">
         <router-link class="leagueLink" v-bind:to="{ name: 'league' }"
@@ -71,7 +71,7 @@ transform: scale(1.1);
   align-items: center;
   max-width: 95vh;
 }
-#league-info > h1
+#league-info-home > h1
  {
   filter: drop-shadow(3px 3px 3px black);
   background-color: #184d47;
@@ -86,14 +86,14 @@ transform: scale(1.1);
   margin-bottom: 3px;
   
 }
-#league-info {
+#league-info-home {
 
  display:flex;
  flex-direction: column;
 
   width: 100%;
 }
-#league-info > div {
+#league-info-home > div {
   display: flex;
   justify-content: flex-end;
 
@@ -114,7 +114,7 @@ font-weight:bold;
 border: 1px rgb(122, 107, 73) solid;
 /* text-shadow:rgba(0, 0, 0, 0.2) 1px 1px 1px; */
 }
-#league-info > div > a:hover{
+#league-info-home > div > a:hover{
   background: #ebc96e;
 }
 #dashboard-flex{
