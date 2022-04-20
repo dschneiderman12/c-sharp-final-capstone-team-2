@@ -3,18 +3,18 @@
     <table id="league-matches">
       <thead>
         <tr>
-          <th  id=matchHeader>Match Name</th>
-          <th id=matchHeader2>Date And Start Time</th>
+          <th  id="matchHeader">Match Name</th>
+          <th id="matchHeader2">Date And Start Time</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="match in matches" v-bind:key="match.matchId" id="match-row">
-          <td id = matchNames>
+          <td id = "matchNames">
             <router-link :to="{ path: '/match/' + match.matchId }" id="match_names">
               {{ match.matchName }}
             </router-link>
           </td>
-          <td id = dateAndTimes>{{ match.dateAndTime }}</td>
+          <td id = "dateAndTimes">{{ match.dateAndTime }}</td>
         </tr>
       </tbody>
     </table>

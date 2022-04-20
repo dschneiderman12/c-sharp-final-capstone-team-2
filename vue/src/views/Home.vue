@@ -155,7 +155,7 @@ text-shadow: none;
   display:flex;
   flex-direction:column;
   background-color: rgba(24, 77, 71, .5);
-  width:100%;
+ 
   border-radius:4px;
   padding:10px;
   margin-bottom: 10px;
