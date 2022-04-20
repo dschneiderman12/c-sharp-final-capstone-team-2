@@ -3,22 +3,23 @@
     <table id="league-matches">
       <thead>
         <tr>
-          <th  id="matchHeader">Match Name</th>
-          <th id="matchHeader2">Date And Start Time</th>
+          <th id="matchHeader">Match Name</th>
+          <th id="matchHeader2">Date</th>
+          <th id="matchHeader3">Start Time</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="match in matches" v-bind:key="match.matchId" id="match-row">
-          <td id = "matchNames">
+        <tr v-for="match in matchInfo" v-bind:key="match.matchId" id="match-row">
+          <td id="matchNames">
             <router-link :to="{ path: '/match/' + match.matchId }" id="match_names">
-              {{ match.matchName }}
+              {{ match.name }}
             </router-link>
           </td>
-          <td id = "dateAndTimes">{{ match.dateAndTime }}</td>
+          <td id="dateAndTimes">{{ match.date }}</td>
+          <td id="dateAndTimes">{{ match.time }}</td>
         </tr>
       </tbody>
     </table>
-    
   </div>
 </template>
 
@@ -29,7 +30,13 @@ export default {
   data() {
     return {
       matches: [],
-      dateTimes: [],
+      matchInfo: [],
+      match: {
+        matchId: "",
+        name: "",
+        date: "",
+        time: "",
+      },
     };
   },
   created() {
@@ -37,12 +44,17 @@ export default {
       .then((response) => {
         this.matches = response.data;
         this.matches.forEach((item) => {
+          let newMatch = {};
+          newMatch.matchId = item.matchId;
+          newMatch.name = item.matchName;
           let fullDate = item.dateAndTime;
-          let date = new Date(fullDate).toDateString();
-          let time = new Date(fullDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-          this.dateTimes.push(date);
-          this.dateTimes.push(time);
-        })
+          newMatch.date = new Date(fullDate).toDateString();
+          newMatch.time = new Date(fullDate).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+          this.matchInfo.push(newMatch);
+        });
       })
       .catch((error) => {
         this.handleErrorResponse(error, "creating"); //need to add the method
@@ -86,15 +98,16 @@ background:rgb(248, 218, 154) ;
   color:rgb(248, 230, 192);
   padding-left:5%;
 }
-#matchHeader, #matchHeader2{
+#matchHeader, #matchHeader2, #matchHeader3{
   font-weight: bold;
 }
-#matchHeader2{
-  display: flex;
-  justify-content: flex-start;
-  padding-left:10%;
-
+#matchHeader2 {
+  padding-right: 20%;
 }
+#matchHeader3 {
+  padding-right: 5%;
+}
+
 #dateAndTimes{
   font-weight: bold;
 }

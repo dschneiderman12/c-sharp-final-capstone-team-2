@@ -72,10 +72,17 @@
             }
           },
 <<<<<<< HEAD
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
 =======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
 >>>>>>> 2e1530e6a9b16a9fe3949ef0c14da517909c78e3
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+>>>>>>> 658f30c3d9791903f1e7175d63fe5b02ce1a4768
+>>>>>>> 1f43a2fe500878a8d7d91a2be98f1b6977b38813
         }
       }
     }
