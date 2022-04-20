@@ -5,7 +5,7 @@
         <tr>
           <th id="matchHeader">Match Name</th>
           <th id="matchHeader2">Date</th>
-          <th id="matchHeader2">Start Time</th>
+          <th id="matchHeader3">Start Time</th>
         </tr>
       </thead>
       <tbody>
@@ -98,15 +98,16 @@ background:rgb(248, 218, 154) ;
   color:rgb(248, 230, 192);
   padding-left:5%;
 }
-#matchHeader, #matchHeader2{
+#matchHeader, #matchHeader2, #matchHeader3{
   font-weight: bold;
 }
-#matchHeader2{
-  display: flex;
-  justify-content: flex-start;
-  padding-left:10%;
-
+#matchHeader2 {
+  padding-right: 20%;
 }
+#matchHeader3 {
+  padding-right: 5%;
+}
+
 #dateAndTimes{
   font-weight: bold;
 }
