@@ -33,7 +33,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@tee_time", teeTime);
 
                     cmd.ExecuteNonQuery();
-                }                ;
+                };
             }
             catch (SqlException)
             {
@@ -51,7 +51,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, user_match.match_id, 
-                                        score, tee_time, league_id, match_name
+                                        score, par, tee_time, league_id, match_name
                                         FROM user_match
                                         JOIN matches ON matches.match_id = user_match.match_id
                                         JOIN users ON users.user_id = user_match.user_id
@@ -112,9 +112,10 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"UPDATE user_match 
-                                                SET score = @score
+                                                SET score = @score, par = @par
                                                 WHERE match_id = @match_id AND user_id = @user_id", conn);
                     cmd.Parameters.AddWithValue("@score", userMatch.Score);
+                    cmd.Parameters.AddWithValue("@par", userMatch.Par);
                     cmd.Parameters.AddWithValue("@match_id", userMatch.MatchId);
                     cmd.Parameters.AddWithValue("@user_id", userMatch.UserId);
 
@@ -135,20 +136,18 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, score
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, score, par, (score - par) AS total, tee_time
                                                 FROM user_match
                                                 JOIN users ON users.user_id = user_match.user_id
                                                 WHERE match_id = @match_id AND score IS NOT NULL
-                                                ORDER BY score ASC", conn);
+                                                ORDER BY total ASC", conn);
                     cmd.Parameters.AddWithValue("@match_id", matchId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        UserMatch userMatchScore = new UserMatch();
-                        userMatchScore.UserId = Convert.ToInt32(reader["user_id"]);
+                        UserMatch userMatchScore = createUserScoresFromReader(reader);
                         userMatchScore.Username = Convert.ToString(reader["username"]);
-                        userMatchScore.Score = Convert.ToInt32(reader["score"]);
                         matchScores.Add(userMatchScore);
                     }
                 }
@@ -160,6 +159,49 @@ namespace Capstone.DAO
             }
         }
 
+        public List<UserMatch> GetMatchScoresByUser(int userId)
+        {
+            List<UserMatch> userScores = new List<UserMatch>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_id, match_name, score, par, (score - par) AS total, tee_time
+                                                FROM user_match
+                                                JOIN matches ON matches.match_id = user_match.match_id
+                                                WHERE user_id = @user_id AND score IS NOT NULL
+                                                ORDER BY tee_time ASC", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        UserMatch userScore = createUserScoresFromReader(reader);
+                        userScore.MatchName = Convert.ToString(reader["match_name"]);
+                        userScores.Add(userScore);
+                    }
+                }
+                return userScores;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
+        private UserMatch createUserScoresFromReader(SqlDataReader reader)
+        {
+            UserMatch userMatch = new UserMatch();
+
+            userMatch.UserId = Convert.ToInt32(reader["user_id"]);                      
+            userMatch.Score = Convert.ToInt32(reader["score"]);
+            userMatch.Par = Convert.ToInt32(reader["par"]);
+            userMatch.Total = Convert.ToInt32(reader["total"]);
+            userMatch.TeeTime = Convert.ToString(reader["tee_time"]);
+           
+            return userMatch;
+        }
 
         private UserMatch createUserMatchFromReader(SqlDataReader reader)
         {
@@ -170,8 +212,7 @@ namespace Capstone.DAO
             userMatch.UserId = Convert.ToInt32(reader["user_id"]);
             userMatch.Username = Convert.ToString(reader["username"]);
             userMatch.TeeTime = Convert.ToString(reader["tee_time"]);
-            //userMatch.Score = Convert.ToInt32(reader["score"]);
-
+            
             return userMatch;
         }
     }

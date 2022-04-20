@@ -5,9 +5,9 @@
       v-for="invite in pendingInvites"
       :key="invite.inviteId"
     >
-  
-      <router-link :to="{ path: '/invite/' + invite.inviteId }"
-        >Invite to {{ invite.toLeagueName }}
+ You are invited to Join
+      <router-link :to="{ path: '/invite/' + invite.inviteId }" id="inviteLink"
+        >   {{ invite.toLeagueName }}
       </router-link>
     </div>
   </div>
@@ -55,4 +55,28 @@ export default {
 </script>
 
 <style>
+#invite-list > a{
+text-decoration: none;
+  background:rgb(214, 239, 199);
+  padding:3px;
+  font-weight: bolder;
+  text-transform: capitalize;
+  border-radius: 50px;
+  border: solid rgb(150, 187, 124) 2px;
+   filter: drop-shadow(3px 3px 3px black);
+   color:rgb(24, 77, 71);
+   
+}
+#invite-list > a:hover
+{
+  background:rgb(150, 187, 124) ;
+}
+#invitations{
+margin:10px;
+font-weight: bold;
+}
+#invites{
+  margin-top:5px;
+  margin-bottom:10px;
+}
 </style>
