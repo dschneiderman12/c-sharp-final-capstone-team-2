@@ -1,12 +1,6 @@
 <template>
   <div id="add-course-page">
     <form v-on:submit.prevent="submitForm()">
-<<<<<<< HEAD
-      <label for="course-name">Course Name:</label>
-      <input placeholder="course name" type="text" v-model="course.courseName" />
-      <label for="course-name">Street Address:</label>
-      <input placeholder="street address" type="text" v-model="course.address" />
-=======
       <div class="group">
       <input 
       type="text"
@@ -29,7 +23,6 @@
       <span class="bar"> </span>
       <label>Street Address</label>
       </div>
->>>>>>> 6890aa776f9bac0d79b84642d32345e73d1b327c
       <button type="submit" class="btn-submit">Add Course</button>
     </form>
   </div>

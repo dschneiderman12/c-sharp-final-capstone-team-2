@@ -113,16 +113,9 @@ export default {
       }
       console.log(this.errorMsg);
     },
-<<<<<<< HEAD
-    routeToCourseForm(){
-      this.$router.push(`/addCourse`)
-
-    }
-=======
     routeToCourseForm() {
       this.$router.push(`/addCourse`);
     },
->>>>>>> 6890aa776f9bac0d79b84642d32345e73d1b327c
   },
 };
 </script>
