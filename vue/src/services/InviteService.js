@@ -37,4 +37,5 @@ export default {
         return axios.get(`/Invite/users/${leagueId}/pending`)
     }
 
+
 }
