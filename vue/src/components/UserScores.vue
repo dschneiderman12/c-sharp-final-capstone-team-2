@@ -46,7 +46,9 @@ export default {
         this.userScores = response.data;
         this.userScores.forEach((item) => {
           if (item.total === 0) {
-            item.total = "E";
+            item.total = "E"; 
+          } else if (item.total > 0) {
+            item.total = "+" + item.total;
           }
           this.scores.push(item.score);
           this.pars.push(item.par);

@@ -38,6 +38,10 @@ export default {
 
     getAllUserScores(userId) {
         return axios.get(`/userMatch/user/${userId}`)
+    },
+
+    getAllUserMatches(matchId) {
+        return axios.get(`/userMatch/all/${matchId}`)
     }
 
 }

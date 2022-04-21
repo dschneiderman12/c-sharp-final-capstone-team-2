@@ -55,6 +55,20 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpGet("all/{matchId}")]
+        public ActionResult<List<UserMatch>> GetAllUserMatches(int matchId)
+        {
+            List<UserMatch> allUserMatches = userMatchDao.GetAllUserMatches(matchId);
+            if (allUserMatches != null)
+            {
+                return allUserMatches;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
         [HttpPut()]
         public ActionResult AddMatchScore(UserMatch userMatch)
         {

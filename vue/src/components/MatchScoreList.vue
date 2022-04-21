@@ -39,6 +39,8 @@ export default {
         this.matchScores.forEach((item) => {
           if (item.total === 0) {
             item.total = "E";
+          } else if (item.total > 0) {
+            item.total = "+" + item.total;
           }
         });
       })

@@ -9,7 +9,7 @@
             Select a Player
           </option>
           <option
-            v-for="user in leagueUsers"
+            v-for="user in filteredUsers"
             v-bind:key="user.userId"
             v-bind:value="user.userId"
           >
@@ -18,12 +18,22 @@
         </select>
         <button type="submit" class="btn-submit">Send Invite</button>
       </div>
-     <div>
-      
-    </div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Pending Invites</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in pendingInvites" v-bind:key="user.toUserId">
+              <td>{{ user.toUsername }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </form>
-    
-    <p>{{ pendingInvites}}</p>
   </div>
 </template>
 

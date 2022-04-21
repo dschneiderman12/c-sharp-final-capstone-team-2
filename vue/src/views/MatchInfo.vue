@@ -3,7 +3,7 @@
     <div id ="match_title">
       <h2 v-on:created="populateLeague()" id="matchTitle"> {{ match.matchName }}</h2>
     </div>
-    <button v-on:click="backButton()">Back</button>
+    <button v-on:click="backButton()">Back to League Home</button>
     <div id="matchScores">
       <match-score-list />
     </div>

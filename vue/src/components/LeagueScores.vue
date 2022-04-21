@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th>Player</th>
-            <th>Cumulative Score</th>
+            <th>Total Score</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +39,8 @@ export default {
         this.leagueScores.forEach((item) => {
           if (item.totalScore === 0) {
             item.totalScore = "E";
+          } else if (item.totalScore > 0) {
+            item.totalScore = "+" + item.totalScore;
           }
         });
       })
