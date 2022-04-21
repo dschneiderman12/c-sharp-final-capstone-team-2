@@ -57,7 +57,7 @@ export default {
 #invite-list > a{
 text-decoration: none;
   background:rgb(214, 239, 199);
-  padding:3px;
+  padding:2px;
   font-weight: bolder;
   text-transform: capitalize;
   border-radius: 50px;
@@ -77,5 +77,9 @@ font-weight: bold;
 #invites{
   margin-top:5px;
   margin-bottom:10px;
+}
+#invite-list{
+margin:20px;
+
 }
 </style>

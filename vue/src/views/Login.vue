@@ -40,9 +40,10 @@
         <label>Password</label>
       </div>
 
-      <button class="btn" type="submit">Sign in</button>
-
+      <button id="signInBtn" class="btn" type="submit">Sign in</button>
+<div id="needAccount">
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
+    </div>
     </form>
   </div>
 </template>
@@ -88,6 +89,26 @@ export default {
 };
 </script>
 <style>
+#needAccount > a
+{text-decoration: none;
+color:darkslategray}
+#needAccount{
+
+  
+  background:#D6EFC7;
+  padding:5px;
+  padding-top:0px;
+  padding-bottom:0px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: smaller;
+  margin: 10px;
+  transition: all .2s ease-in-out; 
+}
+#needAccount:hover{
+    background: #7eac63;
+    transform: scale(1.1); 
+}
 #login {
   display: flex;
   flex-direction: column;
@@ -99,13 +120,27 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 10px;
+  row-gap: 5px;
   /* this line adds space between items on sign in form */
 
   width: 80%;
 }
-.btn {
-  width: 30%;
+
+#signInBtn{
+  background:#D6EFC7;
+  width:150px;
+  height:40px;
+  border-radius: 7px;
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 0;
+  
+}
+#signInBtn:hover{
+   background: #7eac63;
+
+transform: scale(1.2); 
+transition: all .2s ease-in-out; 
 }
 
 #login > form > button {
@@ -118,11 +153,16 @@ export default {
   font-weight: bold;
   text-shadow: black 5px 5px 5px;
   color: white;
-  font-size: x-large;
+  font-size: xx-large;
   display: flex;
   width: 100%;
   justify-content: center;
   margin-bottom: 3px;
+  height:50px;
+  display: flex;
+  align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
 }
 #login > form > label:nth-child(2),
 #login > form > label:nth-child(4) {
@@ -133,6 +173,7 @@ export default {
   color: white;
   padding-left: 5px;
   border-radius: 3px;
+  
 }
 #login > form > div:nth-child(2) {
   margin-top: 30px;
@@ -162,10 +203,10 @@ export default {
 }
 #username,
 #password {
-  font-size: 18px;
+  font-size: 20px;
   padding: 10px 10px 10px 5px;
   display: block;
-  width: 300px;
+  width: 300px !important;
   border: none;
   border-bottom: 1px solid #757575;
 }
@@ -176,8 +217,8 @@ input:focus {
 /* LABEL ======================================= */
 label {
   color: #184d47;
-  font-size: 18px;
-  font-weight: normal;
+  font-size: 25px;
+  font-weight: bolder;
   position: absolute;
   pointer-events: none;
   left: 5px;
@@ -191,25 +232,25 @@ label {
 input:focus ~ label,
 input:valid ~ label {
   top: -20px;
-  font-size: 14px;
-  color: #5264ae;
+  font-size: 12px;
+  color: #000000;
 }
 
 /* BOTTOM BARS ================================= */
 .bar {
   position: relative;
   display: block;
-  width: 300px;
+  width: 315px !important;
 }
 .bar:before,
 .bar:after {
   content: "";
-  height: 2px;
+  height: 3px !important;
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #5264ae;
-  transition: 0.2s ease all;
+  background: #78a85b !important; 
+  transition: .5s ease all !important;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
 }
@@ -256,7 +297,7 @@ input:focus ~ .highlight {
 }
 @-moz-keyframes inputHighlighter {
   from {
-    background: #5264ae;
+    background: #6071b6;
   }
   to {
     width: 0;
@@ -271,6 +312,9 @@ input:focus ~ .highlight {
     width: 0;
     background: transparent;
   }
+}
+#login > form > div:nth-child(3){
+  margin-bottom:0px !important;
 }
 
 </style>

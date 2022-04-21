@@ -86,7 +86,10 @@ margin: 10px;
 background:rgb(248, 218, 154) ;
   display: flex;
   justify-content: center;
+  align-items: center;
   color:rgb(24, 77, 71) ;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+height: 30px;
   
  /* margin: 10px; */
  /* margin-top:50px; */

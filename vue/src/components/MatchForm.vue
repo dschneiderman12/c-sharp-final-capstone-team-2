@@ -109,7 +109,7 @@ export default {
 #setup{
   margin: 0;
   font-weight: bolder;
-  border: 4px rgb(24, 77, 71) solid;
+  border: 2px rgb(24, 77, 71) solid;
   border-radius: 2px;
   background: #e1fad4;
   margin-bottom:5px;
@@ -117,6 +117,8 @@ export default {
   padding-left: 1px;
   display: flex;
   justify-content: center;
- 
+  border-radius: 3px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
 }
 </style>

@@ -73,17 +73,23 @@ transform: scale(1.1);
 }
 #league-info-home > h1
  {
-  filter: drop-shadow(3px 3px 3px black);
-  background-color: #184d47;
+ 
+ filter: drop-shadow(3px 3px 3px black);
+ background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
-  /* text-shadow: black 5px 5px 5px; */
+  text-shadow: black 5px 5px 5px;
   color: white;
-  font-size: x-large;
+  font-size: xx-large;
   display: flex;
-  border-radius: 3px;
+  width: 100%;
   justify-content: center;
   margin-bottom: 3px;
+  height:50px;
+  display: flex;
+  align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
   
 }
 #league-info-home {
@@ -162,6 +168,24 @@ text-shadow: none;
   margin-top:10px
 
  
+}
+#match-history{
+filter: drop-shadow(3px 3px 3px black);
+ background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 5px 5px 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 3px;
+  height:40px;
+  display: flex;
+  align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+margin-bottom: 10px;
 }
 #page-body > div.home > div:nth-child(3){
   width: 100%;

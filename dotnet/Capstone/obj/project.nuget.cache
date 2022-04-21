@@ -1,17 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "dgSpecHash": "Ok7HniP/cIQs2XFYcVNIb0W5RoNJ4hKpzab3qV81amycmlFRoylG8o37JuiQX4lNXOWOBONhb28ie1Gb+wkdbA==",
-=======
-  "dgSpecHash": "VCSNybeINBrQe4r8aV5mXXD1g6LZH+ncmtjZ222maSrhWsGqpHwbhPLkMXMxpmjjYbXRXOHqemEaGzuXvcXphA==",
->>>>>>> 2e1530e6a9b16a9fe3949ef0c14da517909c78e3
-=======
-  "dgSpecHash": "VCSNybeINBrQe4r8aV5mXXD1g6LZH+ncmtjZ222maSrhWsGqpHwbhPLkMXMxpmjjYbXRXOHqemEaGzuXvcXphA==",
-=======
-  "dgSpecHash": "Ok7HniP/cIQs2XFYcVNIb0W5RoNJ4hKpzab3qV81amycmlFRoylG8o37JuiQX4lNXOWOBONhb28ie1Gb+wkdbA==",
->>>>>>> 658f30c3d9791903f1e7175d63fe5b02ce1a4768
->>>>>>> 1f43a2fe500878a8d7d91a2be98f1b6977b38813
+  "dgSpecHash": "+MzfJ3w0zZmPoGvJRnvdxSgfUP7gNtAHUqV+QiaqkKF9Rz1m9KYuHCIECgW1lQ80Ed3AhaAOzomjbzpKjKC7lQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Student\\git\\c-sharp-final-capstone-team-2\\dotnet\\Capstone\\Capstone.csproj",
   "expectedPackageFiles": [
@@ -26,6 +15,7 @@
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\Student\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

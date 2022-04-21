@@ -1,6 +1,8 @@
 <template>
   <div id="scoreboard">
-    <h3>League Leaderboard</h3>
+    <div id="leaderboardheader">
+    leaderboard
+    </div>
     <div>
       <table>
         <thead>
@@ -11,10 +13,10 @@
         </thead>
         <tbody>
           <tr v-for="score in leagueScores" v-bind:key="score.userId">
-            <td>
+            <td id="name">
               {{ score.username }}
             </td>
-            <td>{{ score.totalScore }}</td>
+            <td id = "score">{{ score.totalScore }}</td>
           </tr>
         </tbody>
       </table>
@@ -50,4 +52,45 @@ export default {
 </script>
 
 <style>
+
+#scoreboard > div > table > thead > tr{
+  background:
+rgb(150, 187, 124)
+}
+#scoreboard > div > table > tbody{
+  background:#D6EFC7;
+  text-transform: capitalize;
+
+}
+#scoreboard > div > table > tbody > tr:nth-child(1){
+  color:green;
+  font-weight: bolder;
+
+}
+#leaderboardheader{
+  display:flex;
+  justify-content: center;
+  font-size:x-large;
+  background-color:rgb(24, 77, 71);
+  text-transform: capitalize;
+  font-weight: bolder;
+  color:white;
+  text-shadow: 2px 2px 2px black;
+  padding:4px;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
+
+}
+#score{
+  display: flex;
+  justify-content: center;
+}
+#name{padding-left:8px}
+#scoreboard{
+  background-color: rgb(24, 77, 71);
+}
+#scoreboard > div:nth-child(2) > table > tbody > tr:last-child{
+  color:red;
+  font-weight: medium;
+}
 </style>
