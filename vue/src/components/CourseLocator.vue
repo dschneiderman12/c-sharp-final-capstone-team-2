@@ -1,6 +1,7 @@
 <template>
   <div id="map-block">
-    <h3>Search for golf courses</h3>
+    <div id="mapHead">
+    <h3 id="search">Search for golf courses</h3>
     <input
       type="text"
       id="course-search"
@@ -9,8 +10,9 @@
       v-model="courseSearch"
     />
 
-    <button v-on:click="locationToSearch()">Search</button>
-    <button v-if="showButton === true" v-on:click="hideButton()">Hide</button>
+    <button  id="searchButton" v-on:click="locationToSearch()">Search</button>
+    <button id="hideButton" v-if="showButton === true" v-on:click="hideButton()">Hide</button>
+    </div>
     <div class="map">
       <iframe
         class="search-map"
@@ -54,16 +56,46 @@ export default {
   height: 30vh;
   width: 60vw;
 }
-/* #map-block {
-  
-  
+#mapHead{
+  background-color: #D6EFC7;
+  border-radius: 5px;
+  margin:5px;
+  padding:10px;
+  padding-right:15px;
+    filter: drop-shadow(3px 3px 3px black);
+}
+#map-block > div.map
+{
 
-} */
-h3 {
+      filter: drop-shadow(3px 3px 3px black);
+
+}
+ 
+
+#search {
+  /* filter: drop-shadow(3px 3px 3px black); */
   filter: drop-shadow(3px 3px 3px black);
-  text-shadow: darkslateblue 5px 5px 5px;
+ background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: black 3px 3px 3px;
   color: white;
-  margin: 0px;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height:40px;
+  display: flex;
+  align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+text-transform: capitalize;
+padding-left:5px;
+
+border-radius: 5px;
+margin:0;
+  margin-bottom: 5px;
+  /* margin-right:10px; */
+
 }
 
 #map {
@@ -88,8 +120,38 @@ h3 {
   padding-top: 2%;
   height: 80%;
 }
-button {
-  background-color: #184d47;
-  color: white;
+#searchButton {
+background-color:rgb(24, 77, 71) ; 
+padding:7px;
+border-radius: 10px;
+color:white;
+font-weight: bolder;
+margin: 6px;
+  transition: all 0.2s ease-in-out;
+
+
+
 }
+#searchButton:hover{
+transform: scale(1.2);
+background-color:rgb(45, 158, 145);
+
+}
+#hideButton{
+background-color:rgb(24, 77, 71) ; 
+padding:7px;
+border-radius: 10px;
+color:white;
+font-weight: bolder;
+margin: 6px;
+  transition: all 0.2s ease-in-out;
+}
+#hideButton:hover{
+transform: scale(1.2);
+background-color:rgb(45, 158, 145);
+
+}
+
+
+
 </style>

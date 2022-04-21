@@ -9,6 +9,9 @@
       <router-link :to="{ path: '/invite/' + invite.inviteId }" id="inviteLink">
         {{ invite.toLeagueName }}
       </router-link>
+      <div id="noInvite" v-if="this.pendingInvites.length < 2">
+      You do not have any upcoming invites.
+    </div>
     </div>
   </div>
 </template>
@@ -60,10 +63,10 @@ export default {
 </script>
 
 <style>
-#invite-list > a {
-  text-decoration: none;
-  background: rgb(214, 239, 199);
-  padding: 3px;
+#invite-list > a{
+text-decoration: none;
+  background:rgb(214, 239, 199);
+  padding:2px;
   font-weight: bolder;
   text-transform: capitalize;
   border-radius: 50px;
@@ -81,5 +84,9 @@ export default {
 #invites {
   margin-top: 5px;
   margin-bottom: 10px;
+}
+#invite-list{
+margin:20px;
+
 }
 </style>

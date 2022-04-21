@@ -1,27 +1,30 @@
 <template>
   <div id="leaguePage">
-    <div>
-      <div id="leagueHead">
-        <h1 id="leagueTitle">{{ league.leagueName }}</h1>
-      </div>
-
-      <div id="league-info">
-        <div>
-          <h2 id="course">
-            Course:
-            <router-link
-              :to="{ path: '/course/' + league.leagueCourse.courseId }"
-              text-decoration="none"
-              >{{ league.leagueCourse.courseName }}</router-link
-            >
-          </h2>
-        </div>
-
-        <div id="organ">
-          <h2 id="organizerName">Organizer: {{ league.organizerName }}</h2>
-        </div>
-      </div>
+    <div id="leagueTop">
       <div>
+        <div id="leagueHead">
+          <h1 id="leagueTitle">{{ league.leagueName }}</h1>
+        </div>
+
+        <div id="league-info">
+          <div id="top">
+            <div>
+              <div>
+              <h2 id="course">
+                Course:
+                <router-link
+                  :to="{ path: '/course/' + league.leagueCourse.courseId }"
+                  text-decoration="none"
+                  >{{ league.leagueCourse.courseName }}</router-link
+                >
+              </h2>
+            </div>
+
+            <div id="organ">
+              <h2 id="organizerName">Organizer: {{ league.organizerName }}</h2>
+            </div>
+            </div>
+          <div>
         <table>
           <thead>
             <tr>
@@ -36,12 +39,21 @@
           </tbody>
         </table>
       </div>
-      <league-scores />
-    </div>
 
+            <league-scores />
+          </div>
+        </div>  
+        <!-- <h3>
+      {{userlist}}
+          </h3>      this is a list of users in this league- we can use it to choose a user to setr -->
+
+      </div>
+    </div>
+<league-matches />
     <invite-form v-if="league.organizerId === this.$store.state.user.userId" />
     <match-form v-if="league.organizerId === this.$store.state.user.userId" />
-    <league-matches />
+    
+    <!-- ADD MATCH LIST COMPONENT -->
   </div>
 </template>
 
@@ -128,7 +140,7 @@ export default {
   background-color: rgba(209, 255, 209, 0.5);
   border-width: 3px;
   border-radius: 6px;
-  padding: 5px;
+  padding: 10px;
   /* margin: 30px; */
   width: 80%;
   filter: drop-shadow(5px 5px 5px black);
@@ -153,20 +165,32 @@ export default {
 #league-info {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   text-shadow: none;
   margin: 0;
+ align-content: center;
 }
-
+#top > div:nth-child(1) > div:nth-child(1){
+  background: #D6EFC7;
+  filter: drop-shadow(2px 2px 2px black);
+  border-radius: 2px;
+  padding:3px;
+}
 #course {
   margin: 0;
-  font-size: large;
+  font-size: medium;
+  font-weight: bolder;
   text-transform: capitalize;
+
 }
 #organizerName {
   margin-top: 0;
-  font-size: large;
+  font-size: medium;
   text-transform: capitalize;
+  background: #D6EFC7;
+  border-radius: 2px;
+  padding:3px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 #course > a {
   color: #1d3d52;
@@ -176,5 +200,34 @@ export default {
 }
 #leaguePage > div:nth-child(1) {
 }
+#top{
+  
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+  align-content: space-between;
+  padding-left:30px;
+  padding-right:30px;
+  margin-bottom:30px;
+}
+#top > div:nth-child(1) > div:nth-child(1){
+  margin-bottom: 30px;
+}
+#top > div:nth-child(1){
+padding:20px;
+display: flex;
+flex-direction: column;
+/* align-content: space-between;
+justify-content: space-around; */
+justify-content: center;
+background-color: rgba(150, 187, 124, .9);
+margin-right: 20px;
+width:40%;
+border-radius: 30px;
+filter: drop-shadow(2px 2px 2px black);
+margin-top:30px;
+height: 60%;
+}
+
 </style>
 

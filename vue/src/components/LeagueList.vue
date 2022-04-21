@@ -81,7 +81,7 @@ export default {
   background-color: rgb(24, 77, 71);
   border-radius: 40px;
   text-shadow: black 1px 1px 1px;
-  color: rgb(226, 213, 184);;
+  color: white;
   font-weight: bolder;
   padding: 4px;
   display: flex;

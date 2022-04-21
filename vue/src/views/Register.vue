@@ -41,7 +41,7 @@
         <span class="bar"> </span>
         <label>Confirm Password</label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id ="sub">
         Create Account
       </button>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
@@ -153,6 +153,7 @@ sr-only {
 }
 .btn {
   width: 30%;
+  
 }
 #register > form > label:nth-child(2),
 #register > form > label:nth-child(4) {
@@ -279,5 +280,8 @@ input:focus ~ .highlight {
     width: 0;
     background: transparent;
   }
+}
+#sub{
+  background: white;
 }
 </style>

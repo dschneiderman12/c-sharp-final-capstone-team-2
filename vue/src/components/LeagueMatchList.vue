@@ -109,10 +109,13 @@ export default {
   background: rgb(248, 218, 154);
   display: flex;
   justify-content: center;
-  color: rgb(24, 77, 71);
-
-  /* margin: 10px; */
-  /* margin-top:50px; */
+  align-items: center;
+  color:rgb(24, 77, 71) ;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+height: 30px;
+  
+ /* margin: 10px; */
+ /* margin-top:50px; */
 }
 #match_names:hover {
   background: rgb(248, 202, 103);

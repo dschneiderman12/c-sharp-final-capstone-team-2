@@ -1,15 +1,15 @@
 <template>
   <div>
     <table id="user-scores">
-      <thead>
-        <tr>
+      <thead >
+        <tr id="matchDateScore">
           <th>Match</th>
           <th>Date</th>
           <th>Score</th>
         </tr>
-      </thead>
+      </thead >
       <tbody>
-        <tr v-for="score in userScores" v-bind:key="score.matchId">
+        <tr id="bodyTable" v-for="score in userScores" v-bind:key="score.matchId">
           <td>{{ score.matchName }}</td>
           <td>{{ score.teeTime }}</td>
           <td>{{ score.total }}</td>
@@ -18,8 +18,8 @@
     </table>
 
     <div>
-      <h3>Your handicap:</h3>
-      <p>{{ handicap }}</p>
+      <h3 id="handy">Your handicap:</h3>
+      <p id="playerHandy">{{ handicap }}</p>
     </div>
   </div>
 </template>
@@ -100,4 +100,78 @@ export default {
 </script>
 
 <style>
+#user-scores{
+  background: purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#bodyTable{
+  background: rgb(214, 239, 199);
+  text-transform: capitalize;
+  border:solid green 1px;
+  
+}
+#user-scores > tbody{
+
+}
+#matchDateScore{
+  display: flex;
+  justify-content: space-around;
+  
+    background: rgb(24, 77, 71);
+    color: white;
+}
+#bodyTable > td:nth-child(1){
+  width: 150px;
+}
+#matchDateScore > th:nth-child(1){
+  width:150px;
+}
+#bodyTable{
+  display: flex;
+  justify-content: space-around;
+}
+#user-scores{
+  border:rgb(24, 77, 71) 4px solid;
+  filter: drop-shadow(2px 2px 3px black);
+  
+}
+#match-history{
+display:flex;
+justify-content: center;
+ filter: drop-shadow(3px 3px 3px black);
+  background-color: #184d47;
+  text-decoration: none;
+  font-weight: bold;
+  /* text-shadow: black 5px 5px 5px; */
+  color: white;
+  font-size: x-large;
+  display: flex;
+  border-radius: 3px;
+  justify-content: center;
+  margin-bottom: 7px;
+}
+#handy{
+  text-shadow: none;
+  filter: drop-shadow(0px, 0px, 0px);
+  color: white;
+  padding:10px
+
+}
+#playerHandy{
+  
+  padding:10px;
+  padding-top:13px;
+margin:0px;
+color:white;
+font-weight: bold;
+}
+#history > div > div{
+  background: rgba(24, 77, 71, .8);
+  display: flex;
+
+}
 </style>
