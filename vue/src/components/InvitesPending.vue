@@ -9,9 +9,9 @@
       <router-link :to="{ path: '/invite/' + invite.inviteId }" id="inviteLink">
         {{ invite.toLeagueName }}
       </router-link>
-      <div id="noInvite" v-if="this.pendingInvites.length < 2">
-      You do not have any upcoming invites.
-    </div>
+      
+    </div><div id="noInvite" v-if="this.pendingInvites.length < 1">
+      You do not have any pending invites.
     </div>
   </div>
 </template>
@@ -74,12 +74,14 @@ text-decoration: none;
   filter: drop-shadow(3px 3px 3px black);
   color: rgb(24, 77, 71);
 }
+
 #invite-list > a:hover {
   background: rgb(150, 187, 124);
 }
 #invitations {
   margin: 10px;
-  font-weight: bold;
+  padding-bottom:15px
+  /* font-weight: bold; */
 }
 #invites {
   margin-top: 5px;

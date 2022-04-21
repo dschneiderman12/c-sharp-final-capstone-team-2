@@ -183,6 +183,13 @@ export default {
   text-transform: capitalize;
 
 }
+#leagueTop > div{
+ display: flex;
+ flex-direction: column;
+
+
+
+}
 #organizerName {
   margin-top: 0;
   font-size: medium;

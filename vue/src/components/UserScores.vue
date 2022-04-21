@@ -158,14 +158,15 @@ justify-content: center;
   text-shadow: none;
   filter: drop-shadow(0px, 0px, 0px);
   color: white;
-  padding:10px
+  /* padding:10px */
 
 }
 #playerHandy{
-  
-  padding:10px;
+  padding-left:10px;
+  padding-top:6px;
+  /* padding:10px;
   padding-top:13px;
-margin:0px;
+margin:0px; */
 color:white;
 font-weight: bold;
 }

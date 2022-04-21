@@ -13,6 +13,7 @@
             v-for="user in filteredList"
             v-bind:key="user.userId"
             v-bind:value="user.userId"
+            required
           >
             {{ user.username }}
           </option>
@@ -24,6 +25,7 @@
         class="form-control"
         v-bind:min="today"
         v-model="userMatch.teeTime"
+        required
       />
 
       <button type="submit" class="btn-submit">Submit</button>

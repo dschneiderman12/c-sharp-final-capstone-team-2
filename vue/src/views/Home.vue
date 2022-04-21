@@ -148,9 +148,11 @@ export default {
   font-size: large;
   color: #184d47;
 
+
   filter: drop-shadow(3px 3px 3px black);
   text-transform: capitalize;
-
+margin-bottom:5px ;
+margin-top:10px;
   text-shadow: none;
 }
 #inviteBox {
@@ -163,6 +165,7 @@ export default {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+#leagueTop{width:500px}
 #match-history{
 filter: drop-shadow(3px 3px 3px black);
  background-color: #184d47;
@@ -183,5 +186,9 @@ margin-bottom: 10px;
 }
 #page-body > div.home > div:nth-child(3){
   width: 100%;
+}
+#invites{
+  margin-bottom: 0;
+
 }
 </style>

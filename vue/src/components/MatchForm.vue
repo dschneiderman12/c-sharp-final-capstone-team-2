@@ -3,7 +3,7 @@
     <form id="match-form" v-on:submit.prevent="submitForm()">
       <h2 id="setup">Set up a new match</h2>
       <div>
-        <h2 class="inputPrompt">Enter a title for your new match</h2>
+        <h2 class="inputPrompt">Enter a title for your new match:</h2>
         <input
           id="match-name"
           type="text"
@@ -19,6 +19,7 @@
           class="form-control"
           v-bind:min="today"
           v-model="match.startTime"
+          required
         />
       </div>
       <button type="submit" class="btn-submit">Submit</button>
@@ -132,8 +133,16 @@ export default {
 
   margin: 0%;
 }
+#match-form > div:nth-child(2){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #starttime {
   color: rgb(24, 77, 71);
+}
+#match-form > div:nth-child(3){
+  
 }
 #setup {
   margin: 0;
@@ -150,4 +159,28 @@ export default {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 
 }
+#match-form > div:nth-child(3) > h2{
+  display: flex;
+  justify-content: center;
+}
+#starttime{
+ margin-left:125px;
+}
+#match-form > button{
+  margin-top:5px;
+  margin-left:120px;
+  background-color:rgb(24, 77, 71) ; 
+padding:7px;
+border-radius: 10px;
+color:white;
+font-weight: bolder;
+
+  transition: all 0.2s ease-in-out;
+  width:200px;
+}
+#match-form > button:hover{
+  transform: scale(1.2);
+background-color:rgb(45, 158, 145);
+}
+
 </style>

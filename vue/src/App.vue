@@ -56,6 +56,7 @@ export default {
 }
 
 
+.search{}
 
 #nav > div > img {
   min-height: 150px;min-width:300px;
