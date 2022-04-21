@@ -20,7 +20,6 @@
         <div id="organ">
           <h2 id="organizerName">Organizer: {{ league.organizerName }}</h2>
         </div>
-        
       </div>
       <div>
         <table>
@@ -66,7 +65,7 @@ export default {
         },
         organizerName: "",
       },
-      userList: []
+      userList: [],
     };
   },
   created() {
@@ -75,16 +74,34 @@ export default {
         this.league = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
-
     LeagueService.getUsersByLeague(this.$route.params.id)
       .then((response) => {
         this.userList = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " league info. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " league info. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " league info. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>

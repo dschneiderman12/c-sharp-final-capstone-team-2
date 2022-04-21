@@ -46,7 +46,7 @@ export default {
         this.userScores = response.data;
         this.userScores.forEach((item) => {
           if (item.total === 0) {
-            item.total = "E"; 
+            item.total = "E";
           } else if (item.total > 0) {
             item.total = "+" + item.total;
           }
@@ -74,8 +74,27 @@ export default {
         }
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "retrieving"); //need to add the method
+        this.handleErrorResponse(error, "retrieving");
       });
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " match scores. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " match scores. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " match scores. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>

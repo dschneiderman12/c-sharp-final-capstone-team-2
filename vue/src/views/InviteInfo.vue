@@ -17,7 +17,7 @@ export default {
       invite: {
         toLeagueName: "",
         inviteFrom: "",
-        toLeagueId:""
+        toLeagueId: "",
       },
       league: {
         leagueId: "",
@@ -30,7 +30,7 @@ export default {
         this.invite = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "creating");
       });
   },
   methods: {
@@ -42,7 +42,7 @@ export default {
           }
         })
         .catch((error) => {
-          this.handleErrorResponse(error, "creating"); //need to add the method
+          this.handleErrorResponse(error, "accepting");
         });
     },
     addToLeague() {
@@ -56,7 +56,7 @@ export default {
           }
         })
         .catch((error) => {
-          this.handleErrorResponse(error, "creating"); //need to add the method
+          this.handleErrorResponse(error, "adding user to league from");
         });
     },
     decline() {
@@ -68,8 +68,25 @@ export default {
           }
         })
         .catch((error) => {
-          this.handleErrorResponse(error, "creating"); //need to add the method
+          this.handleErrorResponse(error, "declining");
         });
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " invite. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " invite. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " invite. Request could not be created.";
+      }
+      console.log(this.errorMsg);
     },
   },
 };

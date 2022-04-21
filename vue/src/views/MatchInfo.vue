@@ -1,13 +1,15 @@
 <template>
   <div id="matchInformation">
-    <div id ="match_title">
-      <h2 v-on:created="populateLeague()" id="matchTitle"> {{ match.matchName }}</h2>
+    <div id="match_title">
+      <h2 v-on:created="populateLeague()" id="matchTitle">
+        {{ match.matchName }}
+      </h2>
     </div>
     <button v-on:click="backButton()">Back to League Home</button>
     <div id="matchScores">
       <match-score-list />
     </div>
-    
+
     <div id="teeTime">
       <tee-assignment-form
         v-if="league.organizerId === $store.state.user.userId"
@@ -62,8 +64,8 @@ export default {
       });
   },
   methods: {
-    backButton(){
-      this.$router.push(`/league/${this.league.leagueId}`)
+    backButton() {
+      this.$router.push(`/league/${this.league.leagueId}`);
     },
     handleErrorResponse(error, verb) {
       if (error.response) {
@@ -85,43 +87,41 @@ export default {
 </script>
 
 <style scoped>
-#matchScores{
+#matchScores {
   background: tan;
-  margin: 10px;
-  border-radius: 10px;
-    padding-left:5px;
-  padding-right:5px;
-}
-#match_title{
- display: flex;
-justify-content: center;
-background: #FAD586;
-padding: 2px;
-filter: drop-shadow(2px 2px 2px black);
-border-bottom: #22577A 3px solid;
-border-top: #22577A 3px solid;
-text-transform: capitalize;
-color:#22577A;
-font-variant: small-caps;
-font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-#teeTime{
-  background: tan;
-  margin: 10px;
-  border-radius: 10px;
-  padding-left:5px;
-  padding-right:5px;
-}
-#updatescores{
-   background: tan;
   margin: 10px;
   border-radius: 10px;
   padding-left: 5px;
-  padding-right:5px;
+  padding-right: 5px;
 }
-#matchTitle{
-
-  margin:0px;
+#match_title {
+  display: flex;
+  justify-content: center;
+  background: #fad586;
+  padding: 2px;
+  filter: drop-shadow(2px 2px 2px black);
+  border-bottom: #22577a 3px solid;
+  border-top: #22577a 3px solid;
+  text-transform: capitalize;
+  color: #22577a;
+  font-variant: small-caps;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
+#teeTime {
+  background: tan;
+  margin: 10px;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#updatescores {
+  background: tan;
+  margin: 10px;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#matchTitle {
+  margin: 0px;
+}
 </style>

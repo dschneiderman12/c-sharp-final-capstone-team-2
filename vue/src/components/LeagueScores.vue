@@ -45,8 +45,27 @@ export default {
         });
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "getting"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " leaderboard. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " leaderboard. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " leaderboard. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>

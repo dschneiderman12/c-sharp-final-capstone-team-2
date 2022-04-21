@@ -7,7 +7,7 @@ export default {
     getMatches(leagueId) {
         return axios.get(`/match/${leagueId}`)
     },
-    
+
     newMatch(match) {
         return axios.post(`/createMatch`, match)
     },
@@ -23,7 +23,7 @@ export default {
     getMatch(matchId) {
         return axios.get(`/match/info/${matchId}`)
     },
-    
+
     getUserMatchesHomePage(userId) {
         return axios.get(`/userMatch/list/${userId}`)
     },

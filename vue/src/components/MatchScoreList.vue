@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div id= "match_board">
-    <h2 id d="matchboard">Match Leaderboard</h2>
+    <div id="match_board">
+      <h2 id d="matchboard">Match Leaderboard</h2>
     </div>
     <table id="match-scores">
       <thead>
@@ -45,22 +45,41 @@ export default {
         });
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "generating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " match scores. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " match scores. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " match scores. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>
 
 <style>
-#match_board{
-   font-style: italic;
+#match_board {
+  font-style: italic;
   font-weight: bold;
-background:wheat;
-border-radius:4px;
-font-size:large;
-color:#184D47;
-font-size: small;
- filter: drop-shadow(3px 3px 3px black);
-text-transform: capitalize;
+  background: wheat;
+  border-radius: 4px;
+  font-size: large;
+  color: #184d47;
+  font-size: small;
+  filter: drop-shadow(3px 3px 3px black);
+  text-transform: capitalize;
 }
 </style>
