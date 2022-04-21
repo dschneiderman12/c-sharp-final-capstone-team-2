@@ -90,6 +90,7 @@ export default {
           if (response.status === 200) {
             //this.$router.push("/");
             alert("Score updated");
+            location.reload();
           }
         })
         .catch((error) => {

@@ -15,7 +15,7 @@ namespace Capstone.DAO.Services
 
             if (!response.IsSuccessful)
             {
-                throw new HttpRequestException($"There was an error getting your cat fact.");
+                throw new HttpRequestException($"There was an error getting your longitude.");
             }
 
             return response.Data;
