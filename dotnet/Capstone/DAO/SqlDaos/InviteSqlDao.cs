@@ -91,6 +91,7 @@ namespace Capstone.DAO
                     while (reader.Read())
                     {
                         Invite newInvite = createInviteFromReader(reader);
+                        newInvite.ToUsername = Convert.ToString(reader["username"]);
                         leaguePendingInvites.Add(newInvite);
                     }
                 }

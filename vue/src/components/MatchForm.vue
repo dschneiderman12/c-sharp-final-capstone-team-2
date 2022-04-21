@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <form id="match-form" v-on:submit.prevent="submitForm()">
       <h2 id="setup">Set up a new match</h2>
       <div>
@@ -24,13 +23,12 @@
       </div>
       <button type="submit" class="btn-submit">Submit</button>
     </form>
-    <p>{{today}}</p>
   </div>
 </template>
 <script>
 import MatchService from "../services/MatchService.js";
 export default {
-   created() {
+  created() {
     this.today = new Date();
     let dd = this.today.getDate();
     let mm = this.today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
@@ -59,12 +57,11 @@ export default {
       usersInLeague: [],
       errorMsg: "",
       courses: [],
-      today: ""
+      today: "",
     };
   },
 
   methods: {
-    
     submitForm() {
       const newMatch = {
         matchName: this.match.matchName,
@@ -82,11 +79,11 @@ export default {
         mm = "0" + mm;
       }
       this.today = yyyy + "-" + mm + "-" + dd;
-      if(newMatch.DateAndTime == this.today){
+      if (newMatch.DateAndTime == this.today) {
         alert("you cannot set a match earlier than today");
         return;
       }
-      
+
       MatchService.newMatch(newMatch)
         .then((response) => {
           if (response.status === 201) {

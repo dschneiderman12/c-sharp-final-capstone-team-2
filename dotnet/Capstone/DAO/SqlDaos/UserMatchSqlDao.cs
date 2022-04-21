@@ -73,6 +73,37 @@ namespace Capstone.DAO
             }
         }
 
+        public List<UserMatch> GetAllUserMatches(int matchId)
+        {
+            List<UserMatch> allUserMatches = new List<UserMatch>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT user_match.user_id, username, user_match.match_id, 
+                                        score, par, tee_time, league_id, match_name
+                                        FROM user_match
+                                        JOIN matches ON matches.match_id = user_match.match_id
+                                        JOIN users ON users.user_id = user_match.user_id
+                                        WHERE user_match.match_id = @match_id", conn);
+                    cmd.Parameters.AddWithValue("@match_id", matchId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        UserMatch userMatch = createUserMatchFromReader(reader);
+                        allUserMatches.Add(userMatch);
+                    }
+                }
+                return allUserMatches;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
         public List<UserMatch> GetUserMatchesUpcoming(int userId)
         {
             List<UserMatch> userMatchesInLeague = new List<UserMatch>();

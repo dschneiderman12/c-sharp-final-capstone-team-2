@@ -13,5 +13,6 @@ namespace Capstone.Models
         public int ToLeagueId { get; set; }
         public string ToLeagueName { get; set; }
         public string InviteFrom { get; set; }
+        public string ToUsername { get; set; }
     }
 }

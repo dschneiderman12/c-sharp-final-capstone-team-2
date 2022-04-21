@@ -30,10 +30,11 @@ export default {
         return axios.get(`/Invite/${inviteId}`)
     },
 
-    getUsersForInvite(leagueId){
+    getUsersForInvite(leagueId) {
         return axios.get(`/Invite/${leagueId}/users/`)
     },
-    getPendingInvitesForLeague(leagueId){
+
+    getPendingInvitesForLeague(leagueId) {
         return axios.get(`/Invite/users/${leagueId}/pending`)
     }
 

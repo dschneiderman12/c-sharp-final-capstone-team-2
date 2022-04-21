@@ -1,46 +1,56 @@
 <template>
-
-  <div id=leaguePage>
-
+  <div id="leaguePage">
     <div>
-      <div id = "leagueHead">
-      <h1 id = "leagueTitle">{{ league.leagueName }}</h1>
-    </div>
-
-    <div id="league-info">
-    <div>
-      <h2 id="course">
-        Course:
-      <router-link :to="{path: '/course/'+league.leagueCourse.courseId} " text-decoration="none">{{ league.leagueCourse.courseName }}</router-link>
-      </h2>
+      <div id="leagueHead">
+        <h1 id="leagueTitle">{{ league.leagueName }}</h1>
       </div>
 
-      <div id="organ">
-      <h2 id ="organizerName">Organizer: {{ league.organizerName }}</h2>
+      <div id="league-info">
+        <div>
+          <h2 id="course">
+            Course:
+            <router-link
+              :to="{ path: '/course/' + league.leagueCourse.courseId }"
+              text-decoration="none"
+              >{{ league.leagueCourse.courseName }}</router-link
+            >
+          </h2>
+        </div>
+
+        <div id="organ">
+          <h2 id="organizerName">Organizer: {{ league.organizerName }}</h2>
+        </div>
       </div>
-      <!-- <h3>
-  {{userlist}}
-</h3>      this is a list of users in this league- we can use it to choose a user to setr-->
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>League Members</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in userList" v-bind:key="user.toUserId">
+              <td>{{ user.username }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <league-scores />
     </div>
-    <league-scores />
-
-
-</div>
 
     <invite-form v-if="league.organizerId === this.$store.state.user.userId" />
     <match-form v-if="league.organizerId === this.$store.state.user.userId" />
     <league-matches />
-    <!-- ADD MATCH LIST COMPONENT -->
   </div>
 </template>
 
 <script>
 import LeagueService from "../services/LeagueService.js";
 import InviteForm from "../components/InviteForm.vue";
-//import MatchScore from "../components/MatchScore.vue";
 import MatchForm from "../components/MatchForm.vue";
 import LeagueMatches from "../components/LeagueMatchList.vue";
-import LeagueScores from "../components/LeagueScores.vue"
+import LeagueScores from "../components/LeagueScores.vue";
 
 export default {
   components: { InviteForm, MatchForm, LeagueMatches, LeagueScores },
@@ -51,32 +61,47 @@ export default {
         organizerId: "",
         leagueCourse: {
           courseName: "",
-          courseId: ""
+          courseId: "",
         },
         organizerName: "",
       },
+      userList: [],
     };
   },
   created() {
-    
     LeagueService.getCurrentLeague(this.$route.params.id)
       .then((response) => {
         this.league = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
-
     LeagueService.getUsersByLeague(this.$route.params.id)
       .then((response) => {
-        this.userlist = response.data;
+        this.userList = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
-
-
-     
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " league info. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " league info. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " league info. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>
@@ -101,7 +126,7 @@ export default {
 
 #page-body > div:nth-child(1) {
   background-color: rgba(209, 255, 209, 0.5);
-  border-width: 3px; 
+  border-width: 3px;
   border-radius: 6px;
   padding: 5px;
   /* margin: 30px; */
@@ -112,48 +137,44 @@ export default {
   margin-bottom: 20px;
   flex-direction: column;
 }
-#leagueTitle{
-display: flex;
-justify-content: center;
-background: #FAD586;
-padding: 2px;
-filter: drop-shadow(2px 2px 2px black);
-border-bottom: #22577A 3px solid;
-border-top: #22577A 3px solid;
-text-transform: capitalize;
-color:#22577A;
-font-variant: small-caps;
-font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-
+#leagueTitle {
+  display: flex;
+  justify-content: center;
+  background: #fad586;
+  padding: 2px;
+  filter: drop-shadow(2px 2px 2px black);
+  border-bottom: #22577a 3px solid;
+  border-top: #22577a 3px solid;
+  text-transform: capitalize;
+  color: #22577a;
+  font-variant: small-caps;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-#league-info{
+#league-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   text-shadow: none;
   margin: 0;
- 
 }
 
-  #course{
-    margin: 0;
-    font-size: large;
-    text-transform: capitalize;
-  }
-  #organizerName{
-    margin-top:0;
-    font-size:large;
-    text-transform: capitalize;
-  }
-  #course > a{
-    color:#1d3d52;
-  }
-#course > a:hover{
-  color: #FAD586;
+#course {
+  margin: 0;
+  font-size: large;
+  text-transform: capitalize;
 }
-#leaguePage > div:nth-child(1){
-  
+#organizerName {
+  margin-top: 0;
+  font-size: large;
+  text-transform: capitalize;
+}
+#course > a {
+  color: #1d3d52;
+}
+#course > a:hover {
+  color: #fad586;
+}
+#leaguePage > div:nth-child(1) {
 }
 </style>
 

@@ -6,43 +6,38 @@
         {{ registrationErrorMsg }}
       </div>
       <div class="group">
-      
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        
-        v-model="user.username"
-        required
-        
-      />
-       <span class="highlight"> </span>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          v-model="user.username"
+          required
+        />
+        <span class="highlight"> </span>
         <span class="bar"> </span>
         <label>Username</label>
-        </div>
-        <div class="group">
-      
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        v-model="user.password"
-        required
-      />
-      <span class="highlight"> </span>
+      </div>
+      <div class="group">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          v-model="user.password"
+          required
+        />
+        <span class="highlight"> </span>
         <span class="bar"> </span>
         <label>Password</label>
       </div>
       <div class="group">
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        
-        v-model="user.confirmPassword"
-        required
-      />
-      <span class="highlight"> </span>
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          v-model="user.confirmPassword"
+          required
+        />
+        <span class="highlight"> </span>
         <span class="bar"> </span>
         <label>Confirm Password</label>
       </div>
@@ -111,7 +106,6 @@ export default {
   color: #184d47;
 }
 
-
 #username,
 #password,
 #confirmPassword {
@@ -145,7 +139,7 @@ export default {
 
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   row-gap: 30px;
   /* this line adds space between items on sign in form */
 
