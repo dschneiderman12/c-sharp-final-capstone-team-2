@@ -9,7 +9,7 @@
             Select a Player
           </option>
           <option
-            v-for="user in filteredUsers"
+            v-for="user in leagueUsers"
             v-bind:key="user.userId"
             v-bind:value="user.userId"
           >
