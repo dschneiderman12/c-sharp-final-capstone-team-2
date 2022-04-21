@@ -3,6 +3,7 @@
     <div id ="match_title">
       <h2 v-on:created="populateLeague()" id="matchTitle"> {{ match.matchName }}</h2>
     </div>
+    <button v-on:click="backButton()">Back</button>
     <div id="matchScores">
       <match-score-list />
     </div>
@@ -61,6 +62,9 @@ export default {
       });
   },
   methods: {
+    backButton(){
+      this.$router.push(`/league/${this.league.leagueId}`)
+    },
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =

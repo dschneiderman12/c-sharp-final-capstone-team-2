@@ -22,7 +22,7 @@ namespace Capstone.Controllers
             leagueDao = _leagueDao;
             inviteDao = _inviteDao;
         }
-        [HttpGet("{leagueId}/users/{userId}")]
+        [HttpGet("{leagueId}/users")]
         public ActionResult<List<ReturnUser>> ListUsersForInvite( int leagueId)
         {
             List<ReturnUser> usersForInvite = inviteDao.GetUsersForInvite( leagueId);
@@ -36,6 +36,19 @@ namespace Capstone.Controllers
                 return NotFound();
             }
 
+        }
+        [HttpGet("users/{leagueId}/pending")]
+        public ActionResult<List<Invite>> GetLeaguePendingInvites(int leagueId)
+        {
+            List<Invite> pendingInvites = inviteDao.GetLeaguePendingInvites(leagueId);
+            if (pendingInvites != null)
+            {
+                return pendingInvites;
+            }
+            else
+            {
+                return NotFound();
+            }
         }
         [HttpPost()]
         public ActionResult<Invite> NewInvite(Invite invite)

@@ -16,11 +16,11 @@
           </option>
         </select>
       </div>
-
       <input
         id="tee-time"
         type="datetime-local"
         class="form-control"
+        v-bind:min="today"
         v-model="userMatch.teeTime"
       />
 
@@ -43,13 +43,26 @@ export default {
       },
       match: {
         leagueId: "",
+        dateAndTime:""
       },
 
       errorMsg: "",
+      today: ""
     };
   },
 
   created() {
+     this.today = new Date();
+    let dd = this.today.getDate();
+    let mm = this.today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    let yyyy = this.today.getFullYear();
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+    this.today = `${yyyy}-${mm}-${dd}T00:00`;
     MatchService.getMatch(this.$route.params.id).then((response) => {
       this.match = response.data;
       LeagueService.getUsersByLeague(this.match.leagueId).then((response) => {
@@ -70,6 +83,7 @@ export default {
           if (response.status === 201) {
             // 2010 = "Created"
             alert("TeeTime set.");
+            location.reload();
           }
         })
 

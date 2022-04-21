@@ -75,7 +75,13 @@ CREATE TABLE invites (
 	CONSTRAINT [fk_to_user] FOREIGN KEY(to_user) REFERENCES users(user_id),
 	CONSTRAINT [fk_league_invite] FOREIGN KEY(to_league) REFERENCES leagues(league_id)
 )
+<<<<<<< HEAD
 
+=======
+--populate default data
+INSERT INTO courses(course_name, address) VALUES('Tech Elevator Put Put Course', '7100 Euclid Ave #140, Cleveland, OH 44103'),
+('Manakiki Golf Course', '35501 Eddy Rd, Willoughby, OH 44094'),('Grande Oaks Country Club', '3201 W Rolling Hills Cir, Davie, FL 33328');
+>>>>>>> 3aa36093a37550f4b05422793d569e7b04ba2110
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=','Ar/aB2thQTI=','admin');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('TigerWoods','kymYFm1jEQxfrXVLz8X96BV0xXQ=','EqJbtQsHdi0=','admin');
