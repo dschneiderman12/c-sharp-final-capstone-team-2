@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <league-form />
-        </div>
+  <div>
+    <league-form />
+  </div>
 </template>
 
 <script>
-import LeagueForm from '../components/LeagueForm.vue';
+import LeagueForm from "../components/LeagueForm.vue";
 export default {
-components: { LeagueForm },
-  name: "home"
-}
+  components: { LeagueForm },
+  name: "home",
+};
 </script>
 
 <style scoped>
@@ -17,26 +17,25 @@ components: { LeagueForm },
   display: flex;
   flex-direction: column;
   padding: 20px;
- 
 }
-div> #league-list {
+div > #league-list {
   display: flex;
   flex-direction: column;
   padding: 5px;
   justify-content: center;
   width: 60vw;
- 
 }
 
-#league-list > #league-names> a:hover{
+#league-list > #league-names > a:hover {
   background-color: rgb(58, 124, 117);
 }
-#league-names
-{display: flex;
-justify-content: center;}
+#league-names {
+  display: flex;
+  justify-content: center;
+}
 
 #page-body > div:nth-child(1) > div > form {
-/* background-color: rgba(209, 255, 209, 0.5); */
+  /* background-color: rgba(209, 255, 209, 0.5); */
   /* border-color: rgb(43, 126, 43); */
   /* border-style: solid;
   border-width: 3px; */
@@ -56,5 +55,4 @@ justify-content: center;}
   display: flex;
   justify-content: space-around;
 }
-
 </style>

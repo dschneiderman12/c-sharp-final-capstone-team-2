@@ -54,9 +54,7 @@ import authService from "../services/AuthService";
 export default {
   name: "login",
   components: {},
-  created() {
-     
-  },
+  created() {},
   data() {
     return {
       user: {
@@ -147,7 +145,6 @@ transition: all .2s ease-in-out;
   margin-top: 20px;
 }
 #login > form > h1 {
-  
   background-color: #184d47;
   text-decoration: none;
   font-weight: bold;
@@ -183,7 +180,6 @@ transition: all .2s ease-in-out;
 #login > form > div:nth-child(3) > label {
   color: #184d47;
 }
-
 
 /* 
 #login > form {

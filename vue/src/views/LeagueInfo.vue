@@ -44,7 +44,6 @@
 <script>
 import LeagueService from "../services/LeagueService.js";
 import InviteForm from "../components/InviteForm.vue";
-//import MatchScore from "../components/MatchScore.vue";
 import MatchForm from "../components/MatchForm.vue";
 import LeagueMatches from "../components/LeagueMatchList.vue";
 import LeagueScores from "../components/LeagueScores.vue";
@@ -62,6 +61,7 @@ export default {
         },
         organizerName: "",
       },
+      userList: [],
     };
   },
   created() {
@@ -70,16 +70,34 @@ export default {
         this.league = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
-
     LeagueService.getUsersByLeague(this.$route.params.id)
       .then((response) => {
-        this.userlist = response.data;
+        this.userList = response.data;
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " league info. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " league info. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " league info. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>

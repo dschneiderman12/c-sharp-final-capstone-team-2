@@ -54,15 +54,15 @@ export default {
         this.errorMsg =
           "Error " +
           verb +
-          " invite. Response received was '" +
+          " course. Response received was '" +
           error.response.statusText +
           "'.";
       } else if (error.request) {
         this.errorMsg =
-          "Error " + verb + " invite. Server could not be reached.";
+          "Error " + verb + " course. Server could not be reached.";
       } else {
         this.errorMsg =
-          "Error " + verb + " invite. Request could not be created.";
+          "Error " + verb + " course. Request could not be created.";
       }
       console.log(this.errorMsg);
     },

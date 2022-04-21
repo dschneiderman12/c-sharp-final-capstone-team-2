@@ -62,8 +62,27 @@ export default {
         });
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "creating");
       });
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " match. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " match. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " match. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>

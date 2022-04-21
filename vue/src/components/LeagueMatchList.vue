@@ -9,9 +9,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="match in matchInfo" v-bind:key="match.matchId" id="match-row">
+        <tr
+          v-for="match in matchInfo"
+          v-bind:key="match.matchId"
+          id="match-row"
+        >
           <td id="matchNames">
-            <router-link :to="{ path: '/match/' + match.matchId }" id="match_names">
+            <router-link
+              :to="{ path: '/match/' + match.matchId }"
+              id="match_names"
+            >
               {{ match.name }}
             </router-link>
           </td>
@@ -57,33 +64,49 @@ export default {
         });
       })
       .catch((error) => {
-        this.handleErrorResponse(error, "creating"); //need to add the method
+        this.handleErrorResponse(error, "generating");
       });
+  },
+  methods: {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " matches. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " matches. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " matches. Request could not be created.";
+      }
+      console.log(this.errorMsg);
+    },
   },
 };
 </script>
 
 <style>
-#leaguePage > div:nth-child(6){
-  background-color:rgb(250, 213, 134);
-margin: 10px;
-  
+#leaguePage > div:nth-child(6) {
+  background-color: rgb(250, 213, 134);
+  margin: 10px;
 }
 
-
-
-#league-matches > tbody > tr:nth-child(){
+#league-matches > tbody > tr:nth-child() {
   /* padding: 15px; */
 }
-#match_names{
+#match_names {
   margin: 7px;
 }
-#match_names{
-  color:white;
+#match_names {
+  color: white;
   text-transform: capitalize;
   text-decoration: none;
   font-weight: bold;
-background:rgb(248, 218, 154) ;
+  background: rgb(248, 218, 154);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,14 +117,16 @@ height: 30px;
  /* margin: 10px; */
  /* margin-top:50px; */
 }
-#match_names:hover{
+#match_names:hover {
   background: rgb(248, 202, 103);
 }
-#dateAndTimes{
-  color:rgb(248, 230, 192);
-  padding-left:5%;
+#dateAndTimes {
+  color: rgb(248, 230, 192);
+  padding-left: 5%;
 }
-#matchHeader, #matchHeader2, #matchHeader3{
+#matchHeader,
+#matchHeader2,
+#matchHeader3 {
   font-weight: bold;
 }
 #matchHeader2 {
@@ -111,7 +136,7 @@ height: 30px;
   padding-right: 5%;
 }
 
-#dateAndTimes{
+#dateAndTimes {
   font-weight: bold;
 }
 </style>

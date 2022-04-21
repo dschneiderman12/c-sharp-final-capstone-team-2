@@ -14,6 +14,7 @@ namespace Capstone.DAO.Interfaces
         public List<UserMatch> GetUserMatchesUpcoming(int userId);
         public List<UserMatch> GetUserScoresByMatch(int matchId);
         public List<UserMatch> GetMatchScoresByUser(int userId);
+        public List<UserMatch> GetAllUserMatches(int matchId);
 
     }
 }

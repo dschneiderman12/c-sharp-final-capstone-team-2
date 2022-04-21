@@ -73,6 +73,35 @@ namespace Capstone.DAO
             
             return inviteUsers;
         }
+        public List<Invite> GetLeaguePendingInvites(int leagueId)
+        {
+            List<Invite> leaguePendingInvites = new List<Invite>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT username, invite_id, invite_status, to_user, to_league
+                                                FROM invites
+                                                JOIN users ON users.user_id = invites.to_user
+                                                WHERE to_league = @league_id AND invite_status = 'pending'", conn);
+                    cmd.Parameters.AddWithValue("@league_id", leagueId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Invite newInvite = createInviteFromReader(reader);
+                        newInvite.ToUsername = Convert.ToString(reader["username"]);
+                        leaguePendingInvites.Add(newInvite);
+                    }
+                }
+                return leaguePendingInvites;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
         public Invite CreateInvite(Invite invite)
         {
             int newInviteId;
