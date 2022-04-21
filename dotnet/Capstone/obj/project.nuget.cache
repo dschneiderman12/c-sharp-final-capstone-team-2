@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "+MzfJ3w0zZmPoGvJRnvdxSgfUP7gNtAHUqV+QiaqkKF9Rz1m9KYuHCIECgW1lQ80Ed3AhaAOzomjbzpKjKC7lQ==",
-=======
-  "dgSpecHash": "wb26RvxIFx0+o/evz2/B5SjLF2TAZSjFxS6ayHpabAfyTkl6rvE/OEnWqW7o47JYc0BHv7VI24YQa4spswgyHQ==",
->>>>>>> 4008ca52797e2e1ced6756a1f86786261d176166
   "success": true,
   "projectFilePath": "C:\\Users\\Student\\git\\c-sharp-final-capstone-team-2\\dotnet\\Capstone\\Capstone.csproj",
   "expectedPackageFiles": [

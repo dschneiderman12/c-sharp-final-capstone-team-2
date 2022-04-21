@@ -24,13 +24,29 @@
               <h2 id="organizerName">Organizer: {{ league.organizerName }}</h2>
             </div>
             </div>
-            <!-- <h3>
-      {{userlist}}
-          </h3>      this is a list of users in this league- we can use it to choose a user to setr-->
+          <div>
+        <table>
+          <thead>
+            <tr>
+              <th>League Members</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in userList" v-bind:key="user.toUserId">
+              <td>{{ user.username }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
             <league-scores />
           </div>
-        </div>
+        </div>  
+        <!-- <h3>
+      {{userlist}}
+          </h3>      this is a list of users in this league- we can use it to choose a user to setr -->
+
       </div>
     </div>
 <league-matches />

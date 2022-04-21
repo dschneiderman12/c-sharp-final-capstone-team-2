@@ -111,7 +111,7 @@ rgb(150, 187, 124)
   background-color: rgb(24, 77, 71);
 }
 #scoreboard > div:nth-child(2) > table > tbody > tr:last-child{
-  color:red;
-  font-weight: medium;
+  /* color:red; */
+  /* font-weight: bold; */
 }
 </style>

@@ -9,6 +9,9 @@
       <router-link :to="{ path: '/invite/' + invite.inviteId }" id="inviteLink">
         {{ invite.toLeagueName }}
       </router-link>
+      <div id="noInvite" v-if="this.pendingInvites.length < 2">
+      You do not have any upcoming invites.
+    </div>
     </div>
   </div>
 </template>
