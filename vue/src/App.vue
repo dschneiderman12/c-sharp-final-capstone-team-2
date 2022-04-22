@@ -62,7 +62,8 @@ justify-content:center}
 .search{}
 
 #nav > div > img {
-  min-height: 150px;min-width:300px;
+  min-height: 150px;
+  min-width:300px;
   width: 30vh;
   
   /* margin-right: 80%; */
@@ -125,7 +126,8 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   /* row-gap: 20vh; */
   align-items: center;
   /* margin-top: 15vh; */
-  max-width: 1000px;
+  max-width: 1300px;
+  width:100vw;
 }
 #map {
   /*map component contained within this div*/

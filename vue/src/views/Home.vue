@@ -165,7 +165,7 @@ margin-top:10px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
-#leagueTop{width:500px}
+
 #match-history{
 filter: drop-shadow(3px 3px 3px black);
  background-color: #184d47;

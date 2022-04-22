@@ -75,4 +75,12 @@ export default {
 </script>
 
 <style>
+#page-body > div:nth-child(1) > div > div{background: ;
+width:100%}
+#page-body > div:nth-child(1) > div{
+  margin: 0px;
+}
+#page-body > div:nth-child(1) > div > div > div.vww__content > div.vww__currently{
+  width:250px;
+}
 </style>

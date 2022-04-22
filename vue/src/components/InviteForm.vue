@@ -175,7 +175,7 @@ background-color:rgb(45, 158, 145);
 
 }
 #user-list{
-  background: yellow;
+
 }
 #selectPlayerInvite{
   display:flex;
