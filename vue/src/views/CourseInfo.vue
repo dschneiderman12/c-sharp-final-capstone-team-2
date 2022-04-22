@@ -146,4 +146,19 @@ transition: all 0.2s ease-in-out;
       font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 
 }
+#page-body > div:nth-child(1) > h3:nth-child(1){
+ display: flex;
+  justify-content: center;
+  background: #fad586;
+  padding: 2px;
+  filter: drop-shadow(2px 2px 2px black);
+  border-bottom: #22577a 3px solid;
+  border-top: #22577a 3px solid;
+  text-transform: capitalize;
+  color: #22577a;
+  font-variant: small-caps;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman";
+  margin-bottom:20px;
+}
+
 </style>
