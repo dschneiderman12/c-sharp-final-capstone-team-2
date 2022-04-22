@@ -5,7 +5,9 @@
         {{ match.matchName }}
       </h2>
     </div>
+    <div>
     <button v-on:click="backButton()">Back to League Home</button>
+    </div>
     <div id="matchScores">
       <match-score-list />
     </div>
@@ -97,7 +99,7 @@ export default {
 #match_title {
   display: flex;
   justify-content: center;
-  background: #fad586;
+  background: #fad586 !important;
   padding: 2px;
   filter: drop-shadow(2px 2px 2px black);
   border-bottom: #22577a 3px solid;
@@ -107,11 +109,15 @@ export default {
   font-variant: small-caps;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
+#matchInformation > div:nth-child(2){
+  width:300px;
+}
 #teeTime {
+
   background: tan;
   margin: 10px;
   border-radius: 10px;
-  padding-left: 5px;
+  padding-left: 20px;
   padding-right: 5px;
 }
 #updatescores {
@@ -124,4 +130,36 @@ export default {
 #matchTitle {
   margin: 0px;
 }
+#matchInformation > div:nth-child(2) > button{
+  
+  background-color:rgb(24, 77, 71) ; 
+padding:7px;
+border-radius: 10px;
+color:white;
+font-weight: bolder;
+
+  transition: all 0.2s ease-in-out;
+  width:200px;
+}
+#matchInformation > div:nth-child(2) > button:hover{
+   transform: scale(1.2);
+background-color:rgb(45, 158, 145);
+
+}
+#matchInformation{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between !important;
+  align-items: space-between !important;
+}
+#matchInformation > div:nth-child(2){
+margin-top: 20px !important;
+  margin-bottom: 20px !important;}
+  #teeTime{margin-top: 20px !important;
+  margin-bottom: 20px !important;}
+  #match-scores{
+  
+   
+  }
+
 </style>

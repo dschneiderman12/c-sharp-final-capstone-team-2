@@ -57,7 +57,9 @@ export default {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 #body{display: flex;
-justify-content:center}
+justify-content: space-between;
+
+}
 
 .search{}
 
@@ -125,9 +127,15 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   flex-direction: column;
   /* row-gap: 20vh; */
   align-items: center;
+  /* justify-self: space-between; */
+  justify-content: center;
   /* margin-top: 15vh; */
   max-width: 1300px;
   width:100vw;
+  
+}
+#body{
+  justify-content: center;
 }
 #map {
   /*map component contained within this div*/
@@ -140,7 +148,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
 #app{
   display:flex;
 flex-direction: column;
-justify-content:space-between;
+justify-content:center;
 
 }
 
@@ -150,5 +158,10 @@ background: linear-gradient(180deg, rgba(35,156,142,0) 0%, rgba(33,129,118,0.465
 height:10vh;
 
 }
-
+/* #page-body > div> div{
+  margin:10px;
+} */
+#page-body > div{
+  margin:10px !important;
+}
 </style>

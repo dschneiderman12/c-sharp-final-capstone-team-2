@@ -27,8 +27,9 @@
         v-model="userMatch.teeTime"
         required
       />
-
+<div>
       <button type="submit" class="btn-submit">Submit</button>
+    </div>
     </form>
   </div>
 </template>
@@ -159,4 +160,18 @@ export default {
   filter: drop-shadow(3px 3px 3px black);
   text-transform: capitalize;
 }
+#teeTime > div > form > div:nth-child(4) > button{
+
+margin-top:5px;
+ 
+  background-color:rgb(24, 77, 71) ; 
+padding:7px;
+border-radius: 10px;
+color:white;
+font-weight: bolder;
+
+  transition: all 0.2s ease-in-out;
+  width:200px;}
+#teeTime > div > form > div:nth-child(4) > button:hover{  transform: scale(1.2);
+background-color:rgb(45, 158, 145);}
 </style>

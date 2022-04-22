@@ -133,8 +133,7 @@ h3{
 #page-body > div:nth-child(1) > div{
   background-color: rgb(150, 187, 124);
   margin:20px;
-  margin-left:70px;
-  margin-right: 70px;
+ width:90%;
   border-radius:5px;
   padding:5px;
  

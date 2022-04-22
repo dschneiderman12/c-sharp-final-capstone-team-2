@@ -164,6 +164,7 @@ margin-top:10px;
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
+width:80% !important;
 }
 
 #match-history{
@@ -191,4 +192,13 @@ margin-bottom: 10px;
   margin-bottom: 0;
 
 }
+
+#league-info-home{
+  margin:20px !important;
+}
+#page-body > div.home > div{
+  margin:10px;
+}
+
+
 </style>

@@ -12,10 +12,10 @@
       </thead>
       <tbody>
         <tr v-for="score in matchScores" v-bind:key="score.userId">
-          <td>
+          <td id="name">
             {{ score.username }}
           </td>
-          <td>{{ score.total }}</td>
+          <td id="score">{{ score.total }}</td>
         </tr>
       </tbody>
     </table>
@@ -82,4 +82,18 @@ export default {
   filter: drop-shadow(3px 3px 3px black);
   text-transform: capitalize;
 }
+
+#match-scores > tbody{
+ background:#D6EFC7;
+  text-transform: capitalize;
+}
+#match-scores > tbody > tr:nth-child(1){
+  color:green;
+  font-weight: bold;
+}
+#match-scores{
+  margin-left:25%;
+}
+
+
 </style>
