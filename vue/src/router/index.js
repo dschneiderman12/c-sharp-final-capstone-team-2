@@ -5,7 +5,12 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-
+import League from '../views/League.vue'
+import LeagueInfo from '../views/LeagueInfo.vue'
+import InviteInfo from '../views/InviteInfo.vue'
+import MatchInfo from '../views/MatchInfo.vue'
+import CourseAdditionPage from '../views/CourseAdditionPage.vue'
+import CourseInfo from '../views/CourseInfo.vue'
 Vue.use(Router)
 
 /**
@@ -53,6 +58,56 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/league",
+      name: "league",
+      component: League,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/league/:id",
+      name: "leagueInfo",
+      component: LeagueInfo,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/invite/:id",
+      name: "inviteInfo",
+      component: InviteInfo,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path:"/Match/:id",
+      name:"matchInfo",
+      component: MatchInfo, 
+      meta:{
+        requiresAuth:true
+      }
+
+    },
+    {
+      path: "/addCourse",
+      name: "addCourse",
+      component: CourseAdditionPage,
+      meta:{
+        requiresAuth:true
+      },
+    },
+      {
+        path: "/course/:id",
+        name: "courseInfo",
+        component: CourseInfo,
+        meta:{
+          requiresAuth: true
+        }
+      }
+    
   ]
 })
 

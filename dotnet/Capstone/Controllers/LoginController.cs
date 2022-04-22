@@ -2,22 +2,26 @@
 using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
+//using System.Data.SqlClient;
 
 namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    
     public class LoginController : ControllerBase
     {
         private readonly ITokenGenerator tokenGenerator;
         private readonly IPasswordHasher passwordHasher;
         private readonly IUserDao userDao;
+        private readonly ILeagueDao leagueDao;
 
-        public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDao _userDao)
+        public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDao _userDao, ILeagueDao _leagueDao)
         {
             tokenGenerator = _tokenGenerator;
             passwordHasher = _passwordHasher;
             userDao = _userDao;
+            leagueDao = _leagueDao;
         }
 
         [HttpPost]
@@ -65,7 +69,7 @@ namespace Capstone.Controllers
             {
                 result = BadRequest(new { message = "An error occurred and user was not created." });
             }
-
+            leagueDao.AddUserLeagueTable(user.UserId, 2);
             return result;
         }
     }
