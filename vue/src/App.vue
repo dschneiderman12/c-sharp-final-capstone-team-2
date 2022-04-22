@@ -20,11 +20,13 @@
         >
       </div>
     </div>
+    <div id="body">
     <div id="page-body">
       <router-view />
       <div id="map">
         <course-locator />
       </div>
+    </div>
     </div>
     </div>
     <div id="footer"></div>
@@ -54,7 +56,8 @@ export default {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-
+#body{display: flex;
+justify-content:center}
 
 .search{}
 
@@ -122,6 +125,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   /* row-gap: 20vh; */
   align-items: center;
   /* margin-top: 15vh; */
+  max-width: 1000px;
 }
 #map {
   /*map component contained within this div*/
