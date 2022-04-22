@@ -183,6 +183,13 @@ export default {
   text-transform: capitalize;
 
 }
+#leagueTop > div{
+ display: flex;
+ flex-direction: column;
+
+
+
+}
 #organizerName {
   margin-top: 0;
   font-size: medium;
@@ -228,6 +235,18 @@ filter: drop-shadow(2px 2px 2px black);
 margin-top:30px;
 height: 60%;
 }
-
+div{
+  margin-bottom: 10px;
+}
+#page-body > div.home > div:nth-child(3){
+  width:80% !important;
+}
+#leagueTop{
+  margin-bottom: 20px !important;
+}
+#leaguePage > div:nth-child(3){
+margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
 </style>
 

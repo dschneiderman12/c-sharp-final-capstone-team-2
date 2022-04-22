@@ -2,7 +2,9 @@
   <div>
     <form id="invite-form" v-on:submit.prevent="submitForm()">
       <div>
+        
         <h2 id="invitePlayer">Invite player to league</h2>
+        <div id="selectPlayerInvite">
         <h2 id="selectPlayer">Select player:</h2>
         <select id="user-list" v-model.number="invite.toUserId">
           <option value="" selected="selected" class="default-selector">
@@ -16,7 +18,9 @@
             {{ user.username }}
           </option>
         </select>
-        <button type="submit" class="btn-submit">Send Invite</button>
+        
+        <button type="submit" class="btn-submit, search">Send Invite</button>
+      </div>
       </div>
       <div>
         <table>
@@ -134,6 +138,20 @@ export default {
 
   margin: 0%;
 }
+.search{
+background-color:rgb(24, 77, 71) ; 
+padding:7px;
+border-radius: 10px;
+color:white;
+font-weight: bolder;
+margin: 6px;
+  transition: all 0.2s ease-in-out;
+}
+.search:hover{
+transform: scale(1.2);
+background-color:rgb(45, 158, 145);
+
+}
 #invite-form {
   background: rgba(189, 236, 162, 0.8);
   border-radius: 3px;
@@ -157,7 +175,30 @@ export default {
 
 }
 #user-list{
-  background: yellow;
+
+}
+#selectPlayerInvite{
+  display:flex;
+  justify-content: center;
+}
+#invite-form > div:nth-child(2) > table{
+  display:flex;
+  flex-direction:column;
+  align-content:center;
+  justify-content: center;
+}
+#invite-form > div:nth-child(2) > table,#invite-form > div:nth-child(2) > table > tbody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D6EFC7;
+  margin-top:10px;
+margin-left:50px;
+margin-right: 50px;
+border-radius:5px;
+}
+#invite-form > div:nth-child(2) > table > tbody{
+  margin-top:0px;
 }
 
 

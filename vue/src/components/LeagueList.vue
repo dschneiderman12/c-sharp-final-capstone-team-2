@@ -71,10 +71,11 @@ export default {
     rgba(250, 213, 134, 0.7847514005602241) 100%
   );
   filter: drop-shadow(3px 3px 3px black);
-  width: 80%;
+  width: 70%;
   padding: 20px;
   display: flex;
   justify-content: center;
+  margin: 10px !important;
 }
 #leagueNames{
   text-decoration: none;
@@ -93,6 +94,9 @@ text-transform: capitalize;
 }
 #leagueNames:hover
 {  background-color: rgb(58, 124, 117);}
-
+#league-list{
+  display: flex;
+  justify-content: center;
+}
 </style>
 

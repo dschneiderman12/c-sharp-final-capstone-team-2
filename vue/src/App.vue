@@ -20,11 +20,13 @@
         >
       </div>
     </div>
+    <div id="body">
     <div id="page-body">
       <router-view />
       <div id="map">
         <course-locator />
       </div>
+    </div>
     </div>
     </div>
     <div id="footer"></div>
@@ -54,11 +56,16 @@ export default {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+#body{display: flex;
+justify-content: space-between;
 
+}
 
+.search{}
 
 #nav > div > img {
-  min-height: 150px;min-width:300px;
+  min-height: 150px;
+  min-width:300px;
   width: 30vh;
   
   /* margin-right: 80%; */
@@ -120,7 +127,15 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
   flex-direction: column;
   /* row-gap: 20vh; */
   align-items: center;
+  /* justify-self: space-between; */
+  justify-content: center;
   /* margin-top: 15vh; */
+  max-width: 1300px;
+  width:100vw;
+  
+}
+#body{
+  justify-content: center;
 }
 #map {
   /*map component contained within this div*/
@@ -133,7 +148,7 @@ background: linear-gradient(180deg, rgba(250,213,134,0.98) 0%, rgba(250,213,134,
 #app{
   display:flex;
 flex-direction: column;
-justify-content:space-between;
+justify-content:center;
 
 }
 
@@ -143,5 +158,10 @@ background: linear-gradient(180deg, rgba(35,156,142,0) 0%, rgba(33,129,118,0.465
 height:10vh;
 
 }
-
+/* #page-body > div> div{
+  margin:10px;
+} */
+#page-body > div{
+  margin:10px !important;
+}
 </style>

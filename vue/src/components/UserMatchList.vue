@@ -90,6 +90,7 @@ export default {
 <style>
 #league-matches {
   width: 100%;
+ 
 }
 #league-matches > tbody > tr {
   background: rgb(24, 77, 71);
@@ -104,6 +105,9 @@ export default {
   padding: 5px;
 
   padding: 5px;
+}
+#upcoming{
+  width:70% !important;
 }
 
 #nameOfMatch > a {
