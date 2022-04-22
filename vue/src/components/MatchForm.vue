@@ -9,6 +9,7 @@
           type="text"
           class="form-control"
           v-model="match.matchName"
+          required
         />
       </div>
       <div>
